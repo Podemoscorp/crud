@@ -1,10 +1,17 @@
 asgiref==3.3.1
+certifi==2020.12.5
 cffi==1.14.5
+chardet==4.0.0
 cryptography==3.2.1
 Django==3.1.6
 django-restframework==0.0.1
+heroku==0.1.4
+idna==2.10
 jwt==1.1.0
 pycparser==2.20
+python-dateutil==1.5
 pytz==2021.1
+requests==2.25.1
 six==1.15.0
 sqlparse==0.4.1
+urllib3==1.26.3
