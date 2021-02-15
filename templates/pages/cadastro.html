@@ -1,0 +1,72 @@
+{% extends 'components/base.html' %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+
+{% include 'components/menu.html' %}
+
+    
+<div class="container d-flex justify-content-center h-100">
+    <div class="vertical-center aling-itens-center">
+        <div class="card card-black">
+            <div class="card-header card-header-black text-center">
+                <h1>Criar conta</h1>
+            </div>
+
+            {% include 'components/alertas.html' %}
+        
+            <div class="card-body card-body-black">
+                <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="username"><b>Username:</b></label>
+                        <input type="text" class="form-control text-body" name="username" placeholder="Ex.: JN5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname"><b>Primeiro nome:</b></label>
+                        <input type="text" class="form-control text-body" name="firstname" placeholder="Ex.: Julio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname"><b>Ultimo nome:</b></label>
+                        <input type="text" class="form-control text-body" name="lastname" placeholder="Ex.: Nunes" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email2"><b>Email:</b></label>
+                        <input type="email" class="form-control text-body" name="email2" placeholder="Ex.: exemplo@papersound.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><b>Confirmação de email:</b></label>
+                        <input type="email" class="form-control text-body" name="email" placeholder="Ex.: exemplo@papersound.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><b>Senha:</b></label>
+                        <input type="password" class="form-control text-body" name="password" placeholder="Digite sua senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2"><b>Confirmação de senha:</b></label>
+                        <input type="password" class="form-control text-body" name="password2" placeholder="Digite sua senha mais uma vez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data"><b>Data de nascimento:</b></label>
+                        <input type="date" class="form-control text-body" name="datanascimento" id="data" placeholder="Digite sua data de nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Criar sua conta</button>
+                        <button type="button" class="btn btn-primary" onclick="Logar()">Já tem uma conta? Clique aqui</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+    <script>
+        function Logar(){
+            location.href = "{% url 'login' %}";
+        }
+    </script>
+{% endblock script %}
+
+{% include 'components/footer.html' %}
+
+{% endblock %}
