@@ -19,6 +19,6 @@ from user import urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-#user views
-    path('user/',include('user.urls'),name="user"),
+    # user views
+    path("user/", include("user.urls"), name="user"),
 ]

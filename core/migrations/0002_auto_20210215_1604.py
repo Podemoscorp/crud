@@ -11,43 +11,61 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='noticias',
-            name='postador',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="noticias",
+            name="postador",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AddField(
-            model_name='matricula',
-            name='aluno',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="matricula",
+            name="aluno",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AddField(
-            model_name='matricula',
-            name='curso',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.curso'),
+            model_name="matricula",
+            name="curso",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="core.curso"
+            ),
         ),
         migrations.AddField(
-            model_name='curso',
-            name='professor',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="curso",
+            name="professor",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AddField(
-            model_name='certificado',
-            name='aluno',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='Alunos', to=settings.AUTH_USER_MODEL),
+            model_name="certificado",
+            name="aluno",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="Alunos",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AddField(
-            model_name='certificado',
-            name='curso',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.curso'),
+            model_name="certificado",
+            name="curso",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="core.curso"
+            ),
         ),
         migrations.AddField(
-            model_name='certificado',
-            name='professor',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='Professor', to=settings.AUTH_USER_MODEL),
+            model_name="certificado",
+            name="professor",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="Professor",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
