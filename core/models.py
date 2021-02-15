@@ -2,8 +2,6 @@ from django.db import models
 from django.utils import timezone
 from user.models import User
 
-# Create your models here.
-
 
 class Noticias(models.Model):
     titulo = models.CharField(max_length=100)
