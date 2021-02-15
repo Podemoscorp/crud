@@ -6,10 +6,21 @@ from user.models import User
 
 
 class Noticias(models.Model):
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=100)
     resumo = models.TextField()
     conteudo = models.TextField()
-    arquivo = models.FileField(upload_to="%Y/%m/%d/", blank=True)
+    imagem = models.FileField(upload_to="%Y/%m/%d/", blank=True)
+    postado_em = models.DateTimeField(default=timezone.now, blank=True)
+    postador = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
+
+
+class Posts(models.Model):
+    titulo = models.CharField(max_length=100)
+    conteudo = models.TextField()
+    imagem = models.FileField(upload_to="%Y/%m/%d/", blank=True)
     postado_em = models.DateTimeField(default=timezone.now, blank=True)
     postador = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -36,7 +47,7 @@ class Matricula(models.Model):
 
 
 class Certificado(models.Model):
-    titulo = titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=100)
     descricao = models.TextField()
     arquivo = models.FileField(upload_to="%Y/%m/%d/", blank=True)
     professor = models.ForeignKey(
@@ -48,3 +59,11 @@ class Certificado(models.Model):
 
     def __str__(self):
         return self.titulo
+
+
+class Evento(models.Model):
+    comeca_em = models.DateTimeField()
+    termina_em = models.DateTimeField()
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    criado_em = models.DateTimeField(default=timezone.now, blank=True)
