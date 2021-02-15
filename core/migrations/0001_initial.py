@@ -9,47 +9,110 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Certificado',
+            name="Certificado",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200)),
-                ('descricao', models.TextField()),
-                ('arquivo', models.FileField(upload_to='media/')),
-                ('criado_em', models.DateTimeField(blank=True, default=datetime.datetime(2021, 2, 15, 19, 4, 33, 234319, tzinfo=utc))),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("descricao", models.TextField()),
+                ("arquivo", models.FileField(upload_to="media/")),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        blank=True,
+                        default=datetime.datetime(
+                            2021, 2, 15, 19, 4, 33, 234319, tzinfo=utc
+                        ),
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Curso',
+            name="Curso",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=200)),
-                ('descricao', models.TextField()),
-                ('imagem', models.CharField(max_length=200)),
-                ('criado_em', models.DateTimeField(blank=True, default=datetime.datetime(2021, 2, 15, 19, 4, 33, 233563, tzinfo=utc))),
-                ('tema', models.CharField(max_length=30)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nome", models.CharField(max_length=200)),
+                ("descricao", models.TextField()),
+                ("imagem", models.CharField(max_length=200)),
+                (
+                    "criado_em",
+                    models.DateTimeField(
+                        blank=True,
+                        default=datetime.datetime(
+                            2021, 2, 15, 19, 4, 33, 233563, tzinfo=utc
+                        ),
+                    ),
+                ),
+                ("tema", models.CharField(max_length=30)),
             ],
         ),
         migrations.CreateModel(
-            name='Matricula',
+            name="Matricula",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('datetime', models.DateTimeField(blank=True, default=datetime.datetime(2021, 2, 15, 19, 4, 33, 233902, tzinfo=utc))),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "datetime",
+                    models.DateTimeField(
+                        blank=True,
+                        default=datetime.datetime(
+                            2021, 2, 15, 19, 4, 33, 233902, tzinfo=utc
+                        ),
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Noticias',
+            name="Noticias",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200)),
-                ('resumo', models.TextField()),
-                ('conteudo', models.TextField()),
-                ('imagem', models.CharField(max_length=200)),
-                ('postado_em', models.DateTimeField(blank=True, default=datetime.datetime(2021, 2, 15, 19, 4, 33, 233178, tzinfo=utc))),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("resumo", models.TextField()),
+                ("conteudo", models.TextField()),
+                ("imagem", models.CharField(max_length=200)),
+                (
+                    "postado_em",
+                    models.DateTimeField(
+                        blank=True,
+                        default=datetime.datetime(
+                            2021, 2, 15, 19, 4, 33, 233178, tzinfo=utc
+                        ),
+                    ),
+                ),
             ],
         ),
     ]

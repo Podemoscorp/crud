@@ -1,0 +1,42 @@
+{% load i18n %}
+{% load static %}
+{% block menu %}
+
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <h1 class="navbar-brand h1" style="font-size: xx-large;">Podemos</h1>
+    
+        <button type="button" class="navbar-toggler  text-white" data-toggle="collapse" data-target="#nav-mobile">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="nav-mobile">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li></li>
+                    {% if user.is_staff %}
+                        <li class="nav-item active h5 px-3 text-white"><a href="/admin/" class="nav-link text-white">Admin</a></li>
+                    {% endif %}
+                {% else %}
+                    <li></li>
+                {% endif %}
+            </ul>
+
+        </div>
+
+        {% if user.is_authenticated %}
+
+        <form action="{% url 'buscar' %}" method="GET" class="form-inline">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" name="busca" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>
+
+        {% endif %}
+    </nav>
+</div>
+
+
+{% endblock %}

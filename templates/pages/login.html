@@ -1,0 +1,42 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<section class="container d-flex justify-content-center h-100 ">
+
+    <div class="vertical-center align-items-center">
+        <div class="card card-black">
+            <div class="card-header card-header-black text-center">
+                <h1>Login</h1>
+            </div>
+            <div class="card-body card-body-black">
+    
+                {% include 'components/alertas.html' %}
+    
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email"><b>Email ou CPF:</b></label>
+                        <input type="text" id="email" class="form-control text-body" name="email" placeholder="Entre com o email ou o CPF cadastrado">
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><b>Senha:</b></label>
+                        <input id="senha" type="password" class="form-control text-body" name="password" placeholder="Digite aqui sua senha">
+                    </div>
+                    <div class=" form-group text-center">
+                        <button class="btn btn-success" type="submit">Acessar sua conta</button>
+                    </div>
+                </form> 
+                
+            </div>
+        </div>
+    </div>
+
+</section>                  
+
+{% include 'components/footer.html' %}
+{% endblock %}
