@@ -11,8 +11,10 @@ def cadastro( request ):
 def login( request ):
     if request.user.is_authenticated:
         return redirect('dashboard')
-    
+    #print(request.is_ajax())
+
     if request.method == "POST":
+
 
         email = request.POST['email']
         password = request.POST['password']
