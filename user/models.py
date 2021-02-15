@@ -10,6 +10,10 @@ from django.contrib import auth  # Importando modulo auth
 from django.core.mail import send_mail  # Importando função de envio de email
 from crud.settings import EMAIL_HOST_USER, SECRET_KEY  # Importando email de submissão da api
 
+class Role(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    value = models.IntegerField()
+    creted = models.DateTimeField(blank=True, default=timezone.now)
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -98,8 +102,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
     soft_delet = models.DateTimeField(_("Deleted ?"), blank=True, default=None)
     is_trusty = models.DateTimeField(_("is trusty"), default=None, blank=True)
-    cpf = models.CharField(_("CPF"), max_length=15, blank=True)
+    cpf = models.CharField(_("CPF"), max_length=15, blank=True, unique=True)
     endereco = models.CharField(_("Address"), max_length=100)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE)
 
 
     objects = UserManager()
