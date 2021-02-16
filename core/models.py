@@ -158,7 +158,9 @@ class Event(models.Model):
 
 
 class Image(models.Model):
-    image = models.FileField(_("Image"), upload_to="%Y/%m/%d/", help_text=_("Image url and path"))
+    image = models.FileField(
+        _("Image"), upload_to="%Y/%m/%d/", help_text=_("Image url and path")
+    )
     name = models.CharField(
         _("Name"), max_length=100, help_text=_("Image name"), blank=True
     )

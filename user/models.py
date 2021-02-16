@@ -12,6 +12,7 @@ from crud.settings import (
     EMAIL_HOST_USER,
     SECRET_KEY,
 )  # Importando email de submissão da api
+import jwt
 
 
 class Role(models.Model):
@@ -188,3 +189,39 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def get_reset_password_token(self):  # Cria um token para redefinição de senha
+        date_hours = timezone.now
+        token = jwt.encode(
+            {"id": self.id, "email": self.email, "expira": str(date_hours)},
+            SECRET_KEY,
+            "HS256",
+        )
+        return token
+
+    def get_confirm_email_token(self):  # Cria um token para verificação de email
+        date_hours = timezone.now
+        token = jwt.encode(
+            {"id": self.id, "email": self.email, "expira": str(date_hours)},
+            SECRET_KEY,
+            "HS256",
+        )
+        return token
+
+    def verify_reset_password_token(
+        self, token
+    ):  # Verifica token para redefinição de senha
+        try:
+            token = jwt.decode(token, SECRET_KEY)
+        except:
+            return
+        return token
+
+    def verify_confirm_email_token(
+        self, token
+    ):  # Verifica token para verificação de email
+        try:
+            token = jwt.decode(token, SECRET_KEY)
+        except:
+            return
+        return token

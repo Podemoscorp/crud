@@ -24,11 +24,36 @@
             </div>
             <div class=" form-group text-center">
                 <button class="btn btn-success" type="submit">Acessar sua conta</button>
+                <button type="button" class="btn btn-primary" onclick="reset_password_route()">Esqueci a senha</button>
             </div>
         </form> 
+
+        <div>
+            <p>Ou prossiga com estas redes sociais</p>
+        </div>
+
+        <div>
+            <a href="">Google</a>
+            <a href="">Github</a>
+            <a href="">Facebook</a>
+        </div>
+
+        <div>
+            <a href="{% url 'cadastro' %}"></a>
+        </div>
     </div>
 
-</section>                  
+</section>
 
 {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+
+<script>
+    function reset_password_route(){
+        location.href = "{% url 'reset_password' %}";
+    }
+</script>
+
 {% endblock %}
