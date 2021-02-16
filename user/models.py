@@ -15,10 +15,20 @@ from crud.settings import (
 
 
 class Role(models.Model):
-    name = models.CharField(_("name"), max_length=100, unique=True, help_text=_(""))
-    value = models.IntegerField(_("value"), help_text=_(""))
+    name = models.CharField(
+        _("name"),
+        max_length=100,
+        unique=True,
+        help_text=_("Name given to function / role / position"),
+    )
+    value = models.IntegerField(
+        _("value"), help_text=_("Hierarchical value of function / role / position")
+    )
     created = models.DateTimeField(
-        _("created in"), blank=True, default=timezone.now, help_text=_("")
+        _("created in"),
+        blank=True,
+        default=timezone.now,
+        help_text=_("role creation date"),
     )
 
     def __str__(self):
@@ -110,15 +120,43 @@ class User(AbstractBaseUser, PermissionsMixin):
         ),
     )
     date_joined = models.DateTimeField(
-        _("date joined"), default=timezone.now, blank=True
+        _("date joined"),
+        default=timezone.now,
+        blank=True,
+        help_text=_("User registration date"),
     )
-    soft_delet = models.DateTimeField(_("deleted"), blank=True, null=True)
-    is_trusty = models.DateTimeField(_("is trusty"), blank=True, null=True)
-    cpf = models.CharField(_("CPF"), max_length=15, blank=True, unique=True)
-    address = models.CharField(_("address"), max_length=100, blank=True)
-    role = models.ForeignKey(Role, on_delete=models.CASCADE, blank=True, null=True)
-    phone_number = models.CharField(_("phone Number"), max_length=15, blank=True)
-    description = models.TextField(_("description"), blank=True)
+    soft_delet = models.DateTimeField(
+        _("deleted"),
+        blank=True,
+        null=True,
+        help_text=_("exclusion data the user if he has been excluded"),
+    )
+    is_trusty = models.DateTimeField(
+        _("is trusty"), blank=True, null=True, help_text=_("date the user was verified")
+    )
+    cpf = models.CharField(
+        _("Individual registration"),
+        max_length=15,
+        blank=True,
+        unique=True,
+        help_text=_("Individual registration"),
+    )
+    address = models.CharField(
+        _("address"), max_length=100, blank=True, help_text=_("User address")
+    )
+    role = models.ForeignKey(
+        Role,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        help_text=_("user position / function / role"),
+    )
+    phone_number = models.CharField(
+        _("phone Number"), max_length=15, blank=True, help_text=_("user's phone number")
+    )
+    description = models.TextField(
+        _("description"), blank=True, help_text=_("brief description about the user")
+    )
 
     objects = UserManager()
 
