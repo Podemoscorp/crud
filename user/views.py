@@ -5,6 +5,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.translation import ugettext as _
 from django.utils import timezone
 from crud.settings import EMAIL_HOST_USER
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 
 def cadastro(request):
@@ -71,7 +73,13 @@ def reset_password(request):
 
     if request.method == "POST":
         email = request.POST["email"]
-        user = get_object_or_404(User, email=email)
+
+        user = None
+
+        try:
+            user = get_object_or_404(User, email=email)
+        except:
+            return redirect("reset_password_done")
 
         token = str(user.get_confirm_email_token())
 
@@ -87,10 +95,11 @@ def reset_password(request):
 
         user.email_user(
             "Resetar senha",
-            render(
-                request,
-                "email/reset_password_email.html",
-                {"link": link, "user_email": user},
+            strip_tags(
+                render_to_string(
+                    "email/reset_password_email.html",
+                    {"link": link, "user": user},
+                )
             ),
             EMAIL_HOST_USER,
         )
