@@ -132,3 +132,5 @@ dmypy.json
 keys.json
 config.sh
 x.html
+
+data/
