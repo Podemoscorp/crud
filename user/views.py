@@ -79,7 +79,7 @@ def reset_password( request ):
 
         path = request.build_absolute_uri()
         path = path.strip(request.get_full_path())
-        path+="/"
+        path+="/user/reset_password_confirm/"
 
         link = path+new_token
 
