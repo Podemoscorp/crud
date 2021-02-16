@@ -17,7 +17,7 @@ from crud.settings import (
 class Role(models.Model):
     name = models.CharField(max_length=100, unique=True)
     value = models.IntegerField()
-    creted = models.DateTimeField(blank=True, default=timezone.now)
+    created = models.DateTimeField(blank=True, default=timezone.now)
 
 
 class UserManager(BaseUserManager):
