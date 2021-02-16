@@ -19,6 +19,8 @@ class Role(models.Model):
     value = models.IntegerField()
     created = models.DateTimeField(blank=True, default=timezone.now)
 
+    def __str__(self):
+        return self.name
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
