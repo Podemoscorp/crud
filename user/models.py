@@ -14,6 +14,7 @@ from crud.settings import (
 )  # Importando email de submissão da api
 import jwt
 
+
 class Role(models.Model):
     name = models.CharField(
         _("name"),
@@ -188,7 +189,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
-
 
     def get_reset_password_token(self):  # Cria um token para redefinição de senha
         date_hours = timezone.now
