@@ -4,7 +4,7 @@ from user.models import User
 from django.utils.translation import ugettext as _
 
 
-class News(models.Model):
+class New(models.Model):
     title = models.CharField(
         _("Title"), max_length=100, help_text=_("title of the news")
     )
