@@ -11,11 +11,13 @@ gunicorn==20.0.4
 heroku==0.1.4
 idna==2.10
 jwt==1.1.0
+pg8000==1.17.0
 psycopg2==2.8.6
 pycparser==2.20
 python-dateutil==1.5
 pytz==2021.1
 requests==2.25.1
+scramp==1.2.0
 six==1.15.0
 sqlparse==0.4.1
 urllib3==1.26.3
