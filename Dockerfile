@@ -25,4 +25,4 @@ RUN chown -R crud:crud ./
 USER crud
 
 EXPOSE 8080
-CMD venv/bin/gunicorn --bind 0.0.0.0:8080 --access-logfile - --error-logfile - crud.wsgi
+CMD env/bin/gunicorn --bind 0.0.0.0:8080 --access-logfile - --error-logfile - crud.wsgi
