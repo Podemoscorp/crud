@@ -8,78 +8,210 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Certificado',
+            name="Certificado",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='Title')),
-                ('description', models.TextField(blank=True, verbose_name='Description')),
-                ('file', models.FileField(blank=True, upload_to='%Y/%m/%d/', verbose_name='Arquivo')),
-                ('created', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Created')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="Title")),
+                (
+                    "description",
+                    models.TextField(blank=True, verbose_name="Description"),
+                ),
+                (
+                    "file",
+                    models.FileField(
+                        blank=True, upload_to="%Y/%m/%d/", verbose_name="Arquivo"
+                    ),
+                ),
+                (
+                    "created",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Created",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Curso',
+            name="Curso",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Name')),
-                ('description', models.TextField(verbose_name='Description')),
-                ('image', models.FileField(blank=True, upload_to='%Y/%m/%d/', verbose_name='Imagem')),
-                ('created', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Created in')),
-                ('theme', models.CharField(max_length=30, verbose_name='Theme')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Name")),
+                ("description", models.TextField(verbose_name="Description")),
+                (
+                    "image",
+                    models.FileField(
+                        blank=True, upload_to="%Y/%m/%d/", verbose_name="Imagem"
+                    ),
+                ),
+                (
+                    "created",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Created in",
+                    ),
+                ),
+                ("theme", models.CharField(max_length=30, verbose_name="Theme")),
             ],
         ),
         migrations.CreateModel(
-            name='Evento',
+            name="Evento",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('starts_at', models.DateTimeField(verbose_name='Starts in')),
-                ('ends_in', models.DateTimeField(verbose_name='Ends in')),
-                ('title', models.CharField(max_length=100, verbose_name='Title')),
-                ('description', models.TextField(verbose_name='Description')),
-                ('created', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Created')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("starts_at", models.DateTimeField(verbose_name="Starts in")),
+                ("ends_in", models.DateTimeField(verbose_name="Ends in")),
+                ("title", models.CharField(max_length=100, verbose_name="Title")),
+                ("description", models.TextField(verbose_name="Description")),
+                (
+                    "created",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Created",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Image',
+            name="Image",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.FileField(upload_to='', verbose_name='Imagem')),
-                ('name', models.CharField(max_length=100, verbose_name='Name')),
-                ('upload_in', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Upload in')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("image", models.FileField(upload_to="", verbose_name="Imagem")),
+                ("name", models.CharField(max_length=100, verbose_name="Name")),
+                (
+                    "upload_in",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Upload in",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Matricula',
+            name="Matricula",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Created in')),
-                ('finished', models.DateTimeField(blank=True, null=True, verbose_name='Finished')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Created in",
+                    ),
+                ),
+                (
+                    "finished",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="Finished"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Noticia',
+            name="Noticia",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='Title')),
-                ('abstract', models.TextField(verbose_name='Abstract')),
-                ('content', models.TextField(verbose_name='Content')),
-                ('image', models.FileField(blank=True, upload_to='%Y/%m/%d/', verbose_name='Imagem')),
-                ('posted_in', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Posted in')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="Title")),
+                ("abstract", models.TextField(verbose_name="Abstract")),
+                ("content", models.TextField(verbose_name="Content")),
+                (
+                    "image",
+                    models.FileField(
+                        blank=True, upload_to="%Y/%m/%d/", verbose_name="Imagem"
+                    ),
+                ),
+                (
+                    "posted_in",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Posted in",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='Title')),
-                ('content', models.TextField(verbose_name='Content')),
-                ('image', models.FileField(blank=True, upload_to='%Y/%m/%d/', verbose_name='Imagem')),
-                ('posted_in', models.DateTimeField(blank=True, default=django.utils.timezone.now, verbose_name='Posted in')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100, verbose_name="Title")),
+                ("content", models.TextField(verbose_name="Content")),
+                (
+                    "image",
+                    models.FileField(
+                        blank=True, upload_to="%Y/%m/%d/", verbose_name="Imagem"
+                    ),
+                ),
+                (
+                    "posted_in",
+                    models.DateTimeField(
+                        blank=True,
+                        default=django.utils.timezone.now,
+                        verbose_name="Posted in",
+                    ),
+                ),
             ],
         ),
     ]

@@ -53,9 +53,7 @@ class Certificado(models.Model):
     teacher = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="Professor"
     )
-    student = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="Alunos"
-    )
+    student = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Alunos")
     course = models.ForeignKey(Curso, on_delete=models.CASCADE)
     created = models.DateTimeField(_("Created"), default=timezone.now, blank=True)
 
