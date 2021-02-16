@@ -29,7 +29,7 @@ class Posts(models.Model):
 class Curso(models.Model):
     nome = models.CharField(max_length=200)
     descricao = models.TextField()
-    imagem = models.CharField(max_length=200)
+    imagem = models.FileField(upload_to="%Y/%m/%d/", blank=True)
     criado_em = models.DateTimeField(default=timezone.now, blank=True)
     professor = models.ForeignKey(User, on_delete=models.CASCADE)
     tema = models.CharField(max_length=30)
