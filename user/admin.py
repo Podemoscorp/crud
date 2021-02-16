@@ -11,6 +11,7 @@ class AdminUser(admin.ModelAdmin):
         "date_joined",
         "cpf",
         "role",
+        'phone_number',
     )
     list_display_links = (
         "id",
@@ -20,6 +21,7 @@ class AdminUser(admin.ModelAdmin):
         "date_joined",
         "cpf",
         "role",
+        'phone_number',
     )
     search_fields = (
         "id",
@@ -29,7 +31,9 @@ class AdminUser(admin.ModelAdmin):
         "date_joined",
         "cpf",
         "role",
-        "endereco",
+        "address",
+        'phone_number',
+        'description',
     )
     list_per_page = 20
 

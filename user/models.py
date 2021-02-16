@@ -15,12 +15,13 @@ from crud.settings import (
 
 
 class Role(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    value = models.IntegerField()
-    created = models.DateTimeField(blank=True, default=timezone.now)
+    name = models.CharField(_("Name"), max_length=100, unique=True)
+    value = models.IntegerField(_("Value"))
+    created = models.DateTimeField(_("Created in"), blank=True, default=timezone.now)
 
     def __str__(self):
         return self.name
+
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -112,8 +113,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     soft_delet = models.DateTimeField(_("Deleted ?"), blank=True, null=True)
     is_trusty = models.DateTimeField(_("is trusty"), blank=True, null=True)
     cpf = models.CharField(_("CPF"), max_length=15, blank=True, unique=True)
-    endereco = models.CharField(_("Address"), max_length=100, blank=True)
+    address = models.CharField(_("Address"), max_length=100, blank=True)
     role = models.ForeignKey(Role, on_delete=models.CASCADE, blank=True, null=True)
+    phone_number = models.CharField(_("Phone Number"), max_length=15, blank=True)
+    description = models.TextField(_("Description"), blank=True)
 
     objects = UserManager()
 
