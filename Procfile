@@ -1,1 +1,1 @@
-web: gunicorn papersound.wsgi
+web: gunicorn crud.wsgi
