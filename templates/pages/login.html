@@ -6,52 +6,74 @@
 
 {% block content %}
 
-<section class="container">
-
-    <div>
-    
-        {% include 'components/alertas.html' %}
-    
-        <form action="{% url 'login' %}" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                        <label for="email"><b>Email ou CPF:</b></label>
-                        <input type="text" id="email" class="form-control text-body" name="email" placeholder="Entre com o email ou o CPF cadastrado">
-            </div>
-            <div class="form-group">
-                <label for="password"><b>Senha:</b></label>
-                <input id="senha" type="password" class="form-control text-body" name="password" placeholder="Digite aqui sua senha">
-            </div>
-            <div class=" form-group text-center">
-                <button class="btn btn-success" type="submit">Acessar sua conta</button>
-                <button type="button" class="btn btn-primary" onclick="reset_password_route()">Esqueci a senha</button>
-            </div>
-        </form> 
+<main class='d-flex justify-content-center'>
+    <section class="container">
 
         <div>
-            <p>Ou prossiga com estas redes sociais</p>
+
+            {% include 'components/alertas.html' %}
+
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email"><b>Email ou CPF:</b></label>
+                    <input type="text" id="email" class="form-control text-body" name="email"
+                        placeholder="Entre com o email ou o CPF cadastrado">
+                </div>
+                <div class="form-group">
+                    <label for="password"><b>Senha:</b></label>
+                    <input id="senha" type="password" class="form-control text-body" name="password"
+                        placeholder="Digite aqui sua senha">
+                </div>
+                <div class=" form-group text-center">
+                    <button class="btn btn-success" type="submit">Acessar sua conta</button>
+                    <button type="button" class="btn btn-primary" onclick="reset_password_route()">Esqueci a
+                        senha</button>
+                </div>
+            </form>
+
+            <div>
+                <p>Ou prossiga com estas redes sociais</p>
+            </div>
+
+            <div>
+                <a href="">Google</a>
+                <a href="">Github</a>
+                <a href="">Facebook</a>
+            </div>
+
+            <div>
+                <a href="{% url 'cadastro' %}"></a>
+            </div>
         </div>
 
-        <div>
-            <a href="">Google</a>
-            <a href="">Github</a>
-            <a href="">Facebook</a>
+    </section>
+
+    <section class="page-logo w-100">
+        <div class="logo">
+            <img src='../../static/images/Logo.svg' />
         </div>
 
-        <div>
-            <a href="{% url 'cadastro' %}"></a>
+        <article>
+            <h1 class='text-center font-weight-bold' id="text_podemos">
+                Juntos nós
+                <span class="yellow">PODEMOS</span>
+                mais <span class="yellow">!</span>
+            </h1>
+            <p class="text-center">Prepare-se para olimpíadas científicas e vestibulares brasileiros agora!</p>
+        </article>
+
+        <div class="footer">
+            <img src="../../static/images/team.svg" alt="">
         </div>
-    </div>
+    </section>
+</main>
 
-</section>
-
-{% include 'components/footer.html' %}
 {% endblock %}
-
 {% block script %}
 
 <script>
-    function reset_password_route(){
+    function reset_password_route() {
         location.href = "{% url 'reset_password' %}";
     }
 </script>

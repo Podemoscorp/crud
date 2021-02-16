@@ -8,4 +8,25 @@ html {
   height: 100%;
 }
 
+.page-logo{
+  color: #fff;
+  font: 'Montserrat';
+  padding: 0 2.5rem;
+  height: 100vh;
+  background: #4E00FF url('../images/bolinhas.svg') no-repeat center;
+  display: grid;
+  grid-column: 1fr 1fr;
+  gap: 20%;
+}
+
+#text_podemos{
+  font: 5em bold ;
+
+}
+
+.yellow {
+  color: #FFD600;
+}
+
+
 /*# sourceMappingURL=style.css.map */
