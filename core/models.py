@@ -168,3 +168,6 @@ class Image(models.Model):
         default=timezone.now,
         help_text=_("image upload date"),
     )
+
+    def __str__(self):
+        return self.name

@@ -52,9 +52,9 @@ class AdminEvents(admin.ModelAdmin):
 
 
 class AdminImages(admin.ModelAdmin):
-    list_display = ()
-    list_display_links = ()
-    search_fields = ()
+    list_display = ('id','name','upload_in')
+    list_display_links = ('id','name','upload_in')
+    search_fields = ('id','name','upload_in', 'image')
     list_per_page = 20
 
 
