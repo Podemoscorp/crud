@@ -7,6 +7,7 @@ from django.utils import timezone
 from crud.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+import datetime
 
 
 def cadastro(request):
@@ -111,3 +112,32 @@ def reset_password(request):
 
 def reset_password_done(request):
     return render(request, "pages/reset_password_done.html")
+
+
+def reset_password_confirm(request, token):
+    user = User()
+    payload = user.verify_reset_password_token(token)
+    if type != 0:
+        messages.success(request, 'Token Invalido')
+        return redirect('login')
+
+    data_atual = str(timezone.now)
+    data_atual = data_atual.split('.')[0]
+    data_atual = datetime.strptime(data_atual, "%Y-%m-%d %H:%M:%S")
+    data = payload['expira'].split(".")[0]
+    data = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
+    tempo = ((data_atual - data).total_seconds())/60
+
+    if tempo > 60:
+        messages.success(request, 'Token Expirado')
+        return redirect('login')
+
+    user = None
+
+    try:
+        user = get_object_or_404(User, pk=payload["id"])
+    except:
+        messages.success(request, 'Token Invalido')
+        return redirect('login')
+
+    return render(request, 'pages/reset_password_confirm')
