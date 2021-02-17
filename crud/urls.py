@@ -23,5 +23,5 @@ urlpatterns = [
     # user views
     path("user/", include("user.urls"), name="user"),
     # core views
-    path("", include("core.views"), name="core"),
+    path("", include("core.urls"), name="core"),
 ]
