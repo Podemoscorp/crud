@@ -1,5 +1,14 @@
 from django.contrib import admin
-from core.models import New, Post, Course, Registration, Certificate, Event, Image
+from core.models import (
+    New,
+    Post,
+    Course,
+    Registration,
+    Certificate,
+    Event,
+    Image,
+    CourseType,
+)
 
 
 class AdminNews(admin.ModelAdmin):
@@ -58,6 +67,13 @@ class AdminImages(admin.ModelAdmin):
     list_per_page = 20
 
 
+class CourseTypeAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "created")
+    list_display_links = ("id", "name", "created")
+    search_fields = ("id", "name", "created")
+    list_per_page = 20
+
+
 admin.site.register(New, AdminNews)
 admin.site.register(Post, AdminPosts)
 admin.site.register(Course, AdminCourses)
@@ -65,3 +81,4 @@ admin.site.register(Registration, AdminRegistrations)
 admin.site.register(Certificate, AdminCertificates)
 admin.site.register(Event, AdminEvents)
 admin.site.register(Image, AdminImages)
+admin.site.register(CourseType, CourseTypeAdmin)

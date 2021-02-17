@@ -2,9 +2,12 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Editar Perfil{% endblock %}
+{% block title %}Imagem{% endblock %}
 
-{% include 'components/menu.html' %}
+{% block menu %}
+    {% include 'components/menu.html' %}
+{% endblock %}
+
 
 {% block content %}
 
@@ -16,4 +19,6 @@
 
 {% endblock %}
 
-{% include 'components/footer.html' %}
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
