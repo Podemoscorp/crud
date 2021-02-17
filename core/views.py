@@ -57,3 +57,15 @@ def evento(request, id):
 
 def dashboard(request):
     return render(request, "pages/core/dashboard.html")
+
+
+def images(request):
+    return render(request, "pages/core/images.html")
+
+
+def image(request, id):
+    return render(request, "pages/core/image.html")
+
+
+def upload_image(request):
+    return render(request, "pages/core/upload_image.html")

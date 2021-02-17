@@ -18,6 +18,9 @@ urlpatterns = [
     path("olimpiada/<int:id>", views.olimpiada, name="olimpiada"),
     path("calendario/", views.calendario, name="calendarios"),
     path("evento/<int:id>", views.evento, name="evento"),
+    path('imagens/', views.images, name="imagens"),
+    path("image/<int:id>", views.image, name="image"),
+    path("upload/image/", views.upload_image, name="image"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
