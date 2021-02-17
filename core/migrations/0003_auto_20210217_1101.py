@@ -6,20 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_auto_20210216_2029'),
+        ("core", "0002_auto_20210216_2029"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='new',
-            name='visibility',
-            field=models.CharField(choices=[('A', 'Privado'), ('B', 'Publico'), ('C', 'Comunidade')], default='C', help_text='visibility of the news', max_length=2, verbose_name='visibility '),
+            model_name="new",
+            name="visibility",
+            field=models.CharField(
+                choices=[("A", "Privado"), ("B", "Publico"), ("C", "Comunidade")],
+                default="C",
+                help_text="visibility of the news",
+                max_length=2,
+                verbose_name="visibility ",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='post',
-            name='visibility',
-            field=models.CharField(choices=[('A', 'Privado'), ('B', 'Publico'), ('C', 'Comunidade')], default='C', help_text='publication visibility', max_length=2, verbose_name='visibility '),
+            model_name="post",
+            name="visibility",
+            field=models.CharField(
+                choices=[("A", "Privado"), ("B", "Publico"), ("C", "Comunidade")],
+                default="C",
+                help_text="publication visibility",
+                max_length=2,
+                verbose_name="visibility ",
+            ),
             preserve_default=False,
         ),
     ]
