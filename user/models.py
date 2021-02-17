@@ -214,7 +214,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         try:
             token = jwt.decode(token, SECRET_KEY)
         except:
-            return
+            return None
         return token
 
     def verify_confirm_email_token(
@@ -223,5 +223,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         try:
             token = jwt.decode(token, SECRET_KEY)
         except:
-            return
+            return None
         return token
