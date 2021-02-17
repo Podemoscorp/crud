@@ -4,6 +4,10 @@
 
 {% block title %}Login{% endblock %}
 
+{% block menu %}
+    {% include 'components/menu.html' %}
+{% endblock %}
+
 {% block content %}
 
 <section class="container">
@@ -45,7 +49,10 @@
 
 </section>
 
-{% include 'components/footer.html' %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
 {% endblock %}
 
 {% block script %}

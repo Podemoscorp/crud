@@ -2,18 +2,22 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Editar Perfil{% endblock %}
+{% block title %}Home{% endblock %}
 
-{% include 'components/menu.html' %}
+{% block menu %}
+    {% include 'components/menu.html' %}
+{% endblock %}
 
 {% block content %}
 
 <section class="container">
     <div>
-
+        <h1>Index</h1>
     </div>
 </section>
 
 {% endblock %}
 
-{% include 'components/footer.html' %}
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
