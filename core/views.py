@@ -1,5 +1,14 @@
 from django.shortcuts import render, redirect
-from core.models import New, Course, Certificate, Post, Registration, Event, Image, CourseType
+from core.models import (
+    New,
+    Course,
+    Certificate,
+    Post,
+    Registration,
+    Event,
+    Image,
+    CourseType,
+)
 
 # Create your views here.
 
@@ -10,9 +19,9 @@ def index(request):
     tipos_de_cursos = CourseType.objects.all()
 
     dados = {
-        "noticias":noticias,
-        "posts":posts,
-        "tipos_de_cursos":tipos_de_cursos,
+        "noticias": noticias,
+        "posts": posts,
+        "tipos_de_cursos": tipos_de_cursos,
     }
 
     return render(request, "pages/core/index.html", dados)
