@@ -4,17 +4,22 @@
 
 {% block title %}Perfil{% endblock %}
 
+{% include 'components/menu.html' %}
+
 {% block content %}
 
 <section class="container">
-    {% if visit_user == user %}
+    {% if visit_user.id == user.id %}
         <button type="button" class="btn btn-primary">
             <a href="{% url 'editar_perfil' %}">Editar Perfil</a>
         </button>
     {% endif %}
+    {{ request.user }}
     <div>
         <h1>{{visit_user.first_name}}</h1>
     </div>
 </section>
 
 {% endblock %}
+
+{% include 'components/footer.html' %}
