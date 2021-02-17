@@ -193,7 +193,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_reset_password_token(self):  # Cria um token para redefinição de senha
         date_hours = timezone.now
         token = jwt.encode(
-            {"id": self.id, "email": self.email, "expira": str(date_hours)},
+            {"id": self.id, "email": self.email, "expira": str(date_hours), "type": 0},
             SECRET_KEY,
             "HS256",
         )
@@ -202,7 +202,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_confirm_email_token(self):  # Cria um token para verificação de email
         date_hours = timezone.now
         token = jwt.encode(
-            {"id": self.id, "email": self.email, "expira": str(date_hours)},
+            {"id": self.id, "email": self.email, "expira": str(date_hours), "type": 1},
             SECRET_KEY,
             "HS256",
         )
@@ -214,7 +214,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         try:
             token = jwt.decode(token, SECRET_KEY)
         except:
-            return
+            return None
         return token
 
     def verify_confirm_email_token(
@@ -223,5 +223,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         try:
             token = jwt.decode(token, SECRET_KEY)
         except:
-            return
+            return None
         return token
