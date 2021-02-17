@@ -73,6 +73,25 @@ class Post(models.Model):
         return self.title
 
 
+class CourseType(models.Model):
+    image = models.FileField(
+        _("Image"),
+        upload_to="%Y/%m/%d/",
+        blank=True,
+        help_text=_("Course Type cover image"),
+    )
+    name = models.CharField(_("Name"), max_length=200, help_text=_("course type name"))
+    created = models.DateTimeField(
+        _("Created in"),
+        default=timezone.now,
+        blank=True,
+        help_text=_("Course Type creation date"),
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Course(models.Model):
     name = models.CharField(_("Name"), max_length=200, help_text=_("course name"))
     description = models.TextField(_("Description"), help_text=_("Course description"))
