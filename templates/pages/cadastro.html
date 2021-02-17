@@ -7,7 +7,9 @@
     <section class="container" id="login">
         <!-- back button -->
         <button class='outline-0 border-0 bg-none back' onclick="reset_password_route()">
-            <img src="../../static/images/back-arrow.svg" alt="">
+            <a href="{% url 'login' %}">
+                <img src="../../static/images/back-arrow.svg" alt="">
+            </a>
         </button>
         <!-- title and sub-title -->
         <div>
@@ -25,7 +27,7 @@
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
                 <img src="../../static/images/email.svg" alt="email">
                 <div class="position-relative w-100 padding_0-7">
-                    <input required  type="text" id="email" class="input-text-color w-100" name="email">
+                    <input required type="text" id="email" class="input-text-color w-100" name="email">
                     <label class='input-text-color'>Entre com email ou CPF</label>
                 </div>
             </div>
@@ -35,7 +37,7 @@
                 <img src="../../static/images/smart-key.svg" alt="key">
 
                 <div class="position-relative w-100 padding_0-7">
-                    <input required  type="password" id="email" class="input-text-color w-100" name="email">
+                    <input required type="password" id="email" class="input-text-color w-100" name="email">
                     <label class='input-text-color'>Senha</label>
                 </div>
             </div>
@@ -44,7 +46,7 @@
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
                 <img src="../../static/images/smart-key.svg" alt="key">
                 <div class="position-relative w-100 padding_0-7">
-                    <input required  type="password" id="email" class="input-text-color w-100" name="email">
+                    <input required type="password" id="email" class="input-text-color w-100" name="email">
                     <label class='input-text-color'>Confirme sua senha</label>
                 </div>
             </div>
@@ -75,7 +77,7 @@
                 </button>
             </a>
         </div>
-        
+
         <!-- buttom submit -->
         <div class="text-center">
             <button class="button-next border-0 outline-0" type="submit">Próximo</button>
