@@ -81,7 +81,7 @@ def reset_password(request):
         except:
             return redirect("reset_password_done")
 
-        token = str(user.get_confirm_email_token())
+        token = str(user.get_reset_password_token())
 
         new_token = ""
         for i in range(2, len(token) - 1):
