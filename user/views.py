@@ -194,7 +194,7 @@ def perfil(request, id):
         messages.success(request, "User não encontrado")
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
-    return render(request, "pages/user/perfil.html", {"visit_user":user})
+    return render(request, "pages/user/perfil.html", {"visit_user": user})
 
 
 def editar_perfil(request):
