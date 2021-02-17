@@ -35,18 +35,45 @@ html {
 }
 
 .input-text-color {
-  color: #9C98A6;
+  color: var(--light-color);
+}
+
+.border-color-gray {
+  border: 1px solid var(--light-color);
+}
+
+.padding_0-7 {
+  padding: 0.7rem;
+}
+
+.first-input {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.last-input {
+  border-radius: 0 0 1rem 1rem;
 }
 
 /*formatações especificas*/
+
+/*todas as pg*/
 
 main {
   background-color: #eeeeee;
 }
 
+.back {
+  margin-bottom: 2rem;
+}
+
+
+/*apenas login*/
+
 #login {
   padding: 0 10%;
 }
+
+/*Formularios*/
 
 form {
   margin: 2rem 0;
@@ -57,20 +84,20 @@ form input {
   border: none;
   outline: none;
   font-family: 'Poppins';
-  font-size: 1.5rem;
-  padding: 1rem;
+  font-size: 1.2rem;
 }
 
-#first-input {
-  padding: 1rem;
-  border: 1px solid var(--light-color);
-  border-radius: 1rem 1rem 0 0;
+input~label {
+  position: absolute;
+  top: 20%;
+  left: 2%;
+  transition: .4s;
 }
 
-#last-input {
-  padding: 1rem;
-  border: 1px solid var(--light-color);
-  border-radius: 0 0 1rem 1rem;
+input:focus~label, input:valid~label {
+  transform: translateY(-24px);
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
 }
 
 #buttons_container {
@@ -86,6 +113,16 @@ form input {
   font-size: 1.2rem;
   color: #fff;
   border-radius: 1rem;
+}
+
+.button-next{
+  color: var(--primary-color);
+  background-color: var(--h2-color);
+  width: 100%;
+  height: 8vh;
+  font-size: 1.2rem;
+  font-family: 'Poppins';
+  border-radius: .5rem;
 }
 
 /*parte da "logo"*/

@@ -1,8 +1,8 @@
 {% load i18n %}
 {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-{{message.tags}} p-0 m-0 h2-color bg-none border-0" role="alert">
-        {{ message }}
-    </div>
+        <div class="alert alert-{{message.tags}} p-0 m-0 h2-color bg-none border-0" role="alert">
+            {{ message }}
+        </div>
     {% endfor %}
 {% endif %}
