@@ -1,6 +1,14 @@
+:root {
+  --primary-color: #4E00FF;
+  --secundary-color: #FFD600;
+  --h2-color: #B2A6CD;
+  --light-color: #9C98A6;
+}
+
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -8,25 +16,97 @@ html {
   height: 100%;
 }
 
-.page-logo{
-  color: #fff;
-  font: 'Montserrat';
-  padding: 0 2.5rem;
-  height: 100vh;
-  background: #4E00FF url('../images/bolinhas.svg') no-repeat center;
-  display: grid;
-  grid-column: 1fr 1fr;
-  gap: 20%;
-}
-
-#text_podemos{
-  font: 5em bold ;
-
-}
+/*utils*/
 
 .yellow {
-  color: #FFD600;
+  color: var(--secundary-color);
 }
 
+.bg-none {
+  background: none;
+}
+
+.text_color_primary {
+  color: var(--primary-color)
+}
+
+.h2-color {
+  color: var(--h2-color);
+}
+
+.input-text-color {
+  color: #9C98A6;
+}
+
+/*formatações especificas*/
+
+main {
+  background-color: #eeeeee;
+}
+
+#login {
+  padding: 0 10%;
+}
+
+form {
+  margin: 2rem 0;
+}
+
+form input {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Poppins';
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+#first-input {
+  padding: 1rem;
+  border: 1px solid var(--light-color);
+  border-radius: 1rem 1rem 0 0;
+}
+
+#last-input {
+  padding: 1rem;
+  border: 1px solid var(--light-color);
+  border-radius: 0 0 1rem 1rem;
+}
+
+#buttons_container {
+  margin: 2rem 0;
+}
+
+#buttons_container button {
+  width: 40%;
+  height: 8vh;
+  border: 0;
+  outline: 0;
+  background-color: var(--primary-color);
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 1rem;
+}
+
+/*parte da "logo"*/
+
+#page-logo {
+  font: 'Poppins';
+  padding: 0 2.5rem;
+  background: var(--primary-color) url('../images/bolinhas.svg') no-repeat center;
+  display: grid;
+  gap: 20px;
+}
+
+#text_podemos {
+  font-size: 5em;
+  font-weight: bold;
+  font-family: 'Poppins';
+}
+
+#page-logo p {
+  font-size: 1.6em;
+  font-family: 'Poppins';
+}
 
 /*# sourceMappingURL=style.css.map */
