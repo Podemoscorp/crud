@@ -54,7 +54,7 @@ def login(request):
                 menssagem = _("Confirme seu email para ter acesso")
                 messages.error(request, menssagem)
 
-            return redirect("dashboad")
+            return redirect("dashboard")
 
     return render(request, "pages/login.html")
 
@@ -108,11 +108,11 @@ def reset_password(request):
 
         return redirect("reset_password_done")
 
-    return render(request, "pages/reset_password.html")
+    return render(request, "pages/user/reset_password.html")
 
 
 def reset_password_done(request):
-    return render(request, "pages/reset_password_done.html")
+    return render(request, "pages/user/reset_password_done.html")
 
 
 def reset_password_confirm(request, token):
@@ -146,7 +146,7 @@ def reset_password_confirm(request, token):
         messages.success(request, "Token Invalido")
         return redirect("login")
 
-    return render(request, "pages/reset_password_confirm")
+    return render(request, "pages/user/reset_password_confirm")
 
 
 def confirma_email(request, token):
@@ -188,14 +188,14 @@ def confirma_email(request, token):
 
 
 def perfil(request, id):
-    visit_user = User.objects.get(pk=id)
+    user = User.objects.get(pk=id)
 
-    if visit_user == None:
+    if user == None:
         messages.success(request, "User não encontrado")
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
-    return render(request, "pages/perfil.html", visit_user)
+    return render(request, "pages/user/perfil.html", {"visit_user":user})
 
 
 def editar_perfil(request):
-    return render(request, "pages/editar_perfil.html")
+    return render(request, "pages/user/editar_perfil.html")
