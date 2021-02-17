@@ -7,14 +7,14 @@
 {% block content %}
 
 <section class='d-flex justify-content-center vw-100 vh-100'>
-    <section class="container" id="login">
+    <section class="container space">
         <!-- <button class='outline-0 border-0 bg-none' onclick="reset_password_route()">
             <img src="../../static/images/back-arrow.svg" alt="">
         </button> -->
 
         <div>
             <h1 class='text_color_primary'>Login</h1>
-            <h2 class='h2-color'>Preencha os campos abaixo para entrar.</h2>
+            <h2 class='h3-color'>Preencha os campos abaixo para entrar.</h2>
         </div>
 
         {% include 'components/alertas.html' %}
@@ -47,7 +47,7 @@
             </div>
         </form>
         
-        <div class="text-center h2-color">
+        <div class="text-center h3-color">
             <h2>Ou prossiga com estas redes sociais</h2>
         </div>
 
@@ -71,7 +71,7 @@
             </a>
         </div>
 
-        <div class="text-center h2-color">
+        <div class="text-center h3-color">
             <h4>Ainda não possui conta? <a href="{% url 'cadastro' %}" class='text_color_primary'>Cadastre-se</a>
             </h4>
         </div>
