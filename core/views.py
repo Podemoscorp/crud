@@ -1,10 +1,21 @@
 from django.shortcuts import render, redirect
+from core.models import New, Course, Certificate, Post, Registration, Event, Image, CourseType
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, "pages/core/index.html")
+    noticias = New.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
+    posts = Post.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
+    tipos_de_cursos = CourseType.objects.all()
+
+    dados = {
+        "noticias":noticias,
+        "posts":posts,
+        "tipos_de_cursos":tipos_de_cursos,
+    }
+
+    return render(request, "pages/core/index.html", dados)
 
 
 def blog(request):
