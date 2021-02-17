@@ -7,6 +7,7 @@ from django.utils import timezone
 from crud.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.http import HttpResponseRedirect
 import datetime
 
 
@@ -117,27 +118,84 @@ def reset_password_done(request):
 def reset_password_confirm(request, token):
     user = User()
     payload = user.verify_reset_password_token(token)
+
+    if payload == None:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
     if type != 0:
-        messages.success(request, 'Token Invalido')
-        return redirect('login')
+        messages.success(request, "Token Invalido")
+        return redirect("login")
 
     data_atual = str(timezone.now)
-    data_atual = data_atual.split('.')[0]
+    data_atual = data_atual.split(".")[0]
     data_atual = datetime.strptime(data_atual, "%Y-%m-%d %H:%M:%S")
-    data = payload['expira'].split(".")[0]
+    data = payload["expira"].split(".")[0]
     data = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
-    tempo = ((data_atual - data).total_seconds())/60
+    tempo = ((data_atual - data).total_seconds()) / 60
 
     if tempo > 60:
-        messages.success(request, 'Token Expirado')
-        return redirect('login')
+        messages.success(request, "Token Expirado")
+        return redirect("login")
 
     user = None
 
     try:
         user = get_object_or_404(User, pk=payload["id"])
     except:
-        messages.success(request, 'Token Invalido')
-        return redirect('login')
+        messages.success(request, "Token Invalido")
+        return redirect("login")
 
-    return render(request, 'pages/reset_password_confirm')
+    return render(request, "pages/reset_password_confirm")
+
+
+def confirma_email(request, token):
+    user = User()
+
+    payload = user.verify_confirm_email_token(token)
+
+    if payload == None:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
+    if type != 1:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
+    data_atual = str(timezone.now)
+    data_atual = data_atual.split(".")[0]
+    data_atual = datetime.strptime(data_atual, "%Y-%m-%d %H:%M:%S")
+    data = payload["expira"].split(".")[0]
+    data = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
+    tempo = ((data_atual - data).total_seconds()) / 60
+
+    if tempo > 60:
+        messages.success(request, "Token Expirado")
+        return redirect("login")
+
+    user = None
+
+    try:
+        user = get_object_or_404(User, pk=payload["id"])
+    except:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
+    user.is_trusty = 1
+    user.save()
+    messages.success(request, "Email confirmado com sucesso")
+    return redirect("login")
+
+
+def perfil(request, id):
+    visit_user = User.objects.get(pk=id)
+
+    if visit_user == None:
+        messages.success(request, "User não encontrado")
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
+
+    return render(request, "pages/perfil.html", visit_user)
+
+
+def editar_perfil(request):
+    return render(request, "pages/editar_perfil.html")
