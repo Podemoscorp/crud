@@ -5,6 +5,13 @@ from django.utils.translation import ugettext as _
 
 
 class New(models.Model):
+
+    visibilities = (
+        ("A", "Privado"),
+        ("B", "Publico"),
+        ("C", "Comunidade"),
+    )
+
     title = models.CharField(
         _("Title"), max_length=100, help_text=_("title of the news")
     )
@@ -22,12 +29,24 @@ class New(models.Model):
     poster = models.ForeignKey(
         User, on_delete=models.CASCADE, help_text=_("news editor")
     )
+    visibility = models.CharField(
+        _("visibility "),
+        max_length=2,
+        choices=visibilities,
+        help_text=_("visibility of the news"),
+    )
 
     def __str__(self):
         return self.title
 
 
 class Post(models.Model):
+    visibilities = (
+        ("A", "Privado"),
+        ("B", "Publico"),
+        ("C", "Comunidade"),
+    )
+
     title = models.CharField(_("Title"), max_length=100, help_text=_("post title"))
     content = models.TextField(_("Content"), help_text=_("post content"))
     image = models.FileField(
@@ -41,6 +60,13 @@ class Post(models.Model):
     )
     poster = models.ForeignKey(
         User, on_delete=models.CASCADE, help_text=_("post editor")
+    )
+
+    visibility = models.CharField(
+        _("visibility "),
+        max_length=2,
+        choices=visibilities,
+        help_text=_("publication visibility"),
     )
 
     def __str__(self):
