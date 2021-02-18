@@ -1,0 +1,11 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/BhryanS2/crud.git",
+  "author": "BhryanS2 <64044982+BhryanS2@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start":"py manage.py runserver 8000"
+  }
+}
