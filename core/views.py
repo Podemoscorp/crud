@@ -15,7 +15,7 @@ from core.models import (
 
 def index(request):
     noticias = New.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
-    posts = Post.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
+    posts = Post.objects.all().filter(visibility="C").order_by("-posted_in")[:3]
     tipos_de_cursos = CourseType.objects.all()
 
     dados = {
