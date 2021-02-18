@@ -4,6 +4,8 @@
 
 {% block title %}Home{% endblock %}
 
+
+
 {% block menu %}
     {% include 'components/menu.html' %}
 {% endblock %}
@@ -11,14 +13,14 @@
 {% block content %}
 
 <section class="" id="inicio">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
             {% for noticia in noticias %}
                 {% if forloop.counter == 1 %}
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
                 {% else %}
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' aria-label="Slide {{ forloop.counter }}"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' aria-label="Slide {{ forloop.counter }}"></button>
                 {% endif %}
             {% endfor %}
         </div>
@@ -45,11 +47,11 @@
             {% endfor %}
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel"  data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel"  data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -66,10 +68,54 @@
 
 <section class="" id="artigos">
     <h1>Artigos</h1>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col">
+            <div class="card">
+                <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.content}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
 <section class="" id="cursos">
     <h1>Cursos</h1>
+    <div class="row mx-auto my-auto">
+        <div id="carousel_cursos" class="carousel slide" data-bs-ride="carousel">
+            
+            <div class="carousel-inner w-100" role="listbox">
+                {% for tipo in tipos_de_cursos %}
+                    {% if forloop.counter == 1 %}
+                        <div class="carousel-item active col-md-4">
+                            <div class="card card-body">
+                                <img src="{{tipo.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="carousel-item col-md-4">
+                            <div class="card card-body">
+                                <img src="{{tipo.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel_cursos"  data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel_cursos"  data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
 </section>
 
 <section class="" id="quem-somos">
@@ -84,4 +130,10 @@
 
 {% block footer %}
     {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+    <script>
+
+    </script>
 {% endblock %}
