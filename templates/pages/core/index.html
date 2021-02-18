@@ -28,21 +28,25 @@
         <div class="carousel-inner">
             {% for noticia in noticias %}
                 {% if forloop.counter == 1 %}
-                    <div class="carousel-item active">
-                        <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>{{noticia.title}}</h5>
-                            <p>{{noticia.abstract}}</p>
+                    <!--<a href="{% url 'noticia' noticia.id %">-->
+                        <div class="carousel-item active">
+                            <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{noticia.title}}</h5>
+                                <p>{{noticia.abstract}}</p>
+                            </div>
                         </div>
-                    </div>
+                    <!--</a>-->
                 {% else %}
-                    <div class="carousel-item">
-                        <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>{{noticia.title}}</h5>
-                            <p>{{noticia.abstract}}</p>
+                    <!--<a href="{% url 'noticia' noticia.id %">-->
+                        <div class="carousel-item">
+                            <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{noticia.title}}</h5>
+                                <p>{{noticia.abstract}}</p>
+                            </div>
                         </div>
-                    </div>
+                    <!--</a>-->
                 {% endif %}
             {% endfor %}
         </div>
@@ -71,13 +75,15 @@
     <div class="row">
         {% for post in posts %}
         <div class="col">
-            <div class="card">
-                <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
-                <div class="card-body">
-                    <h5 class="card-title">{{post.title}}</h5>
-                    <p class="card-text">{{post.content}}</p>
+            <a href="{% url 'post' post.id %}">
+                <div class="card">
+                    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text">{{post.content}}</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         {% endfor %}
     </div>
