@@ -5,30 +5,33 @@
 
 <section class='d-flex justify-content-center vw-100 vh-100'>
     <section class="container space">
+
         <!-- back button -->
-        <button class='outline-0 border-0 bg-none mb-4' onclick="reset_password_route()">
+        <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="reset_password_route()">
             <a href="{% url 'login' %}">
                 <img src="../../static/images/back-arrow.svg" alt="">
             </a>
         </button>
+
         <!-- title and sub-title -->
         <div>
             <h1 class='text_color_primary'>Cadastro</h1>
-            <h3 class='h3-color'>Preencha os dados abaixo para começar.</h3>
+            <h3 class='purple-light'>Preencha os dados abaixo para começar.</h3>
         </div>
 
         <!-- possibles erros alerts -->
         {% include 'components/alertas.html' %}
 
         <!-- Form -->
-        <form action="{% url 'login' %}" method="POST">
+        <form action="{% url 'cadastro' %}" method="POST">
             {% csrf_token %}
+
             <!-- email -->
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
                 <img src="../../static/images/email.svg" alt="email">
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="text" id="email" class="input-text-color w-100" name="email">
-                    <label class='input-text-color'>Entre com email ou CPF</label>
+                    <input required type="text" id="email" class="text-gray w-100" name="email">
+                    <label class='text-gray'>Entre com email ou CPF</label>
                 </div>
             </div>
 
@@ -37,8 +40,8 @@
                 <img src="../../static/images/smart-key.svg" alt="key">
 
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="email" class="input-text-color w-100" name="email">
-                    <label class='input-text-color'>Senha</label>
+                    <input required type="password" id="password" class="text-gray w-100" name="password">
+                    <label class='text-gray'>Senha</label>
                 </div>
             </div>
 
@@ -46,19 +49,21 @@
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
                 <img src="../../static/images/smart-key.svg" alt="key">
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="email" class="input-text-color w-100" name="email">
-                    <label class='input-text-color'>Confirme sua senha</label>
+                    <input required type="password" id="confirm_passord" class="text-gray w-100" name="confirm_passord">
+                    <label class='text-gray'>Confirme sua senha</label>
                 </div>
             </div>
+
         </form>
 
+
         <!-- other options sing up -->
-        <div class="text-center h3-color">
+        <div class="text-center purple-light">
             <h3>Ou prossiga com estas redes sociais</h3>
         </div>
 
         <!-- links from other options from sing up -->
-        <div class="text-center d-flex justify-content-between my-4">
+        <div class="text-center d-flex justify-content-around my-4">
             <a href="">
                 <button class='border-0'>
                     <img src="../../static/images/google.svg" alt="google">
@@ -70,24 +75,19 @@
                     <img src="../../static/images/facebok.svg" alt="facebok">
                 </button>
             </a>
-
-            <a href="">
-                <button class='border-0'>
-                    <img src="../../static/images/github.svg" alt="GitHub">
-                </button>
-            </a>
         </div>
 
         <!-- buttom submit -->
         <div class="text-center">
             <button class="button-next border-0 outline-0" type="submit">Próximo</button>
         </div>
-
     </section>
 
     {% include 'components/logo.html' %}
 </section>
+
 {% block script %}
+
 <script>
     function Logar() {
         location.href = "{% url 'login' %}";

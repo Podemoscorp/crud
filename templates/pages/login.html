@@ -7,38 +7,50 @@
 {% block content %}
 
 <section class='d-flex justify-content-center vw-100 vh-100'>
+    <!-- Login -->
     <section class="container space">
-        <!-- <button class='outline-0 border-0 bg-none' onclick="reset_password_route()">
+        <!-- back button -->
+        <button class='outline-0 border-0 bg-none mt-3' onclick="Last_page()">
             <img src="../../static/images/back-arrow.svg" alt="">
-        </button> -->
+        </button>
 
-        <div>
+        <!-- Title -->
+        <div class='mt-3'>
             <h1 class='text_color_primary'>Login</h1>
-            <h3 class='h3-color'>Preencha os campos abaixo para entrar.</h3>
+            <h3 class='purple-light'>Preencha os campos abaixo para entrar.</h3>
         </div>
 
+        <!-- Alerts Possibles errors -->
         {% include 'components/alertas.html' %}
 
+        <!-- form -->
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
 
-            <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
+            <!-- Email -->
+            <div class="d-flex justify-content-center border-color-gray padding_0-7 first-input">
                 <img src="../../static/images/email.svg" alt="">
 
+                <!-- input -->
                 <div class="position-relative w-100 padding_0-7">
-                    <input required  type="text" id="email" class="input-text-color w-100" name="email">
-                    <label class='input-text-color'>Entre com email ou CPF</label>
+                    <input required type="text" id="email" class="text-gray w-100" name="email">
+                    <label class='text-gray'>Entre com email ou CPF</label>
                 </div>
+
             </div>
 
-            <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
+            <!-- Password -->
+            <div class="d-flex justify-content-center border-color-gray padding_0-7 last-input">
                 <img src="../../static/images/smart-key.svg" alt="">
+
+                <!-- input -->
                 <div class="position-relative w-100 padding_0-7">
-                    <input required  type="password" id="password" class="input-text-color w-100" name="password">
-                    <label class='input-text-color'>Digite aqui sua senha</label>
+                    <input required type="password" id="password" class="text-gray w-100" name="password">
+                    <label class='text-gray'>Digite aqui sua senha</label>
                 </div>
             </div>
 
+            <!-- Sing in or forgot password -->
             <div class="text-center d-flex justify-content-between" id='buttons_container'>
                 <button class="" type="submit">Entrar</button>
                 <button type="button" class="" onclick="reset_password_route()">
@@ -46,12 +58,14 @@
                 </button>
             </div>
         </form>
-        
-        <div class="text-center h3-color">
+
+        <!-- other sing up title -->
+        <div class="text-center purple-light">
             <h3>Ou prossiga com estas redes sociais</h3>
         </div>
 
-        <div class="text-center d-flex justify-content-between my-4">
+        <!-- other sing up images -->
+        <div class="text-center d-flex justify-content-around my-4">
             <a href="">
                 <button class='border-0'>
                     <img src="../../static/images/google.svg" alt="google">
@@ -63,21 +77,18 @@
                     <img src="../../static/images/facebok.svg" alt="facebok">
                 </button>
             </a>
-
-            <a href="">
-                <button class='border-0'>
-                    <img src="../../static/images/github.svg" alt="GitHub">
-                </button>
-            </a>
         </div>
 
-        <div class="text-center h3-color">
-            <h4>Ainda não possui conta? <a href="{% url 'cadastro' %}" class='text_color_primary'>Cadastre-se</a>
+        <!-- sing up -->
+        <div class="text-center purple-light">
+            <h4>Ainda não possui conta? 
+                <a href="{% url 'cadastro' %}" class='text_color_primary'>Cadastre-se</a>
             </h4>
         </div>
 
     </section>
 
+    <!-- Logo -->
     {% include 'components/logo.html' %}
 </section>
 
@@ -86,6 +97,10 @@
 
 <script>
     function reset_password_route() {
+        location.href = "{% url 'reset_password' %}";
+    }
+
+    function Last_page() {
         location.href = "{% url 'reset_password' %}";
     }
 </script>
