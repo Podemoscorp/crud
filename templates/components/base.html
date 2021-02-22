@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
             {% block menu %} {% endblock %}
         </header>
 
-        <main >
+        <main>
             {% block content %} {% endblock %}
         </main>
 
@@ -47,4 +47,5 @@
         
         {% endblock %}
     </body>
-</html>
+{% load i18n %}
+{% load static %}

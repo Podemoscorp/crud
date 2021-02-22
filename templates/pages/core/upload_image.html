@@ -2,9 +2,11 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Editar Perfil{% endblock %}
+{% block title %}Submeter imagem{% endblock %}
 
-{% include 'components/menu.html' %}
+{% block menu %}
+    {% include 'components/menu.html' %}
+{% endblock %}
 
 {% block content %}
 
@@ -16,4 +18,6 @@
 
 {% endblock %}
 
-{% include 'components/footer.html' %}
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

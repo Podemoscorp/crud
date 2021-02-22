@@ -4,7 +4,9 @@
 
 {% block title %}Perfil{% endblock %}
 
-{% include 'components/menu.html' %}
+{% block menu %}
+    {% include 'components/menu.html' %}
+{% endblock %}
 
 {% block content %}
 
@@ -21,4 +23,6 @@
 
 {% endblock %}
 
-{% include 'components/footer.html' %}
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
