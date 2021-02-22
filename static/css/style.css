@@ -22,6 +22,18 @@ main {
 
 /*utils*/
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .yellow {
   color: var(--secundary-color);
 }
@@ -169,14 +181,16 @@ input:focus~label, input:valid~label {
 }
 
 /*reset password done*/
+
 #ResetPasswordDone {
   background: var(--primary-color) url('../../static/images/Bolinhas-success.svg') center;
 }
 
-#button_password_done{
+#button_password_done {
   width: 20vw;
   height: 8vh;
   background: #FFD600;
   border-radius: 0.5rem;
 }
+
 /*# sourceMappingURL=style.css.map */
