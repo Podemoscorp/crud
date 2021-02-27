@@ -1,90 +1,9 @@
-* {
-  padding: 0;
-  margin: 0;
-}
 
-html {
-  width: 100%;
-  height: 100%;
-}
-
-.top-menu-buttons-aling {
-  text-align: right;
-}
-
-.sidemenu {
-  height: 100%;
-  /* 100% Full-height */
-  width: 0;
-  /* 0 width - change this with JavaScript */
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Stay on top */
-  top: 0;
-  /* Stay at the top */
-  left: 0;
-  background-color: #111;
-  /* Black*/
-  overflow-x: hidden;
-  /* Disable horizontal scroll */
-  padding-top: 60px;
-  /* Place content 60px from the top */
-  transition: 0.5s;
-  /* 0.5 second transition effect to slide in the sidemenu */
-}
-
-.sidemenu nav ul {
-  list-style: none;
-}
-
-/* The navigation sidemenu links */
-.sidemenu a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidemenu a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidemenu .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-main {
-  transition: margin-left 0.5s;
-  padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidemenu (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidemenu {
-    padding-top: 15px;
-  }
-
-  .sidemenu nav ul li a {
-    font-size: 18px;
-  }
-}
-
-/*# sourceMappingURL=style.css.map */
 :root {
   --primary-color: #4E00FF;
   --secundary-color: #FFD600;
-  --h2-color: #B2A6CD;
-  --light-color: #9C98A6;
+  --purple-light: #B2A6CD;
+  --light-gray: #9C98A6;
 }
 
 * {
@@ -98,7 +17,23 @@ html {
   height: 100%;
 }
 
+main {
+  background-color: #eeeeee;
+}
+
 /*utils*/
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
 .yellow {
   color: var(--secundary-color);
@@ -112,16 +47,16 @@ html {
   color: var(--primary-color)
 }
 
-.h3-color {
-  color: var(--h2-color);
+.purple-light {
+  color: var(--purple-light);
 }
 
-.input-text-color {
-  color: var(--light-color);
+.text-gray {
+  color: var(--light-gray);
 }
 
 .border-color-gray {
-  border: 1px solid var(--light-color);
+  border: 1px solid var(--light-gray);
 }
 
 .padding_0-7 {
@@ -136,19 +71,15 @@ html {
   border-radius: 0 0 1rem 1rem;
 }
 
-/*formatações especificas*/
-
-/*todas as pg*/
-
-main {
-  background-color: #eeeeee;
+.transition-1s {
+  transition: 1s;
 }
+
+/*formatações especificas*/
 
 .back {
   margin-bottom: 2rem;
 }
-
-/*apenas login*/
 
 .space {
   padding: 0 10%;
@@ -181,6 +112,8 @@ input:focus~label, input:valid~label {
   letter-spacing: 0.1em;
 }
 
+/*apenas login*/
+
 #buttons_container {
   margin: 2rem 0;
 }
@@ -196,9 +129,11 @@ input:focus~label, input:valid~label {
   border-radius: 1rem;
 }
 
+/*Cadastro*/
+
 .button-next {
   color: var(--primary-color);
-  background-color: var(--h2-color);
+  background-color: var(--purple-light);
   width: 100%;
   height: 8vh;
   font-size: 1.2rem;
@@ -229,7 +164,7 @@ input:focus~label, input:valid~label {
 
 /*reset password*/
 
-#form-container{
+#form-container {
   margin-top: 25vh;
 }
 
@@ -238,6 +173,24 @@ input:focus~label, input:valid~label {
   width: 100%;
   height: 8vh;
   margin-top: 2rem;
+  border-radius: 0.5rem;
+}
+
+.button_reset_password:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/*reset password done*/
+
+#ResetPasswordDone {
+  background: var(--primary-color) url('../../static/images/Bolinhas-success.svg') center;
+}
+
+#button_password_done {
+  width: 20vw;
+  height: 8vh;
+  background: #FFD600;
   border-radius: 0.5rem;
 }
 
