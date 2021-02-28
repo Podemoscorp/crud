@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "user",
     "core",
     "api",
+    "social_django",
 ]
 
 AUTH_USER_MODEL = "user.User"
@@ -108,6 +109,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.linkedin.LinkedinOAuth2",
+    "social_core.backends.instagram.InstagramOAuth2",
+    "social_core.backends.facebook.FacebookOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 
