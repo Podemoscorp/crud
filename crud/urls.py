@@ -24,4 +24,6 @@ urlpatterns = [
     path("user/", include("user.urls"), name="user"),
     # core views
     path("", include("core.urls"), name="core"),
+    # social login
+    path("social-auth/", include("social_django.urls", namespace="social")),
 ]
