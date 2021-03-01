@@ -18,7 +18,7 @@ def cadastro(request):
     if request.method == "POST":
         ...
 
-    return render(request, "pages/cadastro.html")
+    return render(request, "pages/user/cadastro.html")
 
 
 def login(request):
@@ -56,7 +56,7 @@ def login(request):
 
             return redirect("dashboard")
 
-    return render(request, "pages/login.html")
+    return render(request, "pages/user/login.html")
 
 
 def logout(request):
