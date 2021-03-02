@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0003_user_avatar'),
+        ("user", "0003_user_avatar"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='processed_description',
-            field=models.TextField(blank=True, help_text='brief processed description about the user', verbose_name='processed description'),
+            model_name="user",
+            name="processed_description",
+            field=models.TextField(
+                blank=True,
+                help_text="brief processed description about the user",
+                verbose_name="processed description",
+            ),
         ),
     ]
