@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Publicação{% endblock %}
+{% block title %}{{post.title}}{% endblock %}
 
 {% block menu %}
     {% include 'components/menu.html' %}
@@ -12,6 +12,36 @@
 
 <section class="container">
     <div>
+        <div class="py-5 text-center">
+            <picture>
+                <img src="{{post.image.url}}" alt="{{post.image.name}}" class="img-fluid">
+            </picture>
+
+            <h1 class="h1">{{post.title}}</h1>
+
+            <p>Postado em {{post.posted_in}}</p>
+        </div>
+
+        <div class="py-5 text-justify" id="content">
+        </div>
+
+        <div class="py-5">
+            <h3>Postado por: <a href="{% url 'perfil' post.poster.id %}">{{post.poster.get_full_name}}</a></h3>
+
+            <div class="d-flex">
+                <picture>
+                    <img src="{{post.poster.avatar.url}}" alt="{{post.poster.get_full_name}}" class="rounded" width="200">
+                </picture>
+
+                <div>
+                    <div id="user-content" class="text-justfy px-2">
+
+                    </div>
+
+                    <p class="px-2">Cadastrado des de: {{post.poster.date_joined}}</p>
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>
@@ -20,4 +50,28 @@
 
 {% block footer %}
     {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        var md = new Remarkable({
+            html: false, // Enable HTML tags in source
+            xhtmlOut: false, // Use '/' to close single tags (<br />)
+            breaks: false, // Convert '\n' in paragraphs into <br>
+            linkify: true, // Autoconvert URL-like text to links
+
+            // Enable some language-neutral replacement + quotes beautification
+            typographer: false,
+
+            // Double + single quotes replacement pairs, when typographer enabled,
+            // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
+            quotes: '""``'
+        });
+
+        document.getElementById('content').innerHTML =
+        md.render("{{post.processed_content}}");
+
+        document.getElementById('user-content').innerHTML = md.render("{{post.poster.processed_description}}")
+
+    </script>
 {% endblock %}
