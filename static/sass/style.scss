@@ -1,70 +1,209 @@
 @charset 'utf-8';
 
-*{
+
+:root {
+    --primary-color: #4E00FF;
+    --secundary-color: #FFD600;
+    --purple-light: #B2A6CD;
+    --light-gray: #9C98A6;
+  }
+  
+  * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+  }
+
+img {
+    width: 100;
+    height: auto;
 }
 
-html{
+  p {
+    text-align: justify;
+  }
+  
+  html {
     width: 100%;
     height: 100%;
-}
-
-.top-menu-buttons-aling{
-    text-align: right;
-}
-
-.sidemenu {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidemenu */
-}
-
-.sidemenu nav ul{
-    list-style: none;
-}
-
-/* The navigation sidemenu links */
-
-.sidemenu a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-
-.sidemenu a:hover {
-    color: #f1f1f1;
-}
-
-  /* Position and style the close button (top right corner) */
-.sidemenu .closebtn {
+  }
+  
+  main {
+    background-color: #eeeeee;
+  }
+  
+  /*utils*/
+  
+  .sr-only {
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
   
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-main {
-    transition: margin-left .5s;
-    padding: 20px;
-}
+  .yellow {
+    color: var(--secundary-color);
+  }
   
-  /* On smaller screens, where height is less than 450px, change the style of the sidemenu (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidemenu {padding-top: 15px;}
-    .sidemenu nav ul li a {font-size: 18px;}
-}
+  .bg-none {
+    background: none;
+  }
+  
+  .text_color_primary {
+    color: var(--primary-color)
+  }
+  
+  .purple-light {
+    color: var(--purple-light);
+  }
+  
+  .text-gray {
+    color: var(--light-gray);
+  }
+  
+  .border-color-gray {
+    border: 1px solid var(--light-gray);
+  }
+  
+  .padding_0-7 {
+    padding: 0.7rem;
+  }
+  
+  .first-input {
+    border-radius: 1rem 1rem 0 0;
+  }
+  
+  .last-input {
+    border-radius: 0 0 1rem 1rem;
+  }
+  
+  .transition-1s {
+    transition: 1s;
+  }
+  
+  /*formatações especificas*/
+  
+  .back {
+    margin-bottom: 2rem;
+  }
+  
+  .space {
+    padding: 0 10%;
+  }
+  
+  /*Formularios*/
+  
+  form {
+    margin: 2rem 0;
+  }
+  
+  form input {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins';
+    font-size: 1.2rem;
+  }
+  
+  input~label {
+    position: absolute;
+    top: 20%;
+    left: 2%;
+    transition: .4s;
+  }
+  
+  input:focus~label, input:valid~label {
+    transform: translateY(-24px);
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+  }
+  
+  /*apenas login*/
+  
+  #buttons_container {
+    margin: 2rem 0;
+  }
+  
+  #buttons_container button {
+    width: 40%;
+    height: 8vh;
+    border: 0;
+    outline: 0;
+    background-color: var(--primary-color);
+    font-size: 1.2rem;
+    color: #fff;
+    border-radius: 1rem;
+  }
+  
+  /*Cadastro*/
+  
+  .button-next {
+    color: var(--primary-color);
+    background-color: var(--purple-light);
+    width: 100%;
+    height: 8vh;
+    font-size: 1.2rem;
+    font-family: 'Poppins';
+    border-radius: .5rem;
+  }
+  
+  /*parte da "logo"*/
+  
+  #page-logo {
+    font: 'Poppins';
+    padding: 0 2.5rem;
+    background: var(--primary-color) url('../images/bolinhas.svg') no-repeat center;
+    display: grid;
+    gap: 20px;
+  }
+  
+  #text_podemos {
+    font-size: 5em;
+    font-weight: bold;
+    font-family: 'Poppins';
+  }
+  
+  #page-logo p {
+    font-size: 1.6em;
+    font-family: 'Poppins';
+  }
+  
+  /*reset password*/
+  
+  #form-container {
+    margin-top: 25vh;
+  }
+  
+  .button_reset_password {
+    background-color: #CDCDCD;
+    width: 100%;
+    height: 8vh;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+  }
+  
+  .button_reset_password:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  
+  /*reset password done*/
+  
+  #ResetPasswordDone {
+    background: var(--primary-color) url('../../static/images/Bolinhas-success.svg') center;
+  }
+  
+  #button_password_done {
+    width: 20vw;
+    height: 8vh;
+    background: #FFD600;
+    border-radius: 0.5rem;
+  }
+  
+  /*# sourceMappingURL=style.css.map */
+  
