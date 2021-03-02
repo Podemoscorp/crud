@@ -4,15 +4,13 @@
 
 {% block title %}Home{% endblock %}
 
-
-
 {% block menu %}
     {% include 'components/menu.html' %}
 {% endblock %}
 
 {% block content %}
 
-<section class="" id="inicio">
+<section class="container" id="inicio">
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -62,7 +60,7 @@
     </div>
 </section>
 
-<section class="" id="olimpiadas">
+<section class="container" id="olimpiadas">
     <h1>Olimpiadas</h1>
 
     <p class="text-justify">
@@ -77,10 +75,10 @@
         <div class="col">
             <a href="{% url 'post' post.id %}">
                 <div class="card">
-                    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+                    <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
                     <div class="card-body">
                         <h5 class="card-title">{{post.title}}</h5>
-                        <p class="card-text">{{post.content}}</p>
+                        <div class="card-text" id="post-{{post.id}}"></div>
                     </div>
                 </div>
             </a>
@@ -89,7 +87,7 @@
     </div>
 </section>
 
-<section class="" id="cursos">
+<section class="container" id="cursos">
     <h1>Cursos</h1>
     <div class="row mx-auto my-auto">
         <div id="carousel_cursos" class="carousel slide" data-bs-ride="carousel">
@@ -124,7 +122,7 @@
     </div>
 </section>
 
-<section class="" id="quem-somos">
+<section class="container" id="quem-somos">
     <h1>Quem somos</h1>
 
     <p class="text-justify">
@@ -140,6 +138,23 @@
 
 {% block script %}
     <script>
+        var md = new Remarkable({
+            html: false, // Enable HTML tags in source
+            xhtmlOut: false, // Use '/' to close single tags (<br />)
+            breaks: false, // Convert '\n' in paragraphs into <br>
+            linkify: true, // Autoconvert URL-like text to links
 
+            // Enable some language-neutral replacement + quotes beautification
+            typographer: false,
+
+            // Double + single quotes replacement pairs, when typographer enabled,
+            // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
+            quotes: '""``'
+        });
+
+        "{% for post in posts %}"
+            document.getElementById('post-{{post.id}}').innerHTML =
+            md.render("{{post.processed_content|slice:':120'}} ...");
+        "{% endfor %}"
     </script>
 {% endblock %}

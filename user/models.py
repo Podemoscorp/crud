@@ -161,6 +161,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         _("description"), blank=True, help_text=_("brief description about the user")
     )
 
+    processed_description = models.TextField(
+        _("processed description"),
+        blank=True,
+        help_text=_("brief processed description about the user"),
+    )
+
+    avatar = models.ImageField(_("Avatar"), blank=True, upload_to="%Y/%m/%d/")
+
     objects = UserManager()
 
     EMAIL_FIELD = "email"
@@ -177,6 +185,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     def clean(self):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
+
+    def save(self):
+        text = str(self.description)
+
+        text = text.replace("\r\n", " ")
+        text = text.replace("  ", "\\n")
+
+        self.processed_description = text
+        super(User, self).save()
 
     def get_full_name(self):
         """
