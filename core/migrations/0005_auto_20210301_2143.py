@@ -6,23 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0004_new_views'),
+        ("core", "0004_new_views"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='new',
-            name='processed_abstract',
-            field=models.TextField(blank=True, help_text='news processed summary', verbose_name='Abstract'),
+            model_name="new",
+            name="processed_abstract",
+            field=models.TextField(
+                blank=True, help_text="news processed summary", verbose_name="Abstract"
+            ),
         ),
         migrations.AddField(
-            model_name='new',
-            name='processed_content',
-            field=models.TextField(blank=True, help_text='news processed content', verbose_name='Processed Content'),
+            model_name="new",
+            name="processed_content",
+            field=models.TextField(
+                blank=True,
+                help_text="news processed content",
+                verbose_name="Processed Content",
+            ),
         ),
         migrations.AddField(
-            model_name='post',
-            name='processed_content',
-            field=models.TextField(blank=True, help_text='post processed content', verbose_name='Processed Content'),
+            model_name="post",
+            name="processed_content",
+            field=models.TextField(
+                blank=True,
+                help_text="post processed content",
+                verbose_name="Processed Content",
+            ),
         ),
     ]
