@@ -10,6 +10,8 @@ from core.models import (
     CourseType,
 )
 
+from django.contrib import auth, messages
+
 # Create your views here.
 
 
@@ -28,11 +30,61 @@ def index(request):
 
 
 def blog(request):
-    return render(request, "pages/core/blog.html")
+
+    if request.is_ajax():
+        ...
+
+    else:
+        ultimas_postagens = (
+            Post.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
+        )
+        populares = (
+            Post.objects.all()
+            .filter(visibility="C")
+            .order_by("-views")
+            .order_by("-posted_in")[:6]
+        )
+
+        postagens = None
+
+        if "order" in request.GET:
+            ...
+        else:
+            postagens = Post.objects.all().filter(visibility="C").order_by("-posted_in")
+
+        dados = {
+            "ultimas_postagens": ultimas_postagens,
+            "populares": populares,
+            "postagens": postagens,
+        }
+
+        return render(request, "pages/core/blog.html", dados)
 
 
 def post(request, id):
-    return render(request, "pages/core/post.html")
+
+    if not Post.objects.filter(id=id).exists():
+        messages.success(request, "Postagem não encontrada.")
+        return redirect("index")
+
+    post = Post.objects.filter(id=id).get()
+
+    if post.visibility == "A":
+        if not request.user.is_authenticated():
+            messages.success(
+                request, "Você não tem autorização para acessar esta postagem."
+            )
+            return redirect("login")
+        if post.poster_id != request.user.id:
+            messages.success(
+                request, "Você não tem autorização para acessar esta postagem."
+            )
+            return redirect("index")
+
+    post.views = post.views + 1
+    post.save()
+
+    return render(request, "pages/core/post.html", {"post": post})
 
 
 def criar_post(request):
