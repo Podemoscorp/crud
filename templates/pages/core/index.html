@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<section class="container" id="inicio">
+<section class="container py-5" id="inicio">
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -41,7 +41,7 @@
                             <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{noticia.title}}</h5>
-                                <p>{{noticia.abstract}}</p>
+                                <p class="text-center">{{noticia.abstract}}</p>
                             </div>
                         </div>
                     <!--</a>-->
@@ -60,7 +60,7 @@
     </div>
 </section>
 
-<section class="container" id="olimpiadas">
+<section class="container py-5" id="olimpiadas">
     <h1>Olimpiadas</h1>
 
     <p class="text-justify">
@@ -73,7 +73,7 @@ Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos
     </p>
 </section>
 
-<section class="container" id="artigos">
+<section class="container py-5" id="artigos">
     <h1>Artigos</h1>
     <div class="row">
         {% for post in posts %}
@@ -91,7 +91,7 @@ Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos
     </div>
 </section>
 
-<section class="container" id="cursos">
+<section class="container py-5" id="cursos">
     <h1>Cursos</h1>
     <div class="row mx-auto my-auto">
         <div id="carousel_cursos" class="carousel slide" data-bs-ride="carousel">
@@ -126,7 +126,7 @@ Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos
     </div>
 </section>
 
-<section class="container" id="quem-somos">
+<section class="container py-5" id="quem-somos">
     <h1>Quem somos</h1>
 
     <div class="row">
