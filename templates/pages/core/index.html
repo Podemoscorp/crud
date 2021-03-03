@@ -4,15 +4,13 @@
 
 {% block title %}Home{% endblock %}
 
-
-
 {% block menu %}
     {% include 'components/menu.html' %}
 {% endblock %}
 
 {% block content %}
 
-<section class="" id="inicio">
+<section class="container" id="inicio">
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -62,7 +60,7 @@
     </div>
 </section>
 
-<section class="" id="olimpiadas">
+<section class="container" id="olimpiadas">
     <h1>Olimpiadas</h1>
 
     <p class="text-justify">
@@ -74,13 +72,12 @@
     <h1>Artigos</h1>
     <div class="row">
         {% for post in posts %}
-        <div class="col">
-            <a href="{% url 'post' post.id %}">
+        <div class="col-md-4">
+            <a href="{% url 'post' post.id %}" class="text-decoration-none">
                 <div class="card">
-                    <img src="{{post.image.url}}" class="card-img-top" alt="{{post.title}}">
+                    <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
                     <div class="card-body">
-                        <h5 class="card-title">{{post.title}}</h5>
-                        <p class="card-text">{{post.content}}</p>
+                        <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
                     </div>
                 </div>
             </a>
@@ -89,7 +86,7 @@
     </div>
 </section>
 
-<section class="" id="cursos">
+<section class="container" id="cursos">
     <h1>Cursos</h1>
     <div class="row mx-auto my-auto">
         <div id="carousel_cursos" class="carousel slide" data-bs-ride="carousel">
@@ -124,7 +121,7 @@
     </div>
 </section>
 
-<section class="" id="quem-somos">
+<section class="container" id="quem-somos">
     <h1>Quem somos</h1>
 
     <p class="text-justify">
@@ -138,8 +135,3 @@
     {% include 'components/footer.html' %}
 {% endblock %}
 
-{% block script %}
-    <script>
-
-    </script>
-{% endblock %}

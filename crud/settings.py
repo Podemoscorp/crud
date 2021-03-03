@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
     "user",
     "core",
     "api",
+    "social_django",
 ]
 
 AUTH_USER_MODEL = "user.User"
@@ -73,10 +77,55 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
 ]
+
+SITE_ID = 1
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_URL = "logout"
+LOGOUT_REDIRECT_URL = "index"
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH_SECRET")
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ["email"]
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get(
+    "SOCIAL_AUTH_FACEBOOK_SECRET"
+)  # App Secret
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ["email", "user_link"]
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    "fields": "id, first_name, last_name, email, picture.type(large), link"
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ("first_name", "first_name"),
+    ("last_name", "last_name"),
+    ("email", "email"),
+    ("picture", "picture"),
+    ("link", "profile_url"),
+]
+
+SOCIAL_AUTH_PIPELINE = (
+    "social_core.pipeline.social_auth.social_details",
+    "social_core.pipeline.social_auth.social_uid",
+    "social_core.pipeline.social_auth.social_user",
+    "social_core.pipeline.user.get_username",
+    "social_core.pipeline.social_auth.associate_by_email",
+    "social_core.pipeline.user.create_user",
+    "social_core.pipeline.social_auth.associate_user",
+    "social_core.pipeline.social_auth.load_extra_data",
+    "social_core.pipeline.user.user_details",
+)
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ["first_name", "email"]
 
 WSGI_APPLICATION = "crud.wsgi.application"
 
@@ -108,6 +157,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.linkedin.LinkedinOAuth2",
+    "social_core.backends.instagram.InstagramOAuth2",
+    "social_core.backends.facebook.FacebookOAuth2",
+    "social_core.backends.twitter.TwitterOAuth",
+    "social_core.backends.google.GoogleOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 
@@ -146,3 +204,31 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
+sentry_sdk.init(
+    dsn="https://fefa671909764866a890aec02133a649@o508282.ingest.sentry.io/5658358",
+    integrations=[DjangoIntegration()],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production,
+    traces_sample_rate=1.0,
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+)
+
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+GS_BUCKET_NAME = os.environ.get("GCS_BUCKET")
+
+STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+
+MEDIA_PREFIX = "data"
+
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.environ.get("CREDENCIAIS_FILE")
+)
+
+GS_PROJECT_ID = os.environ.get("PROJECT_ID")
+
+GS_FILE_OVERWRITE = False

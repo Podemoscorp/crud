@@ -11,8 +11,96 @@
 {% block content %}
 
 <section class="container">
-    <div>
+    <div id="ultimas-postagens" class="py-2">
+        <h1>ultimas postagens</h1>
 
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+                {% for post in ultimas_postagens %}
+                    {% if forloop.counter == 1 %}
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+                    {% else %}
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' aria-label="Slide {{ forloop.counter }}"></button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="carousel-inner">
+                {% for post in ultimas_postagens %}
+                    {% if forloop.counter == 1 %}
+                        <div class="carousel-item active">
+                            <img src="{{post.image.url}}" class="d-block w-100" alt="{{post.title}}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{post.title}}</h5>
+                                <p>{{post.abstract}}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="carousel-item">
+                            <img src="{{post.image.url}}" class="d-block w-100" alt="{{post.title}}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{post.title}}</h5>
+                                <p>{{post.abstract}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel"  data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel"  data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="populares">
+        <h1>Populares</h1>
+
+        <div class="row">
+            {% for post in populares %}
+            <div class="col-md-4">
+                <a href="{% url 'post' post.id %}" class="text-decoration-none">
+                    <div class="card">
+                        <img src="{{post.image.url}}" height="720" width="1280" class="card-img-top img-fluid" alt="{{post.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="todas">
+        <h1>Mais noticias</h1>
+
+        <div>
+
+        </div>
+
+        <div id="postagens">
+            <div class="row">
+                {% for post in posts %}
+                <div class="col-md-4">
+                    <a href="{% url 'post' post.id %}" class="text-decoration-none">
+                        <div class="card">
+                            <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
+                            <div class="card-body">
+                                <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </section>
 

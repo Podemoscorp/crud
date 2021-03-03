@@ -1,4 +1,4 @@
-
+@charset "UTF-8";
 :root {
   --primary-color: #4E00FF;
   --secundary-color: #FFD600;
@@ -12,6 +12,15 @@
   box-sizing: border-box;
 }
 
+img {
+  width: 100;
+  height: auto;
+}
+
+p {
+  text-align: justify;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -22,7 +31,6 @@ main {
 }
 
 /*utils*/
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -44,7 +52,7 @@ main {
 }
 
 .text_color_primary {
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .purple-light {
@@ -76,7 +84,6 @@ main {
 }
 
 /*formatações especificas*/
-
 .back {
   margin-bottom: 2rem;
 }
@@ -86,7 +93,6 @@ main {
 }
 
 /*Formularios*/
-
 form {
   margin: 2rem 0;
 }
@@ -95,25 +101,24 @@ form input {
   background: none;
   border: none;
   outline: none;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-size: 1.2rem;
 }
 
-input~label {
+input ~ label {
   position: absolute;
   top: 20%;
   left: 2%;
-  transition: .4s;
+  transition: 0.4s;
 }
 
-input:focus~label, input:valid~label {
+input:focus ~ label, input:valid ~ label {
   transform: translateY(-24px);
   font-size: 0.8em;
   letter-spacing: 0.1em;
 }
 
 /*apenas login*/
-
 #buttons_container {
   margin: 2rem 0;
 }
@@ -130,23 +135,21 @@ input:focus~label, input:valid~label {
 }
 
 /*Cadastro*/
-
 .button-next {
   color: var(--primary-color);
   background-color: var(--purple-light);
   width: 100%;
   height: 8vh;
   font-size: 1.2rem;
-  font-family: 'Poppins';
-  border-radius: .5rem;
+  font-family: "Poppins";
+  border-radius: 0.5rem;
 }
 
 /*parte da "logo"*/
-
 #page-logo {
-  font: 'Poppins';
+  font: "Poppins";
   padding: 0 2.5rem;
-  background: var(--primary-color) url('../images/bolinhas.svg') no-repeat center;
+  background: var(--primary-color) url("../images/bolinhas.svg") no-repeat center;
   display: grid;
   gap: 20px;
 }
@@ -154,16 +157,15 @@ input:focus~label, input:valid~label {
 #text_podemos {
   font-size: 5em;
   font-weight: bold;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 #page-logo p {
   font-size: 1.6em;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 /*reset password*/
-
 #form-container {
   margin-top: 25vh;
 }
@@ -182,9 +184,8 @@ input:focus~label, input:valid~label {
 }
 
 /*reset password done*/
-
 #ResetPasswordDone {
-  background: var(--primary-color) url('../../static/images/Bolinhas-success.svg') center;
+  background: var(--primary-color) url("../../static/images/Bolinhas-success.svg") center;
 }
 
 #button_password_done {
@@ -193,5 +194,7 @@ input:focus~label, input:valid~label {
   background: #FFD600;
   border-radius: 0.5rem;
 }
+
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
