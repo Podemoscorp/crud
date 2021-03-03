@@ -9,7 +9,7 @@
         <!-- back button -->
         <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="reset_password_route()">
             <a href="{% url 'login' %}">
-                <img src="../../static/images/back-arrow.svg" alt="">
+                <img src="../../static/images/back-arrow.svg" alt="voltar">
             </a>
         </button>
 
@@ -30,7 +30,7 @@
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
                 <img src="../../static/images/email.svg" alt="email">
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="text" id="email" class="text-gray w-100" name="email">
+                    <input required type="text" id="email" class="text-gray w-100 auto_complete" name="email">
                     <label class='text-gray'>Entre com email ou CPF</label>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <img src="../../static/images/smart-key.svg" alt="key">
 
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="password" class="text-gray w-100" name="password">
+                    <input required type="password" id="password" class="text-gray w-100 auto_complete" name="password">
                     <label class='text-gray'>Senha</label>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
                 <img src="../../static/images/smart-key.svg" alt="key">
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="confirm_passord" class="text-gray w-100" name="confirm_passord">
+                    <input required type="password" id="confirm_passord" class="text-gray w-100 auto_complete" name="confirm_passord">
                     <label class='text-gray'>Confirme sua senha</label>
                 </div>
             </div>
@@ -65,13 +65,13 @@
         <!-- links from other options from sing up -->
         <div class="text-center d-flex justify-content-around my-4">
             <a href="">
-                <button class='border-0'>
+                <button class='border-0 bg-none'>
                     <img src="../../static/images/google.svg" alt="google">
                 </button>
             </a>
 
             <a href="">
-                <button class='border-0'>
+                <button class='border-0 bg-none'>
                     <img src="../../static/images/facebok.svg" alt="facebok">
                 </button>
             </a>

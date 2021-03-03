@@ -3,6 +3,7 @@
   --secundary-color: #FFD600;
   --purple-light: #B2A6CD;
   --light-gray: #9C98A6;
+  --bg-color: #eeeeee;
 }
 
 * {
@@ -15,6 +16,10 @@ html {
   width: 100%;
   height: 100%;
   font-size: 100%;
+}
+
+body {
+  background-color: var(--bg-color);
 }
 
 h1, h2, h3, h4 {
@@ -30,9 +35,9 @@ h4 {
 }
 
 main {
-  background-color: #eeeeee;
   width: 100%;
   height: 100%;
+  background-color: var(--bg-color);
 }
 
 /*utils*/
@@ -74,7 +79,7 @@ main {
 }
 
 .transition-1s {
-  transition: 1s;
+  transition: 0.2s;
 }
 
 /*formatações especificas*/
@@ -85,6 +90,16 @@ main {
 
 .space {
   padding: 0 10%;
+}
+
+/* 
+isso aqui é um hack do css para quando tiver um auto complete
+ele não mudar a cor de fundo do input 
+*/
+
+.auto_complete {
+  -webkit-box-shadow: 0 0 0 30px #eeeeee inset;
+  -webkit-text-fill-color: var(--light-gray);
 }
 
 /*Formularios*/
@@ -122,7 +137,7 @@ input:focus~label, input:valid~label {
 
 #buttons_container button {
   width: 40%;
-  height: 8vh;
+  height: 5rem;
   border: 0;
   outline: 0;
   background-color: var(--primary-color);
@@ -170,10 +185,15 @@ input:focus~label, input:valid~label {
   margin-top: 25vh;
 }
 
+#form-container input {
+  -webkit-box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: black;
+}
+
 .button_reset_password {
   background-color: #CDCDCD;
   width: 100%;
-  height: 8vh;
+  height: 5rem;
   margin-top: 2rem;
   border-radius: 0.5rem;
 }
@@ -191,7 +211,7 @@ input:focus~label, input:valid~label {
 
 #button_password_done {
   width: 20vw;
-  height: 8vh;
+  height: 5rem;
   background: #FFD600;
   border-radius: 0.5rem;
 }
