@@ -9,7 +9,7 @@
         <!-- back button -->
         <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="reset_password_route()">
             <a href="{% url 'login' %}">
-                <img src="../../static/images/back-arrow.svg" alt="">
+                <img src="{% static 'images/back-arrow.svg' %}" alt="">
             </a>
         </button>
 
@@ -28,7 +28,7 @@
 
             <!-- email -->
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
-                <img src="../../static/images/email.svg" alt="email">
+                <img src="{% static 'images/email.svg' %}" alt="email">
                 <div class="position-relative w-100 padding_0-7">
                     <input required type="text" id="email" class="text-gray w-100" name="email">
                     <label class='text-gray'>Entre com email ou CPF</label>
@@ -37,7 +37,7 @@
 
             <!-- password -->
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
-                <img src="../../static/images/smart-key.svg" alt="key">
+                <img src="{% static 'images/smart-key.svg' %}" alt="key">
 
                 <div class="position-relative w-100 padding_0-7">
                     <input required type="password" id="password" class="text-gray w-100" name="password">
@@ -47,7 +47,7 @@
 
             <!-- password confirm -->
             <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
-                <img src="../../static/images/smart-key.svg" alt="key">
+                <img src="{% static 'images/smart-key.svg' %}" alt="key">
                 <div class="position-relative w-100 padding_0-7">
                     <input required type="password" id="confirm_passord" class="text-gray w-100" name="confirm_passord">
                     <label class='text-gray'>Confirme sua senha</label>
@@ -66,13 +66,13 @@
         <div class="text-center d-flex justify-content-around my-4">
             <a href="">
                 <button class='border-0'>
-                    <img src="../../static/images/google.svg" alt="google">
+                    <img src="{% static 'images/google.svg' %}" alt="google">
                 </button>
             </a>
 
             <a href="">
                 <button class='border-0'>
-                    <img src="../../static/images/facebok.svg" alt="facebok">
+                    <img src="{% static 'images/facebok.svg' %}" alt="facebok">
                 </button>
             </a>
         </div>
@@ -86,6 +86,8 @@
     {% include 'components/logo.html' %}
 </section>
 
+{% endblock %}
+
 {% block script %}
 
 <script>
@@ -94,5 +96,3 @@
     }
 </script>
 {% endblock script %}
-
-{% endblock %}
