@@ -226,12 +226,6 @@ STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 
 MEDIA_PREFIX = "data"
 
-"""
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.environ.get("CREDENCIAIS_FILE")
-)
-"""
-
 credenciais = {
     "type": "service_account",
     "project_id": os.environ.get("PROJECT_ID"),
@@ -252,7 +246,6 @@ credenciais["private_key"] = string
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
     credenciais
 )
-
 
 GS_PROJECT_ID = os.environ.get("PROJECT_ID")
 
