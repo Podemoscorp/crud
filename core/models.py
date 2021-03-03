@@ -78,14 +78,21 @@ class New(models.Model):
 
         buffer = BytesIO()
 
-		#Resize/modify the image
-        img = img.resize( (1280,720) )
+        # Resize/modify the image
+        img = img.resize((1280, 720))
 
-		#after modifications, save it to the output
-        img.save(buffer, format='JPEG', quality=100)
+        # after modifications, save it to the output
+        img.save(buffer, format="JPEG", quality=100)
 
-		#change the imagefield value to be the newley modifed image value
-        self.image = InMemoryUploadedFile(buffer, None, "%s.jpg" %self.image.name.split('.')[0], 'image/jpeg', len(buffer.getbuffer()), None)
+        # change the imagefield value to be the newley modifed image value
+        self.image = InMemoryUploadedFile(
+            buffer,
+            None,
+            "%s.jpg" % self.image.name.split(".")[0],
+            "image/jpeg",
+            len(buffer.getbuffer()),
+            None,
+        )
 
         super(Post, self).save()
 
@@ -139,14 +146,21 @@ class Post(models.Model):
 
         buffer = BytesIO()
 
-		#Resize/modify the image
-        img = img.resize( (1280,720) )
+        # Resize/modify the image
+        img = img.resize((1280, 720))
 
-		#after modifications, save it to the output
-        img.save(buffer, format='JPEG', quality=100)
+        # after modifications, save it to the output
+        img.save(buffer, format="JPEG", quality=100)
 
-		#change the imagefield value to be the newley modifed image value
-        self.image = InMemoryUploadedFile(buffer, None, "%s.jpg" %self.image.name.split('.')[0], 'image/jpeg', len(buffer.getbuffer()), None)
+        # change the imagefield value to be the newley modifed image value
+        self.image = InMemoryUploadedFile(
+            buffer,
+            None,
+            "%s.jpg" % self.image.name.split(".")[0],
+            "image/jpeg",
+            len(buffer.getbuffer()),
+            None,
+        )
 
         super(Post, self).save()
 
