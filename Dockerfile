@@ -20,6 +20,7 @@ COPY static static
 COPY templates templates
 COPY core core
 COPY manage.py ./
+COPY Linux-assistente-4b248129efe0.json Linux-assistente-4b248129efe0.json
 
 RUN chown -R crud:crud ./
 USER crud
