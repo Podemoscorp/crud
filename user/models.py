@@ -186,14 +186,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
 
-    def save(self):
+    def processe_description(self):
         text = str(self.description)
 
-        text = text.replace("\r\n", " ")
-        text = text.replace("  ", "\\n")
+        text = text.replace("\r\n", "\\n")
 
         self.processed_description = text
-        super(User, self).save()
 
     def get_full_name(self):
         """

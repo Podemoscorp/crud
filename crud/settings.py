@@ -14,6 +14,7 @@ import os
 import django_heroku
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -215,3 +216,19 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True,
 )
+
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+GS_BUCKET_NAME = os.environ.get("GCS_BUCKET")
+
+STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+
+MEDIA_PREFIX = "data"
+
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.environ.get("CREDENCIAIS_FILE")
+)
+
+GS_PROJECT_ID = os.environ.get("PROJECT_ID")
+
+GS_FILE_OVERWRITE = False

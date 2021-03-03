@@ -2,6 +2,23 @@ from django.db import models
 from django.utils import timezone
 from user.models import User
 from django.utils.translation import ugettext as _
+import PIL
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
+
+
+class Subject(models.Model):
+    nome = models.CharField(max_length=50)
+    created = models.DateTimeField(
+        _("created in"),
+        blank=True,
+        default=timezone.now,
+        help_text=_("Subject creation date"),
+    )
+
+    def __str__(self):
+        return self.nome
 
 
 class New(models.Model):
@@ -23,7 +40,7 @@ class New(models.Model):
     processed_content = models.TextField(
         _("Processed Content"), help_text=_("news processed content"), blank=True
     )
-    image = models.FileField(
+    image = models.ImageField(
         _("Image"), upload_to="%Y/%m/%d/", blank=True, help_text=_("news cover image")
     )
     posted_in = models.DateTimeField(
@@ -48,16 +65,34 @@ class New(models.Model):
 
     def save(self):
         text = str(self.content)
-        text = text.replace("\r\n", " ")
-        text = text.replace("  ", "\\n")
+        text = text.replace("\r\n", "\\n ")
 
         self.processed_content = text
 
         text_abstract = str(self.abstract)
-        text_abstract = text_abstract.replace("\r\n", " ")
-        text_abstract = text_abstract.replace("  ", "\\n")
+        text_abstract = text_abstract.replace("\r\n", "\\n ")
 
-        self.processed_abstract = text
+        self.processed_abstract = text_abstract
+
+        img = PIL.Image.open(self.image)
+
+        buffer = BytesIO()
+
+        # Resize/modify the image
+        img = img.resize((1280, 720))
+
+        # after modifications, save it to the output
+        img.save(buffer, format="JPEG", quality=100)
+
+        # change the imagefield value to be the newley modifed image value
+        self.image = InMemoryUploadedFile(
+            buffer,
+            None,
+            "%s.jpg" % self.image.name.split(".")[0],
+            "image/jpeg",
+            len(buffer.getbuffer()),
+            None,
+        )
 
         super(Post, self).save()
 
@@ -74,8 +109,11 @@ class Post(models.Model):
     processed_content = models.TextField(
         _("Processed Content"), help_text=_("post processed content"), blank=True
     )
-    image = models.FileField(
-        _("Image"), upload_to="%Y/%m/%d/", blank=True, help_text=_("post cover image")
+    image = models.ImageField(
+        _("Image"),
+        upload_to="%Y/%m/%d/",
+        blank=False,
+        help_text=_("post cover image"),
     )
     posted_in = models.DateTimeField(
         _("Posted in"),
@@ -100,11 +138,43 @@ class Post(models.Model):
 
     def save(self):
         text = str(self.content)
-        text = text.replace("\r\n", " ")
-        text = text.replace("  ", "\\n")
+        text = text.replace("\r\n", "\\n ")
 
         self.processed_content = text
+
+        img = PIL.Image.open(self.image)
+
+        buffer = BytesIO()
+
+        # Resize/modify the image
+        img = img.resize((1280, 720))
+
+        # after modifications, save it to the output
+        img.save(buffer, format="JPEG", quality=100)
+
+        # change the imagefield value to be the newley modifed image value
+        self.image = InMemoryUploadedFile(
+            buffer,
+            None,
+            "%s.jpg" % self.image.name.split(".")[0],
+            "image/jpeg",
+            len(buffer.getbuffer()),
+            None,
+        )
+
         super(Post, self).save()
+
+
+class SubjectNew(models.Model):
+    new = models.ForeignKey(New, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    created_in = models.DateTimeField(default=timezone.now, blank=True)
+
+
+class SubjectPost(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    created_in = models.DateTimeField(default=timezone.now, blank=True)
 
 
 class CourseType(models.Model):

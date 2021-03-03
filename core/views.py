@@ -55,7 +55,7 @@ def blog(request):
         dados = {
             "ultimas_postagens": ultimas_postagens,
             "populares": populares,
-            "postagens": postagens,
+            "posts": postagens,
         }
 
         return render(request, "pages/core/blog.html", dados)
@@ -70,7 +70,7 @@ def post(request, id):
     post = Post.objects.filter(id=id).get()
 
     if post.visibility == "A":
-        if not request.user.is_authenticated():
+        if request.user.is_anonymous:
             messages.success(
                 request, "Você não tem autorização para acessar esta postagem."
             )
