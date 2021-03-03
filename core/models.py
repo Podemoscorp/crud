@@ -3,6 +3,7 @@ from django.utils import timezone
 from user.models import User
 from django.utils.translation import ugettext as _
 import PIL
+from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
@@ -77,7 +78,12 @@ class New(models.Model):
 
         self.processed_abstract = text_abstract
 
-        img = PIL.Image.open(self.image).convert("RGB")
+        img = None
+
+        try:
+            img = PIL.Image.open(self.image).convert("RGB")
+        except:
+            img = Image.open(self.image).convert("RGB")
 
         buffer = BytesIO()
 
@@ -148,7 +154,11 @@ class Post(models.Model):
 
         self.processed_content = text
 
-        img = PIL.Image.open(self.image).convert("RGB")
+        img = None
+        try:
+            img = PIL.Image.open(self.image).convert("RGB")
+        except:
+            img = Image.open(self.image).convert("RGB")
 
         buffer = BytesIO()
 
