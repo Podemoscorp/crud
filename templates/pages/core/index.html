@@ -72,13 +72,12 @@
     <h1>Artigos</h1>
     <div class="row">
         {% for post in posts %}
-        <div class="col">
-            <a href="{% url 'post' post.id %}">
+        <div class="col-md-4">
+            <a href="{% url 'post' post.id %}" class="text-decoration-none">
                 <div class="card">
                     <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
                     <div class="card-body">
-                        <h5 class="card-title">{{post.title}}</h5>
-                        <div class="card-text" id="post-{{post.id}}"></div>
+                        <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
                     </div>
                 </div>
             </a>
@@ -136,25 +135,3 @@
     {% include 'components/footer.html' %}
 {% endblock %}
 
-{% block script %}
-    <script>
-        var md = new Remarkable({
-            html: false, // Enable HTML tags in source
-            xhtmlOut: false, // Use '/' to close single tags (<br />)
-            breaks: false, // Convert '\n' in paragraphs into <br>
-            linkify: true, // Autoconvert URL-like text to links
-
-            // Enable some language-neutral replacement + quotes beautification
-            typographer: false,
-
-            // Double + single quotes replacement pairs, when typographer enabled,
-            // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
-            quotes: '""``'
-        });
-
-        "{% for post in posts %}"
-            document.getElementById('post-{{post.id}}').innerHTML =
-            md.render("{{post.processed_content|slice:':120'}} ...");
-        "{% endfor %}"
-    </script>
-{% endblock %}
