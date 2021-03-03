@@ -19,6 +19,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -27,3 +30,15 @@ jobs:
       - name: Sentry Release
         uses: getsentry/action-release@v1.1.5
 
+  run: |
+    # Install Sentry CLI
+    curl -sL https://sentry.io/get-cli/ | bash
+
+    # Create new Sentry release
+    export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+    sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+    sentry-cli releases set-commits --auto $SENTRY_RELEASE
+    sentry-cli releases finalize $SENTRY_RELEASE
+
+    # Create new deploy for this Sentry release
+    sentry-cli releases deploys $SENTRY_RELEASE new -e $SENTRY_DEPLOY_ENVIRONMENT
