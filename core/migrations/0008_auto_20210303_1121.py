@@ -6,23 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0007_auto_20210302_2039'),
+        ("core", "0007_auto_20210302_2039"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='new',
-            name='processed_abstract',
-            field=models.TextField(blank=True, default='', help_text='news processed summary', verbose_name='Abstract'),
+            model_name="new",
+            name="processed_abstract",
+            field=models.TextField(
+                blank=True,
+                default="",
+                help_text="news processed summary",
+                verbose_name="Abstract",
+            ),
         ),
         migrations.AlterField(
-            model_name='new',
-            name='processed_content',
-            field=models.TextField(blank=True, default='', help_text='news processed content', verbose_name='Processed Content'),
+            model_name="new",
+            name="processed_content",
+            field=models.TextField(
+                blank=True,
+                default="",
+                help_text="news processed content",
+                verbose_name="Processed Content",
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='processed_content',
-            field=models.TextField(blank=True, default='', help_text='post processed content', verbose_name='Processed Content'),
+            model_name="post",
+            name="processed_content",
+            field=models.TextField(
+                blank=True,
+                default="",
+                help_text="post processed content",
+                verbose_name="Processed Content",
+            ),
         ),
     ]
