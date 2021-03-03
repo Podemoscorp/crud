@@ -84,16 +84,18 @@ class SubjectAdmin(admin.ModelAdmin):
     search_fields = ("id", "name", "created")
     list_per_page = 20
 
+
 class SubjectAdminNew(admin.ModelAdmin):
-    list_display = ("id", "new", "created_in","subject")
-    list_display_links = ("id", "new", "created_in","subject")
-    search_fields = ("id", "new", "created_in","subject")
+    list_display = ("id", "new", "created_in", "subject")
+    list_display_links = ("id", "new", "created_in", "subject")
+    search_fields = ("id", "new", "created_in", "subject")
     list_per_page = 20
 
+
 class SubjectAdminPost(admin.ModelAdmin):
-    list_display = ("id", "post", "created_in","subject")
-    list_display_links = ("id", "post", "created_in","subject")
-    search_fields = ("id", "post", "created_in","subject")
+    list_display = ("id", "post", "created_in", "subject")
+    list_display_links = ("id", "post", "created_in", "subject")
+    search_fields = ("id", "post", "created_in", "subject")
     list_per_page = 20
 
 
@@ -105,6 +107,6 @@ admin.site.register(Certificate, AdminCertificates)
 admin.site.register(Event, AdminEvents)
 admin.site.register(Image, AdminImages)
 admin.site.register(CourseType, CourseTypeAdmin)
-admin.site.register(Subject ,SubjectAdmin)
+admin.site.register(Subject, SubjectAdmin)
 admin.site.register(SubjectNew, SubjectAdminNew)
 admin.site.register(SubjectPost, SubjectAdminPost)
