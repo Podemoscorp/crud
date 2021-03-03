@@ -77,7 +77,7 @@ class New(models.Model):
 
         self.processed_abstract = text_abstract
 
-        img = PIL.Image.open(self.image)
+        img = PIL.Image.open(self.image).convert('RGB')
 
         buffer = BytesIO()
 
@@ -148,7 +148,7 @@ class Post(models.Model):
 
         self.processed_content = text
 
-        img = PIL.Image.open(self.image)
+        img = PIL.Image.open(self.image).convert('RGB')
 
         buffer = BytesIO()
 
