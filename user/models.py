@@ -238,7 +238,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         self, token
     ):  # Verifica token para redefinição de senha
         try:
-            token = jwt.decode(token, SECRET_KEY)
+            token = jwt.decode(token, SECRET_KEY, algorithms="HS256")
         except:
             return None
         return token
@@ -247,7 +247,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         self, token
     ):  # Verifica token para verificação de email
         try:
-            token = jwt.decode(token, SECRET_KEY)
+            token = jwt.decode(token, SECRET_KEY, algorithms="HS256")
         except:
             return None
         return token
