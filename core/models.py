@@ -35,7 +35,10 @@ class New(models.Model):
     )
     abstract = models.TextField(_("Abstract"), help_text=_("news summary"))
     processed_abstract = models.TextField(
-        _("processed Abstract"), help_text=_("news processed summary"), blank=True, default=""
+        _("processed Abstract"),
+        help_text=_("news processed summary"),
+        blank=True,
+        default="",
     )
     content = models.TextField(_("Content"), help_text=_("news content"))
     processed_content = models.TextField(
