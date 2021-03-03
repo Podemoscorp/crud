@@ -34,11 +34,14 @@ class New(models.Model):
     )
     abstract = models.TextField(_("Abstract"), help_text=_("news summary"))
     processed_abstract = models.TextField(
-        _("Abstract"), help_text=_("news processed summary"), blank=True
+        _("Abstract"), help_text=_("news processed summary"), blank=True, default=""
     )
     content = models.TextField(_("Content"), help_text=_("news content"))
     processed_content = models.TextField(
-        _("Processed Content"), help_text=_("news processed content"), blank=True
+        _("Processed Content"),
+        help_text=_("news processed content"),
+        blank=True,
+        default="",
     )
     image = models.ImageField(
         _("Image"), upload_to="%Y/%m/%d/", blank=True, help_text=_("news cover image")
@@ -107,7 +110,10 @@ class Post(models.Model):
     title = models.CharField(_("Title"), max_length=100, help_text=_("post title"))
     content = models.TextField(_("Content"), help_text=_("post content"))
     processed_content = models.TextField(
-        _("Processed Content"), help_text=_("post processed content"), blank=True
+        _("Processed Content"),
+        help_text=_("post processed content"),
+        blank=True,
+        default="",
     )
     image = models.ImageField(
         _("Image"),
