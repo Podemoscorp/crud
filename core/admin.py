@@ -8,6 +8,9 @@ from core.models import (
     Event,
     Image,
     CourseType,
+    Subject,
+    SubjectNew,
+    SubjectPost,
 )
 
 
@@ -48,7 +51,8 @@ class AdminCertificates(admin.ModelAdmin):
         "teacher",
         "student",
         "course",
-        "created" "description",
+        "created",
+        "description",
     )
     list_per_page = 20
 
@@ -74,6 +78,25 @@ class CourseTypeAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "created")
+    list_display_links = ("id", "name", "created")
+    search_fields = ("id", "name", "created")
+    list_per_page = 20
+
+class SubjectAdminNew(admin.ModelAdmin):
+    list_display = ("id", "new", "created_in","subject")
+    list_display_links = ("id", "new", "created_in","subject")
+    search_fields = ("id", "new", "created_in","subject")
+    list_per_page = 20
+
+class SubjectAdminPost(admin.ModelAdmin):
+    list_display = ("id", "post", "created_in","subject")
+    list_display_links = ("id", "post", "created_in","subject")
+    search_fields = ("id", "post", "created_in","subject")
+    list_per_page = 20
+
+
 admin.site.register(New, AdminNews)
 admin.site.register(Post, AdminPosts)
 admin.site.register(Course, AdminCourses)
@@ -82,3 +105,6 @@ admin.site.register(Certificate, AdminCertificates)
 admin.site.register(Event, AdminEvents)
 admin.site.register(Image, AdminImages)
 admin.site.register(CourseType, CourseTypeAdmin)
+admin.site.register(Subject ,SubjectAdmin)
+admin.site.register(SubjectNew, SubjectAdminNew)
+admin.site.register(SubjectPost, SubjectAdminPost)
