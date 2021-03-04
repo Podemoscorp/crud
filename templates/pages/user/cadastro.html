@@ -9,7 +9,7 @@
         <!-- back button -->
         <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="reset_password_route()">
             <a href="{% url 'login' %}">
-                <img src="../../static/images/back-arrow.svg" alt="">
+                <img src="{% static 'images/back-arrow.svg' %}" alt="">
             </a>
         </button>
 
@@ -26,65 +26,113 @@
         <form action="{% url 'cadastro' %}" method="POST">
             {% csrf_token %}
 
-            <!-- email -->
-            <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
-                <img src="../../static/images/email.svg" alt="email">
-                <div class="position-relative w-100 padding_0-7">
-                    <input required type="text" id="email" class="text-gray w-100" name="email">
-                    <label class='text-gray'>Entre com email ou CPF</label>
+            <div id="parte1" >                                <!-- email -->
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
+                    <img src="{% static 'images/email.svg' %}" alt="email">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="text" id="email" class="text-gray w-100" name="email">
+                        <label class='text-gray'>Entre com email ou CPF</label>
+                    </div>
+                </div>
+
+                <!-- password -->
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
+                    <img src="{% static 'images/smart-key.svg' %}" alt="key">
+
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="password" id="password" class="text-gray w-100" name="password">
+                        <label class='text-gray'>Senha</label>
+                    </div>
+                </div>
+
+                <!-- password confirm -->
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
+                    <img src="{% static 'images/smart-key.svg' %}" alt="key">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="password" id="confirm_password" class="text-gray w-100" name="confirm_password">
+                        <label class='text-gray'>Confirme sua senha</label>
+                    </div>
+                </div>
+
+                            <!-- other options sing up -->
+                <div class="text-center purple-light py-4">
+                    <h3>Ou prossiga com estas redes sociais</h3>
+                </div>
+
+                <!-- links from other options from sing up -->
+                <div class="text-center d-flex justify-content-around my-4">
+                    <a href="">
+                        <button class='border-0' type="button">
+                            <img src="{% static 'images/google.svg' %}" alt="google">
+                        </button>
+                    </a>
+
+                    <a href="">
+                        <button class='border-0' type="button">
+                            <img src="{% static 'images/facebok.svg' %}" alt="facebok">
+                        </button>
+                    </a>
+                </div>
+
+                <!-- buttom submit -->
+                <div class="text-center">
+                    <button class="button-next border-0 outline-0" type="button">Próximo</button>
                 </div>
             </div>
 
-            <!-- password -->
-            <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
-                <img src="../../static/images/smart-key.svg" alt="key">
-
-                <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="password" class="text-gray w-100" name="password">
-                    <label class='text-gray'>Senha</label>
+            <div id="parte2" class="">
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
+                    <img src="{% static '' %}" alt="">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="text" id="uf" class="text-gray w-100" name="uf">
+                        <label class='text-gray'>UF</label>
+                    </div>
                 </div>
-            </div>
 
-            <!-- password confirm -->
-            <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
-                <img src="../../static/images/smart-key.svg" alt="key">
-                <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="confirm_passord" class="text-gray w-100" name="confirm_passord">
-                    <label class='text-gray'>Confirme sua senha</label>
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
+                    <img src="{% static '' %}" alt="">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="text" id="cidade" class="text-gray w-100" name="cidade">
+                        <label class='text-gray'>Cidade</label>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
+                    <img src="{% static '' %}" alt="">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="text" id="nome" class="text-gray w-100" name="nome">
+                        <label class='text-gray'>Nome</label>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
+                    <img src="{% static '' %}" alt="">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="text" id="sobrenome" class="text-gray w-100" name="sobrenome">
+                        <label class='text-gray'>Sobrenome</label>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
+                    <img src="{% static '' %}" alt="">
+                    <div class="position-relative w-100 padding_0-7">
+                        <input required type="text" id="cpf" class="text-gray w-100" name="cpf">
+                        <label class='text-gray'>CPF</label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="button-next border-0 outline-0" type="submit">Concluir cadastro</button>
                 </div>
             </div>
 
         </form>
-
-
-        <!-- other options sing up -->
-        <div class="text-center purple-light">
-            <h3>Ou prossiga com estas redes sociais</h3>
-        </div>
-
-        <!-- links from other options from sing up -->
-        <div class="text-center d-flex justify-content-around my-4">
-            <a href="">
-                <button class='border-0'>
-                    <img src="../../static/images/google.svg" alt="google">
-                </button>
-            </a>
-
-            <a href="">
-                <button class='border-0'>
-                    <img src="../../static/images/facebok.svg" alt="facebok">
-                </button>
-            </a>
-        </div>
-
-        <!-- buttom submit -->
-        <div class="text-center">
-            <button class="button-next border-0 outline-0" type="submit">Próximo</button>
-        </div>
     </section>
 
     {% include 'components/logo.html' %}
 </section>
+
+{% endblock %}
 
 {% block script %}
 
@@ -94,5 +142,3 @@
     }
 </script>
 {% endblock script %}
-
-{% endblock %}

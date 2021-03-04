@@ -169,6 +169,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     avatar = models.ImageField(_("Avatar"), blank=True, upload_to="%Y/%m/%d/")
 
+    uf = models.CharField(max_length=50, blank=True)
+
+    cidade = models.CharField(max_length=200, blank=True)
+
     objects = UserManager()
 
     EMAIL_FIELD = "email"
@@ -185,6 +189,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     def clean(self):
         super().clean()
         self.email = self.__class__.objects.normalize_email(self.email)
+
+    def save(self, *args, **kwargs):
+        text = str(self.description)
+
+        text = text.replace("\r\n", "\\n")
+
+        self.processed_description = text
+
+        super(User, self).save(*args, **kwargs)
 
     def processe_description(self):
         text = str(self.description)
@@ -208,7 +221,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def get_reset_password_token(self):  # Cria um token para redefinição de senha
-        date_hours = timezone.now
+        date_hours = timezone.now()
         token = jwt.encode(
             {"id": self.id, "email": self.email, "expira": str(date_hours), "type": 0},
             SECRET_KEY,
@@ -217,7 +230,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return token
 
     def get_confirm_email_token(self):  # Cria um token para verificação de email
-        date_hours = timezone.now
+        date_hours = timezone.now()
         token = jwt.encode(
             {"id": self.id, "email": self.email, "expira": str(date_hours), "type": 1},
             SECRET_KEY,
@@ -229,7 +242,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         self, token
     ):  # Verifica token para redefinição de senha
         try:
-            token = jwt.decode(token, SECRET_KEY)
+            token = jwt.decode(token, SECRET_KEY, algorithms="HS256")
         except:
             return None
         return token
@@ -238,7 +251,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         self, token
     ):  # Verifica token para verificação de email
         try:
-            token = jwt.decode(token, SECRET_KEY)
+            token = jwt.decode(token, SECRET_KEY, algorithms="HS256")
         except:
             return None
         return token
