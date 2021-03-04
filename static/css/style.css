@@ -266,6 +266,10 @@ input:focus ~ label, input:valid ~ label {
     white-space: nowrap;
     border-width: 0;
   }
+
+  .space {
+    padding: 0 6%;
+  }
 }
 
 /* MENU */
