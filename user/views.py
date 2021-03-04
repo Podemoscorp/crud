@@ -16,10 +16,99 @@ def cadastro(request):
         return redirect("dashboard")
 
     if request.method == "POST":
-        ...
+        email = request.POST["email"]
+        password = request.POST["password"]
+        password2 = request.POST["confirm_password"]
+        uf = request.POST["uf"]
+        cidade = request.POST["cidade"]
+        nome = request.POST["nome"]
+        sobrenome = request.POST["sobrenome"]
+        cpf = request.POST["cpf"]
+
+        if not email.strip():
+            mensagem = _("O campo email não pode ficar em branco")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif not nome.strip():
+            mensagem = _("O campo primeiro nome não pode ficar em branco")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif not sobrenome.strip():
+            mensagem = _("O campo ultimo nome não pode ficar em branco")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif not password.strip():
+            mensagem = _("A senha não pode ficar em branco")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif password != password2:
+            mensagem = _("As senhas não coincidem")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif not uf.strip():
+            mensagem = _("Escolha um UF")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif not cidade.strip():
+            mensagem = _("Escolha uma cidade")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+        elif not cpf.strip():
+            mensagem = _("O cpf não pode ficar em branco")
+            messages.error(request, mensagem)
+            return redirect("cadastro")
+
+        if User.objects.filter(email=email).exists():
+            mensagem = _("Usuario com esse email já existente")
+            messages.error(request, mensagem)
+            return redirect("login")
+        elif User.objects.filter(cpf=cpf).exists():
+            mensagem = _("Usuario com esse CPF já existente")
+            messages.error(request, mensagem)
+            return redirect("login")
+
+        user = User.objects.create_user(
+            email=email,
+            password=password,
+            cpf=cpf,
+            uf=uf,
+            cidade=cidade,
+            first_name=nome,
+            last_name=sobrenome,
+            role_id=1,
+        )
+        user.save()
+
+        token = str(user.get_confirm_email_token())
+
+        new_token = ""
+        for i in range(2, len(token) - 1):
+            new_token += token[i]
+
+        path = request.build_absolute_uri()
+        path = path.strip(request.get_full_path())
+        path += "/user/confirmar/email/"
+
+        link = path + new_token
+
+        user.email_user(
+            "Confirmar email",
+            strip_tags(
+                render_to_string(
+                    "email/confirm_email.html",
+                    {"link": link, "user": user},
+                )
+            ),
+            EMAIL_HOST_USER,
+        )
+
+        return redirect("cadastro_done")
 
     return render(request, "pages/user/cadastro.html")
 
+
+def cadastro_done( request ):
+    return render(request, "pages/user/cadastro_done.html")
 
 def login(request):
     if request.user.is_authenticated:
@@ -66,7 +155,11 @@ def logout(request):
 
 def confirma_email(request, token):
     messages.success(request, "Email confirmado com sucesso")
-    return redirect("login")
+
+    if request.user.is_authenticated():
+        return redirect("dashboard")
+    else:
+        return redirect("login")
 
 
 def reset_password(request):
