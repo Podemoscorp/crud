@@ -157,7 +157,6 @@ def logout(request):
 
 
 def confirma_email(request, token):
-    print("ola")
     user = User()
     payload = user.verify_confirm_email_token(token=token)
 
@@ -166,7 +165,6 @@ def confirma_email(request, token):
     if payload == None:
         messages.success(request, "Token Invalido")
         return redirect("login")
-
 
     if type != 1:
         messages.success(request, "Token Invalido")
