@@ -169,6 +169,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     avatar = models.ImageField(_("Avatar"), blank=True, upload_to="%Y/%m/%d/")
 
+    uf = models.CharField(max_length=50, blank=True)
+
+    cidade = models.CharField(max_length=200, blank=True)
+
     objects = UserManager()
 
     EMAIL_FIELD = "email"
