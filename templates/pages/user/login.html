@@ -11,7 +11,7 @@
     <section class="container space">
         <!-- back button -->
         <button class='outline-0 border-0 bg-none mt-3' onclick="Last_page()">
-            <img src="{% static 'images/back-arrow.svg' %}" alt="">
+            <img src="{% static 'images/back-arrow.svg' %}" alt="voltar">
         </button>
 
         <!-- Title -->
@@ -29,11 +29,11 @@
 
             <!-- Email -->
             <div class="d-flex justify-content-center border-color-gray padding_0-7 first-input">
-                <img src="{% static 'images/email.svg' %}" alt="">
+                <img src="{% static 'images/email.svg' %}" alt="email">
 
                 <!-- input -->
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="text" id="email" class="text-gray w-100" name="email">
+                    <input required type="text" id="email" class="text-gray w-100 auto_complete" name="email">
                     <label class='text-gray'>Entre com email ou CPF</label>
                 </div>
 
@@ -41,19 +41,19 @@
 
             <!-- Password -->
             <div class="d-flex justify-content-center border-color-gray padding_0-7 last-input">
-                <img src="{% static 'images/smart-key.svg' %}" alt="">
+                <img src="{% static 'images/smart-key.svg' %}" alt="senha">
 
                 <!-- input -->
                 <div class="position-relative w-100 padding_0-7">
-                    <input required type="password" id="password" class="text-gray w-100" name="password">
+                    <input required type="password" id="password" class="text-gray w-100 auto_complete" name="password">
                     <label class='text-gray'>Digite aqui sua senha</label>
                 </div>
             </div>
 
             <!-- Sing in or forgot password -->
             <div class="text-center d-flex justify-content-between" id='buttons_container'>
-                <button class="" type="submit">Entrar</button>
-                <button type="button" class="" onclick="reset_password_route()">
+                <button type="submit">Entrar</button>
+                <button type="button" onclick="reset_password_route()">
                     Esqueci a senha
                 </button>
             </div>

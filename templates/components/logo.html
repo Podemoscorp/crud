@@ -1,9 +1,9 @@
 {% load i18n %}
 {% load static %}
 {% block logo %}
-<section id="page-logo">
+<section id="page-logo" class='text-light sr-only w-100 h-100'>
     <div>
-        <img src='../../static/images/Logo.svg' />
+        <img src="{% static 'images/Logo.svg' %}" />
     </div>
 
     <article>
@@ -15,22 +15,8 @@
         <p class="text-center">Prepare-se para olimpíadas científicas e vestibulares brasileiros agora!</p>
     </article>
 
-    <div class="footer">
-        <img src="../../static/images/team.svg" alt="">
+    <div class="footer-logo">
+        <img src="{% static 'images/team.svg' %}" alt='dolphin'>
     </div>
 </section>
-<script>
-    function responsive(){
-        const Width = window.innerWidth
-        let container = document.getElementById('page-logo');
-        if(Width <= 1000) {
-            container.className = 'w-100 h-100 text-light sr-only'
-            console.log(container.className)
-        } else {
-            container.className = 'w-100 h-100 text-light'
-            console.log(container.className)
-        }
-    }
-    responsive()  
-</script>
 {% endblock %}
