@@ -178,7 +178,6 @@ def confirma_email(request, token):
 
     user = None
 
-
     try:
         user = User.objects.all().filter(id=int(payload["id"])).get()
     except:
@@ -192,7 +191,6 @@ def confirma_email(request, token):
     else:
         messages.success(request, "Token Expirado")
         return redirect("login")
-
 
     messages.success(request, "Email confirmado com sucesso")
 
