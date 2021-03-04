@@ -1,0 +1,18 @@
+{% autoescape off %}
+{% load i18n %}
+
+<h1>Olá {{ user.get_full_name }},</h1>
+
+<p class="text-justify">Para ter acesso completo a todas as funções do site, por favor confirme seu email,
+clique no link abaixo:
+</p>
+<a class="btn btn-sucess" href="{{ link }}">Confirmar email</a>
+<p class="text-justify">
+Se clicar no link acima e ele não funcionar, copie e cole o abaixo URL em um novo navegador
+janela em vez disso.
+</p>
+{{ link }}
+
+Atenciosamente,
+A Equipe Podemos Educação
+{% endautoescape %}
