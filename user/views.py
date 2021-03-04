@@ -107,8 +107,11 @@ def cadastro(request):
     return render(request, "pages/user/cadastro.html")
 
 
-def cadastro_done( request ):
+def cadastro_done(request):
+    if request.user.is_authenticated:
+        return redirect("index")
     return render(request, "pages/user/cadastro_done.html")
+
 
 def login(request):
     if request.user.is_authenticated:
@@ -154,9 +157,53 @@ def logout(request):
 
 
 def confirma_email(request, token):
+    print("ola")
+    user = User()
+    payload = user.verify_confirm_email_token(token=token)
+
+    print(payload)
+
+    if payload == None:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
+
+    if type != 1:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
+    data_atual = str(timezone.now)
+    data_atual = data_atual.split(".")[0]
+    data_atual = datetime.strptime(data_atual, "%Y-%m-%d %H:%M:%S")
+    data = payload["expira"].split(".")[0]
+    data = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
+    tempo = ((data_atual - data).total_seconds()) / 60
+
+    if tempo > 60:
+        messages.success(request, "Token Expirado")
+        return redirect("login")
+
+    user = None
+
+    print("ola")
+
+    try:
+        user = User.objects.all().filter(id=int(payload["id"])).get()
+    except:
+        messages.success(request, "Token Invalido")
+        return redirect("login")
+
+    if user.email == payload["email"]:
+        user.is_trusty = timezone.now
+        user.save()
+
+    else:
+        messages.success(request, "Token Expirado")
+        return redirect("login")
+
     messages.success(request, "Email confirmado com sucesso")
 
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect("dashboard")
     else:
         return redirect("login")
