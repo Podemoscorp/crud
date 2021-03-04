@@ -8,7 +8,7 @@ from crud.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.http import HttpResponseRedirect
-import datetime
+from datetime import datetime
 
 
 def cadastro(request):
@@ -81,15 +81,11 @@ def cadastro(request):
 
         token = str(user.get_confirm_email_token())
 
-        new_token = ""
-        for i in range(2, len(token) - 1):
-            new_token += token[i]
-
         path = request.build_absolute_uri()
         path = path.strip(request.get_full_path())
         path += "/user/confirmar/email/"
 
-        link = path + new_token
+        link = path + token
 
         user.email_user(
             "Confirmar email",
@@ -157,20 +153,19 @@ def logout(request):
 
 
 def confirma_email(request, token):
-    user = User()
-    payload = user.verify_confirm_email_token(token=token)
 
-    print(payload)
+    user = User()
+    payload = user.verify_confirm_email_token(token)
 
     if payload == None:
         messages.success(request, "Token Invalido")
         return redirect("login")
 
-    if type != 1:
+    if payload["type"] != 1:
         messages.success(request, "Token Invalido")
         return redirect("login")
 
-    data_atual = str(timezone.now)
+    data_atual = str(timezone.now())
     data_atual = data_atual.split(".")[0]
     data_atual = datetime.strptime(data_atual, "%Y-%m-%d %H:%M:%S")
     data = payload["expira"].split(".")[0]
@@ -183,7 +178,6 @@ def confirma_email(request, token):
 
     user = None
 
-    print("ola")
 
     try:
         user = User.objects.all().filter(id=int(payload["id"])).get()
@@ -192,12 +186,13 @@ def confirma_email(request, token):
         return redirect("login")
 
     if user.email == payload["email"]:
-        user.is_trusty = timezone.now
+        user.is_trusty = timezone.now()
         user.save()
 
     else:
         messages.success(request, "Token Expirado")
         return redirect("login")
+
 
     messages.success(request, "Email confirmado com sucesso")
 
@@ -285,44 +280,6 @@ def reset_password_confirm(request, token):
         return redirect("login")
 
     return render(request, "pages/user/reset_password_confirm")
-
-
-def confirma_email(request, token):
-    user = User()
-
-    payload = user.verify_confirm_email_token(token)
-
-    if payload == None:
-        messages.success(request, "Token Invalido")
-        return redirect("login")
-
-    if type != 1:
-        messages.success(request, "Token Invalido")
-        return redirect("login")
-
-    data_atual = str(timezone.now)
-    data_atual = data_atual.split(".")[0]
-    data_atual = datetime.strptime(data_atual, "%Y-%m-%d %H:%M:%S")
-    data = payload["expira"].split(".")[0]
-    data = datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
-    tempo = ((data_atual - data).total_seconds()) / 60
-
-    if tempo > 60:
-        messages.success(request, "Token Expirado")
-        return redirect("login")
-
-    user = None
-
-    try:
-        user = get_object_or_404(User, pk=payload["id"])
-    except:
-        messages.success(request, "Token Invalido")
-        return redirect("login")
-
-    user.is_trusty = 1
-    user.save()
-    messages.success(request, "Email confirmado com sucesso")
-    return redirect("login")
 
 
 def perfil(request, id):
