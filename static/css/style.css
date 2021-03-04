@@ -137,7 +137,7 @@ input:focus~label, input:valid~label {
 
 #buttons_container button {
   width: 40%;
-  height: 5rem;
+  height: 4.5rem;
   border: 0;
   outline: 0;
   background-color: var(--primary-color);
@@ -152,7 +152,7 @@ input:focus~label, input:valid~label {
   color: var(--primary-color);
   background-color: var(--purple-light);
   width: 100%;
-  height: 3rem;
+  height: 4.5rem;
   font-size: 1.2rem;
   font-family: 'Poppins';
   border-radius: .5rem;
@@ -239,5 +239,8 @@ input:focus~label, input:valid~label {
     border-width: 0;
   }
 }
+
+/* MENU */
+
 
 /*# sourceMappingURL=style.css.map */

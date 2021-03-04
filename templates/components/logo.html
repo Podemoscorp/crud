@@ -3,7 +3,7 @@
 {% block logo %}
 <section id="page-logo" class='text-light sr-only w-100 h-100'>
     <div>
-        <img src='../../static/images/Logo.svg' />
+        <img src="{% static 'images/Logo.svg' %}" />
     </div>
 
     <article>
@@ -16,7 +16,7 @@
     </article>
 
     <div class="footer-logo">
-        <img src="../../static/images/team.svg" alt='dolphin'>
+        <img src="{% static 'images/team.svg' %}" alt='dolphin'>
     </div>
 </section>
 {% endblock %}
