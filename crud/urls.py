@@ -28,6 +28,6 @@ urlpatterns = [
     path("social-auth/", include("social_django.urls", namespace="social")),
 ]
 
-handler403 = 'core.views.handler403'
-handler404 = 'core.views.handler404'
-handler500 = 'core.views.handler500'
+handler403 = "core.views.handler403"
+handler404 = "core.views.handler404"
+handler500 = "core.views.handler500"
