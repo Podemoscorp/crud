@@ -7,10 +7,8 @@
     <section class="container space">
 
         <!-- back button -->
-        <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="reset_password_route()">
-            <a href="{% url 'login' %}">
-                <img src="{% static 'images/back-arrow.svg' %}" alt="">
-            </a>
+        <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="come_back()">
+            <img src="{% static 'images/back-arrow.svg' %}" alt="">
         </button>
 
         <!-- title and sub-title -->
@@ -26,7 +24,8 @@
         <form action="{% url 'cadastro' %}" method="POST">
             {% csrf_token %}
 
-            <div id="parte1" >                                <!-- email -->
+            <div id="parte1">
+                <!-- email -->
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
                     <img src="{% static 'images/email.svg' %}" alt="email">
                     <div class="position-relative w-100 padding_0-7">
@@ -49,12 +48,13 @@
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
                     <img src="{% static 'images/smart-key.svg' %}" alt="key">
                     <div class="position-relative w-100 padding_0-7">
-                        <input required type="password" id="confirm_password" class="text-gray w-100" name="confirm_password">
+                        <input required type="password" id="confirm_password" class="text-gray w-100"
+                            name="confirm_password">
                         <label class='text-gray'>Confirme sua senha</label>
                     </div>
                 </div>
 
-                            <!-- other options sing up -->
+                <!-- other options sing up -->
                 <div class="text-center purple-light py-4">
                     <h3>Ou prossiga com estas redes sociais</h3>
                 </div>
@@ -74,13 +74,15 @@
                     </a>
                 </div>
 
-                <!-- buttom submit -->
+                <!-- button next -->
                 <div class="text-center">
-                    <button class="button-next border-0 outline-0" type="button">Próximo</button>
+                    <button class="button-next border-0 outline-0" type="button"
+                        onclick='ClassControler.second()'>Próximo</button>
                 </div>
             </div>
 
-            <div id="parte2" class="">
+            <!-- Continued cadastro -->
+            <div id="parte2" class="hidden">
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
                     <img src="{% static '' %}" alt="">
                     <div class="position-relative w-100 padding_0-7">
@@ -121,11 +123,10 @@
                     </div>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center my-5">
                     <button class="button-next border-0 outline-0" type="submit">Concluir cadastro</button>
                 </div>
             </div>
-
         </form>
     </section>
 
@@ -137,8 +138,38 @@
 {% block script %}
 
 <script>
+    var back = 0;
+
+    
     function Logar() {
         location.href = "{% url 'login' %}";
+    }
+
+    function come_back(){
+        if(back == 1){
+            ClassControler.first()
+        }else {
+            Logar();
+        }
+    }
+
+    const ClassControler = {
+        getElements: {
+            FirstForm: document.getElementById("parte1"),
+            SecondForm: document.getElementById("parte2"),
+        },
+
+        first() {
+            ClassControler.getElements.FirstForm.classList.remove("hidden"),
+            ClassControler.getElements.SecondForm.classList.add("hidden"),
+            back = 0
+        },
+
+        second() {
+            ClassControler.getElements.FirstForm.classList.add("hidden"),
+            ClassControler.getElements.SecondForm.classList.remove("hidden"),
+            back = 1
+        }
     }
 </script>
 {% endblock script %}
