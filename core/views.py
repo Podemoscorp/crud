@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from core.models import (
     New,
@@ -11,6 +12,8 @@ from core.models import (
 )
 
 from django.contrib import auth, messages
+from django.core import serializers
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -120,10 +123,42 @@ def olimpiada(request, id):
 
 
 def calendario(request):
+    if request.is_ajax():
+        eventos = Event.objects.all()
+
+        if "tipo" in request.GET:
+            tipo = request.GET["tipo"]
+
+            if tipo == "A":
+                eventos = eventos.filter(tipo="A")
+            elif tipo == "B":
+                eventos = eventos.filter(tipo="B")
+            elif tipo == "C":
+                eventos = eventos.filter(tipo="C")
+
+        if "regiao" in request.GET:
+            regiao = request.GET["regiao"]
+
+            if regiao == "A":
+                eventos = eventos.filter(regiao="A")
+            elif regiao == "B":
+                eventos = eventos.filter(regiao="B")
+
+        queryset_json = serializers.serialize('json', eventos)
+
+        return HttpResponse(queryset_json, content_type="application/json")
+            
     return render(request, "pages/core/calendario.html")
 
 
 def evento(request, id):
+    evento = Event.objects.all().filter(id=id).get()
+
+    if evento:
+        ...
+    else:
+        return redirect("index")
+
     return render(request, "pages/core/evento.html")
 
 
