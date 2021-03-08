@@ -307,14 +307,14 @@ class Certificate(models.Model):
 
 class Event(models.Model):
     tipos = (
-        ("A","Olimpiada"),
-        ("B","Evento"),
-        ("C","Feira de ciências"),
+        ("A", "Olimpiada"),
+        ("B", "Evento"),
+        ("C", "Feira de ciências"),
     )
 
     regioes = (
-        ("A","Nacional"),
-        ("B","Internacional"),
+        ("A", "Nacional"),
+        ("B", "Internacional"),
     )
 
     starts_at = models.DateTimeField(_("Starts in"), help_text=_("Event start date"))

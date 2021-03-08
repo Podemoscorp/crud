@@ -6,20 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0010_auto_20210303_2014'),
+        ("core", "0010_auto_20210303_2014"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='regiao',
-            field=models.CharField(choices=[('A', 'Nacional'), ('B', 'Internacional')], default='A', max_length=2),
+            model_name="event",
+            name="regiao",
+            field=models.CharField(
+                choices=[("A", "Nacional"), ("B", "Internacional")],
+                default="A",
+                max_length=2,
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='event',
-            name='tipo',
-            field=models.CharField(choices=[('A', 'Olimpiada'), ('B', 'Evento'), ('C', 'Feira de ciências')], default='A', max_length=2),
+            model_name="event",
+            name="tipo",
+            field=models.CharField(
+                choices=[
+                    ("A", "Olimpiada"),
+                    ("B", "Evento"),
+                    ("C", "Feira de ciências"),
+                ],
+                default="A",
+                max_length=2,
+            ),
             preserve_default=False,
         ),
     ]

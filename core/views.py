@@ -144,10 +144,10 @@ def calendario(request):
             elif regiao == "B":
                 eventos = eventos.filter(regiao="B")
 
-        queryset_json = serializers.serialize('json', eventos)
+        queryset_json = serializers.serialize("json", eventos)
 
         return HttpResponse(queryset_json, content_type="application/json")
-            
+
     return render(request, "pages/core/calendario.html")
 
 
