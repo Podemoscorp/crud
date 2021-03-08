@@ -5,6 +5,7 @@
   --purple-light: #B2A6CD;
   --light-gray: #9C98A6;
   --bg-color: #eeeeee;
+  --white: #fff;
 }
 
 * {
@@ -38,20 +39,8 @@ body {
   background-color: var(--bg-color);
 }
 
-/*utils*/
-/*
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-*/
+/*Utils*/
+
 h1, h2, h3, h4 {
   margin: 0;
 }
@@ -62,6 +51,16 @@ h3 {
 
 h4 {
   font-size: 1.2rem;
+}
+
+button, a {
+  border: 0;
+  text-decoration: none;
+  color: var(--white);
+}
+
+ul li {
+  list-style: none;
 }
 
 main {
@@ -278,7 +277,71 @@ input:focus ~ label, input:valid ~ label {
     padding: 0 6%;
   }
 }
-/* MENU */
-/*# sourceMappingURL=style.css.map */
 
-/*# sourceMappingURL=style.css.map */
+/* MENU */
+
+.bg-color-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-color-secundary {
+  background-color: var(--secundary-color);
+}
+
+.active {
+  background-color: var(--white);
+  border-radius: 1rem 0 0 1rem;
+  padding: 0 1rem;
+}
+
+.active a {
+  color: var(--primary-color);
+}
+
+.active:active {
+  background-color: var(--white);
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section-container nav {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Top {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1 1;
+  width: 100%;
+  background-color: var(--white);
+  align-items: center;
+}
+
+#mySidenav {
+  height: 100%;
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  overflow-x: hidden; 
+  transition: 0.5s; 
+}
+
+#mySidenav .closebtn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+
+@media screen and (max-height: 450px) {
+  #mySidenav {padding-top: 15px;}
+  #mySidenav a {font-size: 18px;}
+}
