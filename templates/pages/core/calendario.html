@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}Calendario{% endblock %}
+{% block title %}Calendário{% endblock %}
 
 {% block menu %}
     {% include 'components/menu.html' %}
@@ -12,7 +12,54 @@
 
 <section class="container">
     <div>
+        <div>
+            <div class="row">
+                <div>
+                    <h2 class="text-justify text-white h1">Bem vindo ao calendário, estudante!</h2>
+                    <p class="text-justify text-white">Aqui você encontrará todas as datas relevantes em relação à olimpíadas, vestibulares e atividades do PODEMOS.</p>
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <select name="tipo" id="tipo">
+                        <option value="D">Todos</option>
+                        <option value="A">Olimpíadas</option>
+                        <option value="B">Eventos</option>
+                        <option value="C">Feira de ciências</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="" id="">
+                        <option value="">Todos</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div>
+                    <select name="regiao" id="regiao">
+                        <option value="D">Todos</option>
+                        <option value="A">Nacional</option>
+                        <option value="B">Internacional</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div id="calendar">
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -20,4 +67,154 @@
 
 {% block footer %}
     {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var data = new Date;
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            },
+            initialDate: data,
+            navLinks: true, // can click day/week names to navigate views
+            nowIndicator: true,
+
+            weekNumbers: true,
+            weekNumberCalculation: 'ISO',
+
+            locale: 'pt-br',
+            editable: true,
+            selectable: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+            events: [],
+        });
+
+
+        $.ajax({
+            url: "{% url 'calendario' %}",
+            method: "GET",
+            data: {
+                "tipo":"D",
+                "regiao":"C",
+            },
+            dataType: 'json',
+            success: function(data){
+                calendar.removeAllEvents();
+                data.forEach(element => {
+                    var obj = {
+                        title: element["fields"]["title"],
+                        url: '/evento/'+element["pk"],
+                        start: element["fields"]["starts_at"].slice(0, -1),
+                        end: element["fields"]["ends_in"].slice(0, -1)
+                    };
+                    calendar.addEvent(obj);
+                });
+            },
+            error: function(data){
+                
+            }
+        })
+
+        $("select[name='tipo']").change(function(){
+            $.ajax({
+                url: "{% url 'calendario' %}",
+                method: "GET",
+                data: {
+                    "tipo":$(this).val(),
+                    "regiao":$("select[name='regiao']").val(),
+                },
+                dataType: 'json',
+                success: function(data){
+                    calendar.removeAllEvents();
+                    data.forEach(element => {
+                        var obj = {
+                            title: element["fields"]["title"],
+                            url: '/evento/'+element["pk"],
+                            start: element["fields"]["starts_at"].slice(0, -1),
+                            end: element["fields"]["ends_in"].slice(0, -1)
+                        };
+                        calendar.addEvent(obj);
+                    });
+                },
+                error: function(data){
+
+                }
+            })
+        });
+
+        $("select[name='']").change(function(){
+            $.ajax({
+                url: "{% url 'calendario' %}",
+                method: "GET",
+                data: {
+                    "tipo":$(this).val(),
+                    "regiao":$("select[name='regiao']").val(),
+                },
+                dataType: 'json',
+                success: function(data){
+                    calendar.removeAllEvents();
+                    data.forEach(element => {
+                        var obj = {
+                            title: element["fields"]["title"],
+                            url: '/evento/'+element["pk"],
+                            start: element["fields"]["starts_at"].slice(0, -1),
+                            end: element["fields"]["ends_in"].slice(0, -1)
+                        };
+                        calendar.addEvent(obj);
+                    });
+                },
+                error: function(data){
+                    
+                }
+            })
+        });
+
+        $("select[name='regiao']").change(function(){
+            $.ajax({
+                url: "{% url 'calendario' %}",
+                method: "GET",
+                data: {
+                    "tipo": $("select[name='tipo']").val(),
+                    "regiao": $(this).val(),
+                },
+                dataType: 'json',
+                success: function(data){
+                    calendar.removeAllEvents();
+                    data.forEach(element => {
+                        var obj = {
+                            title: element["fields"]["title"],
+                            url: '/evento/'+element["pk"],
+                            start: element["fields"]["starts_at"].slice(0, -1),
+                            end: element["fields"]["ends_in"].slice(0, -1)
+                        };
+                        calendar.addEvent(obj);
+                    });
+                },
+                error: function(data){
+                    
+                }
+            })
+        });
+
+        calendar.render();
+    });
+</script>
+{% endblock %}
+
+{% block style %}
+<style>
+    #calendar {
+        width: 95%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+</style>
 {% endblock %}
