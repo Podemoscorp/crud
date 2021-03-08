@@ -306,6 +306,17 @@ class Certificate(models.Model):
 
 
 class Event(models.Model):
+    tipos = (
+        ("A", "Olimpiada"),
+        ("B", "Evento"),
+        ("C", "Feira de ciências"),
+    )
+
+    regioes = (
+        ("A", "Nacional"),
+        ("B", "Internacional"),
+    )
+
     starts_at = models.DateTimeField(_("Starts in"), help_text=_("Event start date"))
     ends_in = models.DateTimeField(_("Ends in"), help_text=_("End date of the event"))
     title = models.CharField(
@@ -314,6 +325,8 @@ class Event(models.Model):
     description = models.TextField(
         _("Description"), help_text=_("Event description or summary")
     )
+    tipo = models.CharField(max_length=2, choices=tipos)
+    regiao = models.CharField(max_length=2, choices=regioes)
     created = models.DateTimeField(
         _("Created"),
         default=timezone.now,

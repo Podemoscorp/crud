@@ -52,7 +52,6 @@ body {
   border-width: 0;
 }
 */
-
 h1, h2, h3, h4 {
   margin: 0;
 }
@@ -72,7 +71,6 @@ main {
 }
 
 /*utils*/
-
 .yellow {
   color: var(--secundary-color);
 }
@@ -126,7 +124,6 @@ main {
 isso aqui é um hack do css para quando tiver um auto complete
 ele não mudar a cor de fundo do input 
 */
-
 .auto_complete {
   -webkit-box-shadow: 0 0 0 30px #eeeeee inset;
   -webkit-text-fill-color: var(--light-gray);
@@ -253,7 +250,6 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*# sourceMappingURL=style.css.map */
-
 /*# sourceMappingURL=style.css.map */
 .footer-logo {
   width: 100%;
@@ -265,8 +261,7 @@ input:focus ~ label, input:valid ~ label {
   height: 3rem;
 }
 
-
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
   .sr-only {
     position: absolute;
     width: 1px;
@@ -283,8 +278,7 @@ input:focus ~ label, input:valid ~ label {
     padding: 0 6%;
   }
 }
-
 /* MENU */
-
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
