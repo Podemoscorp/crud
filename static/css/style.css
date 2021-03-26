@@ -70,6 +70,7 @@ main {
 }
 
 /*utils*/
+
 .yellow {
   color: var(--secundary-color);
 }
@@ -111,6 +112,7 @@ main {
 }
 
 /*formatações especificas*/
+
 .back {
   margin-bottom: 2rem;
 }
@@ -123,12 +125,14 @@ main {
 isso aqui é um hack do css para quando tiver um auto complete
 ele não mudar a cor de fundo do input 
 */
+
 .auto_complete {
   -webkit-box-shadow: 0 0 0 30px #eeeeee inset;
   -webkit-text-fill-color: var(--light-gray);
 }
 
 /*Formularios*/
+
 form {
   margin: 2rem 0;
 }
@@ -141,20 +145,21 @@ form input {
   font-size: 1.2rem;
 }
 
-input ~ label {
+input~label {
   position: absolute;
   top: 20%;
   left: 2%;
   transition: 0.4s;
 }
 
-input:focus ~ label, input:valid ~ label {
+input:focus~label, input:valid~label {
   transform: translateY(-24px);
   font-size: 0.8em;
   letter-spacing: 0.1em;
 }
 
 /*apenas login*/
+
 #buttons_container {
   margin: 2rem 0;
 }
@@ -171,6 +176,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*Cadastro*/
+
 .button-next {
   color: var(--primary-color);
   background-color: var(--purple-light);
@@ -194,6 +200,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*parte da "logo"*/
+
 #page-logo {
   font: "Poppins";
   padding: 0 2.5rem;
@@ -214,6 +221,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*reset password*/
+
 #form-container {
   margin-top: 25vh;
 }
@@ -237,6 +245,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*reset password done*/
+
 #ResetPasswordDone {
   background: var(--primary-color) url("../../static/images/Bolinhas-success.svg") center;
 }
@@ -249,7 +258,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*# sourceMappingURL=style.css.map */
-/*# sourceMappingURL=style.css.map */
+
 .footer-logo {
   width: 100%;
   height: 100%;
@@ -272,7 +281,6 @@ input:focus ~ label, input:valid ~ label {
     white-space: nowrap;
     border-width: 0;
   }
-
   .space {
     padding: 0 6%;
   }
@@ -326,13 +334,13 @@ input:focus ~ label, input:valid ~ label {
 
 #mySidenav {
   height: 100%;
-  width: 0; 
-  position: fixed; 
-  z-index: 1; 
-  top: 0; 
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  overflow-x: hidden; 
-  transition: 0.5s; 
+  overflow-x: hidden;
+  transition: 0.5s;
 }
 
 #mySidenav .closebtn {
@@ -341,7 +349,15 @@ input:focus ~ label, input:valid ~ label {
   left: 50%;
 }
 
+#myTab ul li {
+  padding: 0 0 0 1rem;
+}
+
 @media screen and (max-height: 450px) {
-  #mySidenav {padding-top: 15px;}
-  #mySidenav a {font-size: 18px;}
+  #mySidenav {
+    padding-top: 15px;
+  }
+  #mySidenav a {
+    font-size: 18px;
+  }
 }

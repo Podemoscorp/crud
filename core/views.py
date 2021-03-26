@@ -33,7 +33,7 @@ def index(request):
 
 
 def blog(request):
-
+    print(request)
     if request.is_ajax():
         ...
 
