@@ -14,8 +14,21 @@ from core.models import (
 from django.contrib import auth, messages
 from django.core import serializers
 from django.http import HttpResponse
+from django.template import RequestContext
 
 # Create your views here.
+
+
+def handler404(request, *args, **argv):
+    return render(request, "error/404.html", status=404)
+
+
+def handler500(request, *args, **argv):
+    return render(request, "error/500.html", status=500)
+
+
+def handler403(request, *args, **argv):
+    return render(request, "error/403.html", status=403)
 
 
 def index(request):
