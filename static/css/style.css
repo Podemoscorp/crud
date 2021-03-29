@@ -4,9 +4,14 @@
   --secundary-color: #FFD600;
   --purple-light: #B2A6CD;
   --light-gray: #9C98A6;
+  --gray: #89878E;
   --bg-color: #eeeeee;
   --white: #fff;
+  --white-secundary: #F3F3F3;
+  --black: #000;
 }
+
+/* Formatações geral */
 
 * {
   padding: 0;
@@ -24,7 +29,7 @@ p {
 
 pre code {
   color: crimson;
-  background-color: #f1f1f1;
+  background-color: var(--white-secundary);
   padding: 2px;
   font-size: 105%;
 }
@@ -67,7 +72,13 @@ main {
   background-color: var(--bg-color);
 }
 
-/*utils*/
+header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--white)
+}
+
+/*==============>utils (pode ser usado muitas vezes)*/
 
 .yellow {
   color: var(--secundary-color);
@@ -76,7 +87,6 @@ main {
 .bg-none {
   background: none;
 }
-
 
 .bg-color-primary {
   background-color: var(--primary-color);
@@ -118,7 +128,7 @@ main {
   transition: 0.2s;
 }
 
-/*formatações especificas*/
+/*==============>formatações especificas*/
 
 .back {
   margin-bottom: 2rem;
@@ -128,7 +138,7 @@ main {
   padding: 0 10%;
 }
 
-/* 
+/*==============> 
 isso aqui é um hack do css para quando tiver um auto complete
 ele não mudar a cor de fundo do input 
 */
@@ -138,7 +148,7 @@ ele não mudar a cor de fundo do input
   -webkit-text-fill-color: var(--light-gray);
 }
 
-/*Formularios*/
+/*==============>Formularios*/
 
 form {
   margin: 2rem 0;
@@ -165,7 +175,7 @@ input:focus~label, input:valid~label {
   letter-spacing: 0.1em;
 }
 
-/*apenas login*/
+/*==============>apenas login*/
 
 #buttons_container {
   margin: 2rem 0;
@@ -182,7 +192,7 @@ input:focus~label, input:valid~label {
   border-radius: 1rem;
 }
 
-/*Cadastro*/
+/*==============>Cadastro*/
 
 .button-next {
   color: var(--primary-color);
@@ -206,7 +216,7 @@ input:focus~label, input:valid~label {
   border-width: 0;
 }
 
-/*parte da "logo"*/
+/*==============>parte da "logo"*/
 
 #page-logo {
   font: "Poppins";
@@ -227,7 +237,7 @@ input:focus~label, input:valid~label {
   font-family: "Poppins";
 }
 
-/*reset password*/
+/*==============>reset password*/
 
 #form-container {
   margin-top: 25vh;
@@ -251,7 +261,7 @@ input:focus~label, input:valid~label {
   color: white;
 }
 
-/*reset password done*/
+/*==============>reset password done*/
 
 #ResetPasswordDone {
   background: var(--primary-color) url("../../static/images/Bolinhas-success.svg") center;
@@ -260,11 +270,9 @@ input:focus~label, input:valid~label {
 #button_password_done {
   width: 20vw;
   height: 5rem;
-  background: #FFD600;
+  background: var(--secundary-color);
   border-radius: 0.5rem;
 }
-
-/*# sourceMappingURL=style.css.map */
 
 .footer-logo {
   width: 100%;
@@ -276,24 +284,8 @@ input:focus~label, input:valid~label {
   height: 3rem;
 }
 
-@media (max-width: 1000px) {
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-  .space {
-    padding: 0 6%;
-  }
-}
+/*==============> MENU */
 
-/* MENU */
 .myTab a {
   color: var(--white);
 }
@@ -302,6 +294,9 @@ input:focus~label, input:valid~label {
   color: var(--white);
 }
 
+.myTab ul>li:first-child a {
+  margin: 1.5rem 0 0 0;
+}
 
 a.active {
   background-color: var(--white);
@@ -314,7 +309,7 @@ a.active {
 }
 
 a.active:hover {
-  color: var(--primary-color) ;
+  color: var(--primary-color);
 }
 
 .section-container {
@@ -343,7 +338,7 @@ a.active:hover {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -365,7 +360,145 @@ a.active:hover {
   padding: 0 0 0 1rem;
 }
 
-@media screen and (max-width: 1000px) {
+.openNav {
+  width: 8rem;
+  background-color: var(--white);
+  color: var(--purple-light);
+}
+
+/*==============> BARRA DE PESQUISA */
+
+#SearchContainer {
+  background: var(--white);
+  width: calc(100% - 8rem);
+}
+
+#SearchContainer div:first-child {
+  display: flex;
+  align-items: center;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+#SearchContainer div div {
+  background-color: var(--white-secundary);
+  margin-left: 3rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+#SearchContainer div div img {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+#SearchContainer input {
+  border: 0;
+  font-size: 1.2rem;
+  background-color: var(--white-secundary);
+}
+
+#SearchContainer .search-button {
+  margin-right: 3.7rem;
+}
+
+#SearchContainer .search-button button {
+  padding: .5rem 1.5rem;
+  border-radius: .7rem;
+  margin-left: 1.5rem;
+}
+
+/*==============>Calendar*/
+
+#CalendarContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#CalendarTitle {
+  border-radius: 1rem;
+  margin: 2.5rem auto;
+  max-height: 200px;
+  width: 100%;
+  padding-left: 5.5rem;
+}
+
+#CalendarTitle div {
+  padding: 1.3rem 0;
+}
+
+#CalendarTitle h1 {
+  font-weight: bold;
+}
+
+#calendar {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: var(--white);
+}
+
+.SelectContainer {
+  margin-top: 2.5rem;
+}
+
+.SelectContainer label{
+  color: var(--gray);
+}
+
+.SelectContainer select{
+  color: var(--primary-color);
+  border: none;
+  width: 100%;
+  padding: .4rem;
+  border-radius: .5rem;
+  box-shadow: 1px 1px 1px 1px var(--gray);
+}
+
+#CalendarItem a.fc-col-header-cell-cushion {
+  color: var(--purple-light);
+}
+
+#CalendarItem a.fc-daygrid-day-number {
+  color: var(--black)
+}
+
+#CalendarItem a.fc-daygrid-week-number {
+  color: var(--light-gray);
+}
+
+/* constrolers do calendario */
+.fc .fc-button-primary,.fc .fc-button-primary:hover, .fc .fc-button-primary:disabled {
+  background-color: var(--secundary-color);
+  border: none;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+  background-color: var(--purple-light);
+  opacity: 0.5;
+  border-color: none;
+}
+
+@media (max-width: 1000px) {
+  /* Utils */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .space {
+    padding: 0 6%;
+  }
+  /* menu */
   #mySidenav a {
     font-size: 18px;
   }

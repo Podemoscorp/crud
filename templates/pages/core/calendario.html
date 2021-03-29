@@ -5,47 +5,48 @@
 {% block title %}Calendário{% endblock %}
 
 {% block menu %}
-    {% include 'components/menu.html' %}
+{% include 'components/menu.html' %}
+{% include 'components/Search.html' %}
 {% endblock %}
 
 {% block content %}
 
-<section class="container">
+<section id="CalendarContainer">
     <div>
-        <div>
-            <div class="row">
+        <div id="CalendarTitleContainer">
+            <div class="bg-color-primary d-flex" id="CalendarTitle">
                 <div>
-                    <h2 class="text-justify text-white h1">Bem vindo ao calendário, estudante!</h2>
-                    <p class="text-justify text-white">Aqui você encontrará todas as datas relevantes em relação à olimpíadas, vestibulares e atividades do PODEMOS.</p>
+                    <h1 class="text-justify text-white font-weight-bold">Bem vindo ao calendário, estudante!</h1>
+                    <p class="text-justify text-white font-weight-bold">Aqui você encontrará todas as datas relevantes
+                        em relação à olimpíadas, vestibulares e atividades do PODEMOS.</p>
                 </div>
-                <div>
-                    <img src="" alt="">
-                </div>
+                <img src="../../../static/images/Calendar-img.svg" alt="Calendario" class="sr-only">
             </div>
         </div>
 
-        <div class="row">
+        <div class="d-flex" id="CalendarItem">
             <div class="col-md-4">
-                <div>
-                    <select name="tipo" id="tipo">
+                <div class="SelectContainer">
+                    <label for="">Escolha</label>
+                    <select name="type" id="type">
                         <option value="D">Todos</option>
                         <option value="A">Olimpíadas</option>
                         <option value="B">Eventos</option>
                         <option value="C">Feira de ciências</option>
                     </select>
                 </div>
-
-                <div>
-                    <select name="" id="">
+                <div class="SelectContainer">
+                    <label for="">Tipo de informação</label>
+                    <select name="information" id="information">
                         <option value="">Todos</option>
-                        <option value=""></option>
+                        <option value="">Data de inscrição</option>
                         <option value=""></option>
                         <option value=""></option>
                     </select>
                 </div>
-
-                <div>
-                    <select name="regiao" id="regiao">
+                <div class="SelectContainer">
+                    <label for="">Tipo de evento</label>
+                    <select name="region" id="region">
                         <option value="D">Todos</option>
                         <option value="A">Nacional</option>
                         <option value="B">Internacional</option>
@@ -66,18 +67,18 @@
 {% endblock %}
 
 {% block footer %}
-    {% include 'components/footer.html' %}
+{% include 'components/footer.html' %}
 {% endblock %}
 
 {% block script %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', () => {
 
-        var data = new Date;
+        let data = new Date;
 
-        var calendarEl = document.getElementById('calendar');
+        let calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        let calendar = new FullCalendar.Calendar(calendarEl, {
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -97,124 +98,108 @@
             events: [],
         });
 
-
         $.ajax({
             url: "{% url 'calendario' %}",
             method: "GET",
             data: {
-                "tipo":"D",
-                "regiao":"C",
+                "type": "D",
+                "region": "C",
             },
             dataType: 'json',
-            success: function(data){
+            success: data => {
                 calendar.removeAllEvents();
                 data.forEach(element => {
-                    var obj = {
+                    let obj = {
                         title: element["fields"]["title"],
-                        url: '/evento/'+element["pk"],
+                        url: '/evento/' + element["pk"],
                         start: element["fields"]["starts_at"].slice(0, -1),
                         end: element["fields"]["ends_in"].slice(0, -1)
                     };
                     calendar.addEvent(obj);
                 });
             },
-            error: function(data){
-                
-            }
+            error: data => console.error(data)
+
         })
 
-        $("select[name='tipo']").change(function(){
+        $("select[name='type']").change(() => {
             $.ajax({
                 url: "{% url 'calendario' %}",
                 method: "GET",
                 data: {
-                    "tipo":$(this).val(),
-                    "regiao":$("select[name='regiao']").val(),
+                    "type": $(this).val(),
+                    "region": $("select[name='region']").val(),
                 },
                 dataType: 'json',
-                success: function(data){
+                success: data => {
                     calendar.removeAllEvents();
                     data.forEach(element => {
-                        var obj = {
+                        let obj = {
                             title: element["fields"]["title"],
-                            url: '/evento/'+element["pk"],
+                            url: '/evento/' + element["pk"],
                             start: element["fields"]["starts_at"].slice(0, -1),
                             end: element["fields"]["ends_in"].slice(0, -1)
                         };
                         calendar.addEvent(obj);
                     });
                 },
-                error: function(data){
-
-                }
+                error: data => console.error(data)
             })
         });
 
-        $("select[name='']").change(function(){
+        $("select[name='information']").change(() => {
             $.ajax({
                 url: "{% url 'calendario' %}",
                 method: "GET",
                 data: {
-                    "tipo":$(this).val(),
-                    "regiao":$("select[name='regiao']").val(),
+                    "type": $(this).val(),
+                    "region": $("select[name='region']").val(),
                 },
                 dataType: 'json',
-                success: function(data){
+                success: data => {
                     calendar.removeAllEvents();
                     data.forEach(element => {
-                        var obj = {
+                        let obj = {
                             title: element["fields"]["title"],
-                            url: '/evento/'+element["pk"],
+                            url: '/evento/' + element["pk"],
                             start: element["fields"]["starts_at"].slice(0, -1),
                             end: element["fields"]["ends_in"].slice(0, -1)
                         };
                         calendar.addEvent(obj);
                     });
                 },
-                error: function(data){
-                    
-                }
+                error: data => console.error(data)
+
             })
         });
 
-        $("select[name='regiao']").change(function(){
+        $("select[name='region']").change(() => {
             $.ajax({
                 url: "{% url 'calendario' %}",
                 method: "GET",
                 data: {
-                    "tipo": $("select[name='tipo']").val(),
-                    "regiao": $(this).val(),
+                    "type": $("select[name='type']").val(),
+                    "region": $(this).val(),
                 },
                 dataType: 'json',
-                success: function(data){
+                success: data => {
                     calendar.removeAllEvents();
                     data.forEach(element => {
-                        var obj = {
+                        let obj = {
                             title: element["fields"]["title"],
-                            url: '/evento/'+element["pk"],
+                            url: '/evento/' + element["pk"],
                             start: element["fields"]["starts_at"].slice(0, -1),
                             end: element["fields"]["ends_in"].slice(0, -1)
                         };
                         calendar.addEvent(obj);
                     });
                 },
-                error: function(data){
-                    
-                }
+                error: data => console.error(data)
+
             })
         });
 
         calendar.render();
     });
 </script>
-{% endblock %}
-
-{% block style %}
-<style>
-    #calendar {
-        width: 95%;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-</style>
 {% endblock %}
