@@ -34,7 +34,7 @@
                 <!-- input -->
                 <div class="position-relative w-100 padding_0-7">
                     <input required type="text" id="email" class="text-gray w-100 auto_complete" name="email">
-                    <label class='text-gray'>Entre com email ou CPF</label>
+                    <label class='text-gray' onclick='FocusInput(1)'>Entre com email ou CPF</label>
                 </div>
 
             </div>
@@ -46,7 +46,7 @@
                 <!-- input -->
                 <div class="position-relative w-100 padding_0-7">
                     <input required type="password" id="password" class="text-gray w-100 auto_complete" name="password">
-                    <label class='text-gray'>Digite aqui sua senha</label>
+                    <label class='text-gray' onclick='FocusInput(2)'>Digite aqui sua senha</label>
                 </div>
             </div>
 
@@ -67,13 +67,13 @@
         <!-- other sing up images -->
         <div class="text-center d-flex justify-content-around my-4">
             <a href="{% url 'social:begin' 'google-oauth2' %}">
-                <button class='border-0'>
+                <button class='border-0 bg-none'>
                     <img src="{% static 'images/google.svg' %}" alt="google">
                 </button>
             </a>
 
             <a href="{% url 'social:begin' 'facebook' %}">
-                <button class='border-0'>
+                <button class='border-0 bg-none'>
                     <img src="{% static 'images/facebok.svg' %}" alt="facebok">
                 </button>
             </a>
@@ -102,6 +102,11 @@
 
     function Last_page() {
         location.href = "{% url 'index' %}";
+    }
+
+    function FocusInput(num) {
+        const InsputAll = document.querySelectorAll("input")
+        InsputAll[num].focus()
     }
 </script>
 
