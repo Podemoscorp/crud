@@ -4,7 +4,7 @@
 <section class='d-flex' id="mySidenav">
     <section class='bg-color-primary py-3 pt-4 section-container'>
         <nav class='myTab'>
-            <img src="../../static/images/close.svg" class="closebtn" onclick='closeNav()' />
+            <img src="{% static 'images/close.svg' %}" class="closebtn" onclick='closeNav()' />
             <ul class='p-0'>
                 <!-- Home -->
                 <li>
@@ -63,15 +63,6 @@
                             <div class='d-flex align-items-center flex-column'>
                                 <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard" class='img-5'> -->
                                 Dashboard
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{% url 'logout' %}" class='px-3 w-100 d-flex justify-content-center'>
-                            <div class='d-flex align-items-center flex-column'>
-                                <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair" class='img-6'> -->
-                                Sair
                             </div>
                         </a>
                     </li>
