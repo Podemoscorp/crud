@@ -39,8 +39,6 @@ body {
   background-color: var(--bg-color);
 }
 
-/*Utils*/
-
 h1, h2, h3, h4 {
   margin: 0;
 }
@@ -79,6 +77,19 @@ main {
   background: none;
 }
 
+
+.bg-color-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-color-secundary {
+  background-color: var(--secundary-color);
+}
+
+.border-color-gray {
+  border: 1px solid var(--light-gray);
+}
+
 .text_color_primary {
   color: var(--primary-color);
 }
@@ -89,10 +100,6 @@ main {
 
 .text-gray {
   color: var(--light-gray);
-}
-
-.border-color-gray {
-  border: 1px solid var(--light-gray);
 }
 
 .padding_0-7 {
@@ -287,27 +294,27 @@ input:focus~label, input:valid~label {
 }
 
 /* MENU */
-
-.bg-color-primary {
-  background-color: var(--primary-color);
+.myTab a {
+  color: var(--white);
 }
 
-.bg-color-secundary {
-  background-color: var(--secundary-color);
+.myTab a:hover {
+  color: var(--white);
 }
 
-.active {
+
+a.active {
   background-color: var(--white);
   border-radius: 1rem 0 0 1rem;
   padding: 0 1rem;
 }
 
-.active a {
+a.active {
   color: var(--primary-color);
 }
 
-.active:active {
-  background-color: var(--white);
+a.active:hover {
+  color: var(--primary-color) ;
 }
 
 .section-container {
@@ -343,20 +350,22 @@ input:focus~label, input:valid~label {
   transition: 0.5s;
 }
 
+#mySidenav>section {
+  width: 100%;
+}
+
 #mySidenav .closebtn {
   position: absolute;
-  top: 0;
-  left: 50%;
+  top: .3rem;
+  left: 80%;
+  width: 1rem;
 }
 
 #myTab ul li {
   padding: 0 0 0 1rem;
 }
 
-@media screen and (max-height: 450px) {
-  #mySidenav {
-    padding-top: 15px;
-  }
+@media screen and (max-width: 1000px) {
   #mySidenav a {
     font-size: 18px;
   }

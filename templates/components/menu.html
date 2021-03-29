@@ -4,12 +4,11 @@
 <section class='d-flex' id="mySidenav">
     <section class='bg-color-primary py-3 pt-4 section-container'>
         <nav class='myTab'>
-            <button class="closebtn border-0 bg-none" onclick='closeNav()'>&xopf;</button>
+            <img src="../../static/images/close.svg" class="closebtn" onclick='closeNav()' />
             <ul class='p-0'>
                 <!-- Home -->
                 <li>
-                    <a href="{% url 'index' %}"
-                        class='px-3 w-100 d-flex justify-content-center text_color_primary active'>
+                    <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
                         <div class='d-flex align-items-center flex-column'>
                             <img src="{% static '/images/home.svg' %}" alt="Home" class='img-0'>
                             Home
@@ -19,7 +18,7 @@
 
                 <!-- Blog -->
                 <li>
-                    <a href="{% url 'blog' %}" class='px-3 w-100 d-flex justify-content-center text-white'>
+                    <a href="{% url 'blog' %}" class='px-3 w-100 d-flex justify-content-center'>
                         <div class='d-flex align-items-center flex-column'>
                             <img src="{% static '/images/blog.svg' %}" alt='Blog' class='img-1'>
                             Blog
@@ -29,7 +28,7 @@
 
                 <!-- Curse -->
                 <li>
-                    <a href="{% url 'cursos' %}" class='px-3 w-100 d-flex justify-content-center text-white'>
+                    <a href="{% url 'cursos' %}" class='px-3 w-100 d-flex justify-content-center'>
                         <div class='d-flex align-items-center flex-column'>
                             <img src="{% static '/images/curse.svg' %}" alt="Cursos" class='img-2'>
                             Cursos
@@ -39,7 +38,7 @@
 
                 <!-- Olimpíadas -->
                 <li>
-                    <a href="{% url 'olimpiadas' %}" class='px-3 w-100 d-flex justify-content-center text-white'>
+                    <a href="{% url 'olimpiadas' %}" class='px-3 w-100 d-flex justify-content-center'>
                         <div class='d-flex align-items-center flex-column'>
                             <img src="{% static '/images/medal.svg' %}" alt="Olimpíadas" class='img-3'>
                             Olimpíadas
@@ -49,7 +48,7 @@
 
                 <!-- Calendário -->
                 <li>
-                    <a href="{% url 'calendario' %}" class='px-3 w-100 d-flex justify-content-center text-white'>
+                    <a href="{% url 'calendario' %}" class='px-3 w-100 d-flex justify-content-center'>
                         <div class='d-flex align-items-center flex-column'>
                             <img src="{% static '/images/calendar.svg' %}" alt="Calendário" class='img-4'>
                             Calendário
@@ -59,39 +58,48 @@
 
                 <!-- Dashboard -->
                 {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center text-white'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard" class='img-5'> -->
-                            Dashboard
-                        </div>
-                    </a>
-                </li>
+                    <li>
+                        <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard" class='img-5'> -->
+                                Dashboard
+                            </div>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center text-white'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair" class='img-6'> -->
-                            Sair
-                        </div>
-                    </a>
-                </li>
-                {% if user.is_staff %}
-                <li>
-                    <a href="/admin/}" class='px-3 w-100 d-flex justify-content-center text-white'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
-                            Administração
-                        </div>
-                    </a>
-                </li>
-                {% endif %}
+                    <li>
+                        <a href="{% url 'logout' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair" class='img-6'> -->
+                                Sair
+                            </div>
+                        </a>
+                    </li>
+                    {% if user.is_staff %}
+                        <li>
+                            <a href="/admin/" class='px-3 w-100 d-flex justify-content-center'>
+                                <div class='d-flex align-items-center flex-column'>
+                                    <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
+                                    Administração
+                                </div>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li>
+                        <a href="/user/login" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
+                                Login
+                            </div>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         </nav>
 
         <button class='d-flex justify-content-center bg-none outline-0'>
-            <img src="{% static '/images/config.svg' %}"  alt="Home">
+            <img src="{% static '/images/config.svg' %}" alt="Home">
         </button>
     </section>
 </section>
@@ -100,7 +108,7 @@
 {% block script %}
 <script>
     function openNav() {
-        document.getElementById("mySidenav").style.width = "13.5rem";
+        document.getElementById("mySidenav").style.width = "8rem";
     }
 
     /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
