@@ -46,7 +46,6 @@ def index(request):
 
 
 def blog(request):
-
     if request.is_ajax():
         ...
 

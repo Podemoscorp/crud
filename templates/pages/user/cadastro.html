@@ -8,7 +8,7 @@
 
         <!-- back button -->
         <button class='outline-0 border-0 bg-none mb-4 mt-3' onclick="come_back()">
-            <img src="{% static 'images/back-arrow.svg' %}" alt="">
+            <img src="{% static 'images/back-arrow.svg' %}" alt="voltar">
         </button>
 
         <!-- title and sub-title -->
@@ -30,7 +30,7 @@
                     <img src="{% static 'images/email.svg' %}" alt="email">
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="text" id="email" class="text-gray w-100" name="email">
-                        <label class='text-gray'>Entre com email ou CPF</label>
+                        <label class='text-gray' onclick='FocusInput(1)'>Entre com email ou CPF</label>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
 
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="password" id="password" class="text-gray w-100" name="password">
-                        <label class='text-gray'>Senha</label>
+                        <label class='text-gray' onclick='FocusInput(2)'>Senha</label>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="password" id="confirm_password" class="text-gray w-100"
                             name="confirm_password">
-                        <label class='text-gray'>Confirme sua senha</label>
+                        <label class='text-gray' onclick='FocusInput(3)'>Confirme sua senha</label>
                     </div>
                 </div>
 
@@ -62,13 +62,13 @@
                 <!-- links from other options from sing up -->
                 <div class="text-center d-flex justify-content-around my-4">
                     <a href="">
-                        <button class='border-0' type="button">
+                        <button class='border-0 bg-none' type="button">
                             <img src="{% static 'images/google.svg' %}" alt="google">
                         </button>
                     </a>
 
                     <a href="">
-                        <button class='border-0' type="button">
+                        <button class='border-0 bg-none' type="button">
                             <img src="{% static 'images/facebok.svg' %}" alt="facebok">
                         </button>
                     </a>
@@ -84,42 +84,42 @@
             <!-- Continued cadastro -->
             <div id="parte2" class="hidden">
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 first-input">
-                    <img src="{% static '' %}" alt="">
+                    <!-- <img src="{% static '' %}" alt=""> -->
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="text" id="uf" class="text-gray w-100" name="uf">
-                        <label class='text-gray'>UF</label>
+                        <label class='text-gray' onclick='FocusInput(4)'>UF</label>
                     </div>
                 </div>
 
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
-                    <img src="{% static '' %}" alt="">
+                    <!-- <img src="{% static '' %}" alt=""> -->
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="text" id="cidade" class="text-gray w-100" name="cidade">
-                        <label class='text-gray'>Cidade</label>
+                        <label class='text-gray' onclick='FocusInput(5)'>Cidade</label>
                     </div>
                 </div>
 
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
-                    <img src="{% static '' %}" alt="">
+                    <!-- <img src="{% static '' %}" alt=""> -->
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="text" id="nome" class="text-gray w-100" name="nome">
-                        <label class='text-gray'>Nome</label>
+                        <label class='text-gray' onclick='FocusInput(6)'>Nome</label>
                     </div>
                 </div>
 
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7">
-                    <img src="{% static '' %}" alt="">
+                    <!-- <img src="{% static '' %}" alt=""> -->
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="text" id="sobrenome" class="text-gray w-100" name="sobrenome">
-                        <label class='text-gray'>Sobrenome</label>
+                        <label class='text-gray' onclick='FocusInput(7)'>Sobrenome</label>
                     </div>
                 </div>
 
                 <div class="form-group d-flex justify-content-center border-color-gray padding_0-7 last-input">
-                    <img src="{% static '' %}" alt="">
+                    <!-- <img src="{% static '' %}" alt=""> -->
                     <div class="position-relative w-100 padding_0-7">
                         <input required type="text" id="cpf" class="text-gray w-100" name="cpf">
-                        <label class='text-gray'>CPF</label>
+                        <label class='text-gray' onclick='FocusInput(8)'>CPF</label>
                     </div>
                 </div>
 
@@ -170,6 +170,11 @@
             ClassControler.getElements.SecondForm.classList.remove("hidden"),
             back = 1
         }
+    }
+
+    function FocusInput(num) {
+        const InsputAll = document.querySelectorAll("input")
+        InsputAll[num].focus()
     }
 </script>
 {% endblock script %}

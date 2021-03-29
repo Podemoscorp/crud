@@ -1,65 +1,120 @@
 {% load i18n %}
 {% load static %}
 
-<div class="container-fluid">
-    <div class="sidemenu" id="sidemenu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'blog' %}">Blog</a></li>
-                <li><a href="{% url 'cursos' %}">Cursos</a></li>
-                <li><a href="{% url 'olimpiadas' %}">Olimpiadas</a></li>
-                <li><a href="{% url 'calendario' %}">Calendario</a></li>
+<section class='d-flex' id="mySidenav">
+    <section class='bg-color-primary py-3 pt-4 section-container'>
+        <nav class='myTab'>
+            <img src="../../static/images/close.svg" class="closebtn" onclick='closeNav()' />
+            <ul class='p-0'>
+                <!-- Home -->
+                <li>
+                    <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                        <div class='d-flex align-items-center flex-column'>
+                            <img src="{% static '/images/home.svg' %}" alt="Home" class='img-0'>
+                            Home
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Blog -->
+                <li>
+                    <a href="{% url 'blog' %}" class='px-3 w-100 d-flex justify-content-center'>
+                        <div class='d-flex align-items-center flex-column'>
+                            <img src="{% static '/images/blog.svg' %}" alt='Blog' class='img-1'>
+                            Blog
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Curse -->
+                <li>
+                    <a href="{% url 'cursos' %}" class='px-3 w-100 d-flex justify-content-center'>
+                        <div class='d-flex align-items-center flex-column'>
+                            <img src="{% static '/images/curse.svg' %}" alt="Cursos" class='img-2'>
+                            Cursos
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Olimpíadas -->
+                <li>
+                    <a href="{% url 'olimpiadas' %}" class='px-3 w-100 d-flex justify-content-center'>
+                        <div class='d-flex align-items-center flex-column'>
+                            <img src="{% static '/images/medal.svg' %}" alt="Olimpíadas" class='img-3'>
+                            Olimpíadas
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Calendário -->
+                <li>
+                    <a href="{% url 'calendario' %}" class='px-3 w-100 d-flex justify-content-center'>
+                        <div class='d-flex align-items-center flex-column'>
+                            <img src="{% static '/images/calendar.svg' %}" alt="Calendário" class='img-4'>
+                            Calendário
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Dashboard -->
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                    <li>
+                        <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard" class='img-5'> -->
+                                Dashboard
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'logout' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair" class='img-6'> -->
+                                Sair
+                            </div>
+                        </a>
+                    </li>
                     {% if user.is_staff %}
-                        <li><a href="/admin/">Administração</a></li>
+                        <li>
+                            <a href="/admin/" class='px-3 w-100 d-flex justify-content-center'>
+                                <div class='d-flex align-items-center flex-column'>
+                                    <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
+                                    Administração
+                                </div>
+                            </a>
+                        </li>
                     {% endif %}
+                {% else %}
+                    <li>
+                        <a href="/user/login" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
+                                Login
+                            </div>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         </nav>
-    </div>
-    <div>
-        <span onclick="openNav()">open</span>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <form action="" method="get">
-                    <input type="text" name="q">
-                </form>
-            </div>
-            <div class="col">
-                <div class="top-menu-buttons-aling">
-                    <div>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'perfil' user.id %}" class="btn btn-primary text-white">Perfil</a>
-                        {% else %}
-                            <a href="{% url 'login' %}" class="btn btn-primary text-white">Login</a>
-                        {% endif %}
-            
-                        <a href="" class="btn btn-success text-white" >Doe</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <button class='d-flex justify-content-center bg-none outline-0'>
+            <img src="{% static '/images/config.svg' %}" alt="Home">
+        </button>
+    </section>
+</section>
+<span onclick="openNav()" class='openNav'>open</span>
 
 {% block script %}
-
 <script>
-function openNav() {
-    document.getElementById("sidemenu").style.width = "250px";
-}
-  
-  /* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("sidemenu").style.width = "0";
-}
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "8rem";
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
 </script>
 
 {% endblock %}
