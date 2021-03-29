@@ -264,7 +264,7 @@ input:focus~label, input:valid~label {
 /*==============>reset password done*/
 
 #ResetPasswordDone {
-  background: var(--primary-color) url("../../static/images/Bolinhas-success.svg") center;
+  background: var(--primary-color) url("{% static 'images/Bolinhas-success.svg' %}") center;
 }
 
 #button_password_done {

@@ -4,13 +4,13 @@
 <section class='d-flex' id="mySidenav">
     <section class='bg-color-primary py-3 pt-4 section-container'>
         <nav class='myTab'>
-            <img src="../../static/images/close.svg" class="closebtn" onclick='closeNav()' />
+            <img src="{% static 'images/close.svg' %}" class="closebtn" onclick='closeNav()' />
             <ul class='p-0'>
                 <!-- Home -->
                 <li>
                     <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
                         <div class='d-flex align-items-center flex-column'>
-                            <img src="{% static '/images/home.svg' %}" alt="Home" class='img-0'>
+                            <img src="{% static '/images/home-primary.svg' %}" alt="Home" class='img-0'>
                             Home
                         </div>
                     </a>
