@@ -199,13 +199,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
         super(User, self).save(*args, **kwargs)
 
-    def processe_description(self):
-        text = str(self.description)
-
-        text = text.replace("\r\n", "\\n")
-
-        self.processed_description = text
-
     def get_full_name(self):
         """
         Return the first_name plus the last_name, with a space in between.
