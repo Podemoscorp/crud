@@ -5,81 +5,171 @@
     <section class='bg-color-primary py-3 pt-4 section-container'>
         <nav class='myTab'>
             <img src="{% static 'images/close.svg' %}" class="closebtn" onclick='closeNav()' />
-            <ul class='p-0'>
+            <ul class='p-0 position-relative'>
                 <!-- Home -->
-                <li>
-                    <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <img src="{% static '/images/home-primary.svg' %}" alt="Home" class='img-0'>
-                            Home
+                {% if request.path == "/index/" %}
+                    <li>
+                        <div>
+                            <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                                <div class='d-flex align-items-center flex-column'>
+                                        <img src="{% static '/images/home-primary.svg' %}" alt="Home">
+                                    Home
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </li>
+                        
+                        <div class='position-absolute sub-menu sr-only'>
+                            <h3>CONTEÚDOS</h3>
+                            <ul class='p-0 d-flex flex-column'>
+                                <a href="#Inicio">Início</a>
+                                <a href="#Artigos">Artigos</a>
+                                <a href="#Artigos">Artigos</a>
+                                <a href="#Quem-somos?">Quem somos?</a>
+                            </ul>
+                        </div>
+                    </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                    <img src="{% static '/images/home.svg' %}" alt="Home">
+                                Home
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
 
                 <!-- Blog -->
+                {% if request.path == "/blog/" %}
                 <li>
-                    <a href="{% url 'blog' %}" class='px-3 w-100 d-flex justify-content-center'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <img src="{% static '/images/blog.svg' %}" alt='Blog' class='img-1'>
-                            Blog
-                        </div>
-                    </a>
+                    <div>
+                        <a href="{% url 'blog' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/blog-primary.svg' %}" alt='Blog'>
+                                Blog
+                            </div>
+                        </a>
+                    </div>
+                    <div class='position-absolute sub-menu sr-only'>
+                        <h3>CONTEÚDOS</h3>
+                        <ul class='p-0 d-flex flex-column'>
+                            <a href="#Destaques">Destaques</a>
+                            <a href="#LastNotice">ultimas noticias</a>
+                        </ul>
+                    </div>
                 </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'blog' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/blog.svg' %}" alt='Blog'>
+                                Blog
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
 
-                <!-- Curse -->
-                <li>
-                    <a href="{% url 'cursos' %}" class='px-3 w-100 d-flex justify-content-center'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <img src="{% static '/images/curse.svg' %}" alt="Cursos" class='img-2'>
-                            Cursos
-                        </div>
-                    </a>
-                </li>
+                <!-- cursos -->
 
-                <!-- Olimpíadas -->
-                <li>
-                    <a href="{% url 'olimpiadas' %}" class='px-3 w-100 d-flex justify-content-center'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <img src="{% static '/images/medal.svg' %}" alt="Olimpíadas" class='img-3'>
-                            Olimpíadas
-                        </div>
-                    </a>
-                </li>
+                {% if  request.path == '/cursos/' %}
+                    <li>
+                        <a href="{% url 'cursos' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/curse-primary.svg' %}" alt="Cursos">
+                                Cursos
+                            </div>
+                        </a>
+                    </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'cursos' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/curse.svg' %}" alt="Cursos">
+                                Cursos
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
+
+                <!-- olimpiadas -->
+
+                {% if  request.path == '/olimpiadas/' %}
+                    <li>
+                        <a href="{% url 'olimpiadas' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/medal-primary.svg' %}" alt="Olimpíadas">
+                                Olimpíadas
+                            </div>
+                        </a>
+                    </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'olimpiadas' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/medal.svg' %}" alt="Olimpíadas">
+                                Olimpíadas
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
 
                 <!-- Calendário -->
-                <li>
-                    <a href="{% url 'calendario' %}" class='px-3 w-100 d-flex justify-content-center'>
-                        <div class='d-flex align-items-center flex-column'>
-                            <img src="{% static '/images/calendar.svg' %}" alt="Calendário" class='img-4'>
-                            Calendário
-                        </div>
-                    </a>
-                </li>
+                {% if  request.path == '/calendario/' %}
+                    <li>
+                        <a href="{% url 'calendario' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/calendar-primary.svg' %}" alt="Calendário">
+                                Calendário
+                            </div>
+                        </a>
+                    </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'calendario' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/calendar.svg' %}" alt="Calendário">
+                                Calendário
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
 
                 <!-- Dashboard -->
                 {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center'>
-                            <div class='d-flex align-items-center flex-column'>
-                                <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard" class='img-5'> -->
-                                Dashboard
-                            </div>
-                        </a>
-                    </li>
+                    {% if request.path == '/dashboard/' %}
+                        <li>
+                            <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                                <div class='d-flex align-items-center flex-column'>
+                                    <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard"> -->
+                                    Dashboard
+                                </div>
+                            </a>
+                        </li>
+                    {% else %} 
+                        <li>
+                            <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center'>
+                                <div class='d-flex align-items-center flex-column'>
+                                    <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard"> -->
+                                    Dashboard
+                                </div>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="{% url 'logout' %}" class='px-3 w-100 d-flex justify-content-center'>
-                            <div class='d-flex align-items-center flex-column'>
-                                <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair" class='img-6'> -->
-                                Sair
-                            </div>
-                        </a>
-                    </li>
+                    {% endif %} 
+
+                        <li>
+                            <a href="{% url 'logout' %}" class='px-3 w-100 d-flex justify-content-center'>
+                                <div class='d-flex align-items-center flex-column'>
+                                    <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair"> -->
+                                    Sair
+                                </div>
+                            </a>
+                        </li>
                     {% if user.is_staff %}
                         <li>
                             <a href="/admin/" class='px-3 w-100 d-flex justify-content-center'>
                                 <div class='d-flex align-items-center flex-column'>
-                                    <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
+                                    <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração"> -->
                                     Administração
                                 </div>
                             </a>
@@ -89,7 +179,7 @@
                     <li>
                         <a href="/user/login" class='px-3 w-100 d-flex justify-content-center'>
                             <div class='d-flex align-items-center flex-column'>
-                                <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração" class='img-7'> -->
+                                <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração"> -->
                                 Login
                             </div>
                         </a>
@@ -108,7 +198,7 @@
 {% block script %}
 <script>
     function openNav() {
-        document.getElementById("mySidenav").style.width = "8rem";
+        document.getElementById("mySidenav").style.width = "20rem"; 
     }
 
     /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
