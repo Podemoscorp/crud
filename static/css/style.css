@@ -346,13 +346,13 @@ a.active:hover {
 }
 
 #mySidenav section:first-child {
-  width: 50%;
+  width: 8rem;
 }
 
 #mySidenav .closebtn {
   position: absolute;
   top: .3rem;
-  left: 50%;
+  left: 6.5rem;
   width: 1rem;
 }
 
