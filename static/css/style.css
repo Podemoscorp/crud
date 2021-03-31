@@ -368,7 +368,6 @@ a.active:hover {
 
 /*==============> Sub menu */
 
-
 .sub-menu {
   left: 8rem;
   top: 1.5rem;
@@ -379,7 +378,7 @@ a.active:hover {
   width: calc(20rem - 8rem);
 }
 
-.sub-menu h3, .sub-menu a  {
+.sub-menu h3, .sub-menu a {
   color: var(--light-gray);
   margin-top: 2rem;
 }
@@ -530,5 +529,21 @@ a.active:hover {
   /* menu */
   #mySidenav a {
     font-size: 18px;
+  }
+  /* calendario */
+  #CalendarTitle {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #CalendarItem {
+    flex-direction: column;
+  }
+  #CalendarItem div.col-md-4 {
+    margin-bottom: 2rem;
+  }
+  #SearchContainer input {
+    width: 90%;
   }
 }
