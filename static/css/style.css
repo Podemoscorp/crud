@@ -221,7 +221,7 @@ input:focus~label, input:valid~label {
 #page-logo {
   font: "Poppins";
   padding: 0 2.5rem;
-  background: var(--primary-color) url("../images/bolinhas.svg") no-repeat center;
+  background: var(--primary-color) url("{% static 'images/bolinhas.svg' %}") no-repeat center;
   display: grid;
   gap: 1%;
 }
