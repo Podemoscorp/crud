@@ -510,6 +510,40 @@ a.active:hover {
   border-color: none;
 }
 
+/* Blog */
+
+#carousel {
+  background: #fff;
+}
+
+#carousel div.carousel-inner {
+  width: 100%; 
+  height: 50vh;
+  object-fit: contain;
+}
+
+#carousel div.carousel-item img{ 
+  width: 100%;
+  height: 50vh;
+  object-fit: contain;
+}
+
+#Blog h1 {
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+#Blog div.card {
+  height: 95%;
+  background: linear-gradient(var(--primary-color), rgba(124, 79, 228, 0.247));
+  border: none;
+  transition: 0.5s;
+}
+
+#Blog div.card:hover {
+  transform: translateY(-10px);
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
