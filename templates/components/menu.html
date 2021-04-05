@@ -7,7 +7,7 @@
             <img src="{% static 'images/close.svg' %}" class="closebtn" onclick='closeNav()' />
             <ul class='p-0 position-relative'>
                 <!-- Home -->
-                {% if request.path == "/index/" %}
+                {% if request.path == "" %}
                     <li>
                         <div>
                             <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
