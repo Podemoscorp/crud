@@ -35,6 +35,7 @@
                         <option value="C">Feira de ciências</option>
                     </select>
                 </div>
+                <!--
                 <div class="SelectContainer">
                     <label for="">Tipo de informação</label>
                     <select name="information" id="information">
@@ -44,6 +45,7 @@
                         <option value=""></option>
                     </select>
                 </div>
+                -->
                 <div class="SelectContainer">
                     <label for="">Tipo de evento</label>
                     <select name="region" id="region">
@@ -146,7 +148,7 @@
                 error: data => console.error(data)
             })
         });
-
+/*
         $("select[name='information']").change(() => {
             $.ajax({
                 url: "{% url 'calendario' %}",
@@ -172,7 +174,7 @@
 
             })
         });
-
+*/
         $("select[name='region']").change(() => {
             $.ajax({
                 url: "{% url 'calendario' %}",
