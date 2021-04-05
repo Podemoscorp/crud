@@ -67,8 +67,8 @@ def blog(request):
 
         paginator = Paginator(postagens, 30)
         page_number = 1
-        if 'page' in request.GET:
-            page_number = request.GET.get('page')
+        if "page" in request.GET:
+            page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
         dados = {
