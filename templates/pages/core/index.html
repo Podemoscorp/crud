@@ -81,7 +81,9 @@ Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos
         <div class="col-md-4 py-4">
             <a href="{% url 'post' post.id %}" class="text-decoration-none">
                 <div class="card">
-                    <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
+                    {% if post.image %}
+                        <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
                     </div>
