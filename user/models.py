@@ -15,6 +15,10 @@ from crud.settings import (
 import jwt
 
 
+class School(models.Model):
+    name = models.CharField(max_length=200, blank=False)
+
+
 class Role(models.Model):
     name = models.CharField(
         _("name"),
@@ -173,6 +177,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     cidade = models.CharField(max_length=200, blank=True)
 
+    school = models.ForeignKey(School, on_delete=models.SET_NULL, blank=True, null=True)
+
+    points = models.IntegerField()
+
     objects = UserManager()
 
     EMAIL_FIELD = "email"
@@ -198,13 +206,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         self.processed_description = text
 
         super(User, self).save(*args, **kwargs)
-
-    def processe_description(self):
-        text = str(self.description)
-
-        text = text.replace("\r\n", "\\n")
-
-        self.processed_description = text
 
     def get_full_name(self):
         """
@@ -255,3 +256,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         except:
             return None
         return token
+
+    def get_points(self):
+        ...
