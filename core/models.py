@@ -91,7 +91,7 @@ class New(models.Model):
         buffer = BytesIO()
 
         # Resize/modify the image
-        img = img.resize((1280, 720))
+        img = img.resize((900, 506))
 
         # after modifications, save it to the output
         img.save(buffer, format="JPEG", quality=100)
@@ -166,7 +166,7 @@ class Post(models.Model):
         buffer = BytesIO()
 
         # Resize/modify the image
-        img = img.resize((1280, 720))
+        img = img.resize((900, 506))
 
         # after modifications, save it to the output
         img.save(buffer, format="JPEG", quality=100)
