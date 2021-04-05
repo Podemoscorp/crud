@@ -544,6 +544,27 @@ a.active:hover {
   transform: translateY(-10px);
 }
 
+/* Footer */
+
+#Footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--white);
+}
+
+#Footer a {
+  color: var(--white);
+}
+
+#Footer a:hover {
+  color: var(--light-gray);
+}
+
+#Footer div.text-center img {
+  width: 50px;
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
