@@ -5,15 +5,15 @@
 {% block title %}Blog{% endblock %}
 
 {% block menu %}
-    {% include 'components/menu.html' %}
-    {% include 'components/Search.html' %}
+{% include 'components/menu.html' %}
+{% include 'components/Search.html' %}
 {% endblock %}
 
 {% block content %}
 
-<section class="container">
+<section id="Blog" class="container">
     <div id="ultimas-postagens" class="py-2">
-        <h1>ultimas postagens</h1>
+        <h1 class='text-center'>ultimas postagens</h1>
 
         <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
@@ -61,7 +61,7 @@
     </div>
 
     <div id="populares">
-        <h1>Populares</h1>
+        <h1 class='text-center'>Populares</h1>
 
         <div class="row">
             {% for post in populares %}
@@ -80,7 +80,7 @@
     </div>
 
     <div id="todas">
-        <h1>Mais noticias</h1>
+        <h1 class='text-center'>Mais noticias</h1>
 
         <div>
 
@@ -108,5 +108,5 @@
 {% endblock %}
 
 {% block footer %}
-    {% include 'components/footer.html' %}
-{% endblock %}
+{% include 'components/footer.html' %}
+{% endblock %} 
