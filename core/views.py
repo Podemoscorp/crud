@@ -15,6 +15,7 @@ from django.contrib import auth, messages
 from django.core import serializers
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -50,27 +51,29 @@ def blog(request):
         ...
 
     else:
-        ultimas_postagens = (
-            Post.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
-        )
         populares = (
             Post.objects.all()
             .filter(visibility="C")
-            .order_by("-views")
-            .order_by("-posted_in")[:6]
+            .order_by("-posted_in")
+            .order_by("-views")[:6]
         )
 
-        postagens = None
+        postagens = Post.objects.all().filter(visibility="C")
 
         if "order" in request.GET:
             ...
         else:
-            postagens = Post.objects.all().filter(visibility="C").order_by("-posted_in")
+            postagens.order_by("-posted_in")
+
+        paginator = Paginator(postagens, 30)
+        page_number = 1
+        if "page" in request.GET:
+            page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
 
         dados = {
-            "ultimas_postagens": ultimas_postagens,
             "populares": populares,
-            "posts": postagens,
+            "posts": page_obj,
         }
 
         return render(request, "pages/core/blog.html", dados)

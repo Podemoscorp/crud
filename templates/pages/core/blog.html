@@ -13,12 +13,12 @@
 
 <section id="Blog" class="container">
     <div id="ultimas-postagens" class="py-2">
-        <h1 class='text-center'>ultimas postagens</h1>
+        <h1>Postagens mais populares</h1>
 
         <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
             <div class="carousel-indicators">
-                {% for post in ultimas_postagens %}
+                {% for post in populares %}
                     {% if forloop.counter == 1 %}
                         <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
                     {% else %}
@@ -28,10 +28,12 @@
             </div>
             
             <div class="carousel-inner">
-                {% for post in ultimas_postagens %}
+                {% for post in populares %}
                     {% if forloop.counter == 1 %}
                         <div class="carousel-item active">
-                            <img src="{{post.image.url}}" class="d-block w-100" alt="{{post.title}}">
+                            {% if post.image %}
+                                <img src="{{post.image.url}}" class="d-block w-100" alt="{{post.title}}">
+                            {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{post.title}}</h5>
                                 <p>{{post.abstract}}</p>
@@ -39,7 +41,9 @@
                         </div>
                     {% else %}
                         <div class="carousel-item">
-                            <img src="{{post.image.url}}" class="d-block w-100" alt="{{post.title}}">
+                            {% if post.image %}
+                                <img src="{{post.image.url}}" class="d-block w-100" alt="{{post.title}}">
+                            {% endif %}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{post.title}}</h5>
                                 <p>{{post.abstract}}</p>
@@ -60,31 +64,7 @@
         </div>
     </div>
 
-    <div id="populares">
-        <h1 class='text-center'>Populares</h1>
-
-        <div class="row">
-            {% for post in populares %}
-            <div class="col-md-4">
-                <a href="{% url 'post' post.id %}" class="text-decoration-none">
-                    <div class="card">
-                        <img src="{{post.image.url}}" height="720" width="1280" class="card-img-top img-fluid" alt="{{post.title}}">
-                        <div class="card-body">
-                            <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div id="todas">
-        <h1 class='text-center'>Mais noticias</h1>
-
-        <div>
-
-        </div>
+    <div id="todas" class="py-5">
 
         <div id="postagens">
             <div class="row">
@@ -92,7 +72,9 @@
                 <div class="col-md-4">
                     <a href="{% url 'post' post.id %}" class="text-decoration-none">
                         <div class="card">
-                            <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
+                            {% if post.image %}
+                                <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
+                            {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
                             </div>
@@ -100,6 +82,46 @@
                     </a>
                 </div>
                 {% endfor %}
+            </div>
+        </div>
+
+    <!-- ##### Pagination ##### -->
+    <section class="top-catagory-area section-padding-20-0">
+        <div class="container text-center">
+            <div>
+                {% if posts.has_other_pages %}
+                    <ul class="pagination">
+                        {% if posts.has_previous %}
+                            <li class="page-item">
+                                <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link">&laquo;</a>
+                            </li>
+                        {% endif %}
+                        {% for pagina in posts.paginator.page_range %}
+                            {% if posts.number == pagina %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{ pagina }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{pagina}}" class="page-link">{{pagina}}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if posts.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link">&raquo;</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </div>
