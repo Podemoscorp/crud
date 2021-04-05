@@ -148,3 +148,4 @@ config/config-heroku.bat
 config/create-settings.py
 Linux-assistente-4b248129efe0.json
 config/init.bat
+.idea

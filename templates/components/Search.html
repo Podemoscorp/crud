@@ -12,27 +12,21 @@
     </div>
                     
     <div class="sr-only search-button">
+        <button class='bg-color-primary'>
+            <a href="" >
+                Doe
+            </a>
+        </button> 
         {% if user.is_authenticated %}
-            <button class='bg-color-primary'>
-                <a href="{% url 'logout' %}" >
-                    Doe
-                </a>
-            </button> 
             
             <button class='bg-color-secundary'>
-                <a href="/user/login">
-                    Login
+                <a href="{% url 'logout' %}">
+                    Sair
                 </a>
             </button>
-        {% else %}
-            <button class='bg-color-primary' onclick="NotLogged()">
-                <a href="/user/login">
-                    Doe
-                </a>
-            </button>
-            
+        {% else %}            
             <button class='bg-color-secundary'>
-                <a href="/user/login">
+                <a href="{% url 'login' %}">
                     Login
                 </a>
             </button>
