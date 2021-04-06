@@ -400,28 +400,22 @@ a.active:hover {
   width: calc(100% - 8rem);
 }
 
-#SearchContainer div:first-child {
+#Search {
   display: flex;
-  align-items: center;
-  margin-top: .25rem;
-  margin-bottom: .25rem;
-}
-
-#SearchContainer div div {
   background-color: var(--white-secundary);
-  margin-left: 3rem;
+  margin: .3rem 3rem .3rem 0;
   height: 2rem;
   padding: 0.5rem;
   border-radius: 1rem;
 }
 
-#SearchContainer div div img {
+#Search img {
   width: 1rem;
   height: 1rem;
   cursor: pointer;
 }
 
-#SearchContainer input {
+#Search input {
   border: 0;
   font-size: 1.2rem;
   background-color: var(--white-secundary);
@@ -435,6 +429,15 @@ a.active:hover {
   padding: .5rem 1.5rem;
   border-radius: .7rem;
   margin-left: 1.5rem;
+}
+
+#Search .SearchInput {
+  display: flex;
+  align-items: center;
+}
+
+#Search .isOpen {
+  display: none;
 }
 
 /*==============>Calendar*/
@@ -517,12 +520,12 @@ a.active:hover {
 }
 
 #carousel div.carousel-inner {
-  width: 100%; 
+  width: 100%;
   height: 50vh;
   object-fit: contain;
 }
 
-#carousel div.carousel-item img{ 
+#carousel div.carousel-item img {
   width: 100%;
   height: 50vh;
   object-fit: contain;
@@ -565,6 +568,14 @@ a.active:hover {
   width: 50px;
 }
 
+#Footer div.d-flex {
+  flex-direction: column;
+}
+
+#Footer-Logo {
+  width: 70%;
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
@@ -589,16 +600,63 @@ a.active:hover {
   #CalendarTitle {
     padding-left: 1rem;
   }
+  #Footer div.text-center img {
+    width: 10%;
+  }
 }
 
+/* Mobile */
+
 @media (max-width: 700px) {
+  /* calendario */
   #CalendarItem {
     flex-direction: column;
   }
   #CalendarItem div.col-md-4 {
     margin-bottom: 2rem;
   }
-  #SearchContainer input {
-    width: 90%;
+  /* menu */
+  span.openNav {
+    width: 3rem;
+  }
+  /* munu superior */
+  #SearchContainer {
+    width: calc(100% - 3rem);
+  }
+  #Search {
+    max-width: 50%;
+  }
+  #Search .SearchInput input {
+    width: 100%;
+    font-size: .9rem;
+  }
+  #SearchContainer .search-button {
+    margin-right: .5rem;
+  }
+  #SearchContainer .search-button button {
+    padding: .5rem 1rem;
+    border-radius: .7rem;
+    margin-left: 0;
+  }
+  /* rodapé */
+  #Footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  #Footer>div:first-child {
+    display: flex;
+  }
+  #Footer>div {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  #Footer-Logo {
+    width: 30%;
+    margin-right: 5%;
+  }
+  #Footer div.d-flex {
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
