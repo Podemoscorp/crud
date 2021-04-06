@@ -110,7 +110,28 @@ def criar_post(request):
 
 
 def noticia(request, id):
-    return render(request, "pages/core/noticia.html")
+    if not New.objects.filter(id=id).exists():
+        messages.success(request, "Postagem não encontrada.")
+        return redirect("index")
+
+    new = New.objects.filter(id=id).get()
+
+    if new.visibility == "A":
+        if request.user.is_anonymous:
+            messages.success(
+                request, "Você não tem autorização para acessar esta postagem."
+            )
+            return redirect("login")
+        if new.poster_id != request.user.id:
+            messages.success(
+                request, "Você não tem autorização para acessar esta postagem."
+            )
+            return redirect("index")
+
+    new.views = new.views + 1
+    new.save()
+
+    return render(request, "pages/core/noticia.html", {"new":new})
 
 
 def criar_noticia(request):

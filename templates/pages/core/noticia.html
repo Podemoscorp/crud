@@ -14,7 +14,39 @@
 
 <section class="container">
     <div>
+        <div class="py-5 text-center">
+            <picture>
+                <img src="{{new.image.url}}" alt="{{new.image.name}}" class="img-fluid">
+            </picture>
 
+            <h1 class="h1">{{new.title}}</h1>
+
+            <p>Postado em {{new.posted_in}}</p>
+        </div>
+
+        <div class="py-5 text-justify" id="abstract">
+        </div>
+
+        <div class="py-5 text-justify" id="content">
+        </div>
+
+        <div class="py-5">
+            <h3>Postado por: <a href="{% url 'perfil' new.poster.id %}" class="text-body">{{new.poster.get_full_name}}</a></h3>
+
+            <div class="d-flex">
+                <picture>
+                    <img src="{{new.poster.avatar.url}}" alt="{{new.poster.get_full_name}}" class="rounded" width="200">
+                </picture>
+
+                <div>
+                    <div id="user-content" class="text-justfy px-2">
+
+                    </div>
+
+                    <p class="px-2">Cadastrado des de: {{new.poster.date_joined}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -22,4 +54,27 @@
 
 {% block footer %}
     {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        var md = new Remarkable({
+            html: false, // Enable HTML tags in source
+            xhtmlOut: false, // Use '/' to close single tags (<br />)
+            breaks: false, // Convert '\n' in paragraphs into <br>
+            linkify: true, // Autoconvert URL-like text to links
+
+            // Enable some language-neutral replacement + quotes beautification
+            typographer: false,
+
+            // Double + single quotes replacement pairs, when typographer enabled,
+            // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
+            quotes: '""``'
+        });
+
+        document.getElementById('content').innerHTML = md.render("{{new.processed_content}}");
+        document.getElementById('abstract').innerHTML = md.render("{{new.processed_abstract}}");
+        document.getElementById('user-content').innerHTML = md.render("{{new.poster.processed_description}}")
+
+    </script>
 {% endblock %}
