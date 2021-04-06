@@ -1,25 +1,32 @@
 {% load i18n %}
 {% load static %}
 
-<div class="container pt-5">
-    <div class="row">
-        <div class="col-md-4">
-            <img src="{% static 'img/pp.png' %}" alt="Logo do Podemos">
-            <p>Copyright &copy 2021. By <a href="https://github.com/Podemoscorp" class="text-body">Podemos Educação</a> and <a href="https://github.com/Podemoscorp/crud/graphs/contributors" class="text-body">all contributors</a></p>
+<div id='Footer' class="bg-color-primary px-1">
+    <div>
+        <img src="{% static 'img/pp.png' %}" alt="Logo do Podemos" id="Footer-Logo">
+        <p class="m-0 p-0">
+            Copyright &copy 2021. By
+            <a href="https://github.com/Podemoscorp">Podemos Educação</a>
+            and
+            <a href="https://github.com/Podemoscorp/crud/graphs/contributors">all contributors</a>
+        </p>
+    </div>
+    <div class="text-center">
+        Redes Sociais:
+        <div>
+            <a href="" >
+                <img src="{% static 'images/youtube.svg' %}" alt="Icone do Youtube">
+            </a>
+            <a href="" class="mx-3">
+                <img src="{% static 'images/instagram.svg' %}" alt="Icone do Instagram">
+            </a>
+            <a href="" >
+                <img src="{% static 'images/Facebook.svg' %}" alt="Icone do Facebook">
+            </a>
         </div>
-        <div class="col-md-4 text-center">
-           Redes Sociais:
-           <div class="d-flex justify-content-center py-3">
-                <a href="" class="px-2"><img src="{% static 'images/youtube.svg' %}" alt="Icone do Youtube"></a>
-                <a href="" class="px-2"><img src="{% static 'images/instagram.svg' %}" alt="Icone do Instagram"></a>
-                <a href="" class="px-2"><img src="{% static 'images/facebook.svg' %}" alt="Icone do Facebook"></a>
-           </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div class="text-left">
-                <a href="" class="text-body d-block">Ajuda</a>
-                <a href="" class="text-body d-block">Reportar problema</a>
-            </div>
-        </div>
+    </div>
+    <div class='d-flex'>
+        <a href="">Ajuda</a>
+        <a href="">Reportar problema</a>
     </div>
 </div>
