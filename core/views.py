@@ -131,7 +131,7 @@ def noticia(request, id):
     new.views = new.views + 1
     new.save()
 
-    return render(request, "pages/core/noticia.html", {"new":new})
+    return render(request, "pages/core/noticia.html", {"new": new})
 
 
 def criar_noticia(request):
