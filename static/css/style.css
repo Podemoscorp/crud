@@ -398,6 +398,7 @@ a.active:hover {
 #SearchContainer {
   background: var(--white);
   width: calc(100% - 8rem);
+  padding: .3rem 0;
 }
 
 #Search {
