@@ -555,6 +555,7 @@ a.active:hover {
   align-items: center;
   justify-content: space-around;
   color: var(--white);
+  margin-top: 1rem;
 }
 
 #Footer a {

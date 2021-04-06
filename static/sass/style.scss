@@ -221,7 +221,7 @@ input:focus~label, input:valid~label {
 #page-logo {
   font: "Poppins";
   padding: 0 2.5rem;
-  background: var(--primary-color) url("../images/bolinhas.svg") no-repeat center;
+  background: var(--primary-color) url("{% static 'images/bolinhas.svg' %}") no-repeat center;
   display: grid;
   gap: 1%;
 }
@@ -264,7 +264,7 @@ input:focus~label, input:valid~label {
 /*==============>reset password done*/
 
 #ResetPasswordDone {
-  background: var(--primary-color) url("../../static/images/Bolinhas-success.svg") center;
+  background: var(--primary-color) url("{% static 'images/Bolinhas-success.svg' %}") center;
 }
 
 #button_password_done {
@@ -345,14 +345,14 @@ a.active:hover {
   transition: 0.5s;
 }
 
-#mySidenav>section {
-  width: 100%;
+#mySidenav section:first-child {
+  width: 8rem;
 }
 
 #mySidenav .closebtn {
   position: absolute;
   top: .3rem;
-  left: 80%;
+  left: 6.5rem;
   width: 1rem;
 }
 
@@ -364,6 +364,33 @@ a.active:hover {
   width: 8rem;
   background-color: var(--white);
   color: var(--purple-light);
+}
+
+/*==============> Sub menu */
+
+.sub-menu {
+  left: 8rem;
+  top: 1.5rem;
+  height: calc(100vh - 3rem);
+  background: white;
+  color: black;
+  padding-left: 1rem;
+  width: calc(20rem - 8rem);
+}
+
+.sub-menu h3, .sub-menu a {
+  color: var(--light-gray);
+  margin-top: 2rem;
+}
+
+.sub-menu li:hover, .sub-menu a:hover {
+  color: var(--primary-color);
+  background-color: #CDDBFF;
+}
+
+.sub-menu ul a {
+  padding: 1rem;
+  border-radius: 1rem 0 0 1rem;
 }
 
 /*==============> BARRA DE PESQUISA */
@@ -445,11 +472,11 @@ a.active:hover {
   margin-top: 2.5rem;
 }
 
-.SelectContainer label{
+.SelectContainer label {
   color: var(--gray);
 }
 
-.SelectContainer select{
+.SelectContainer select {
   color: var(--primary-color);
   border: none;
   width: 100%;
@@ -471,15 +498,50 @@ a.active:hover {
 }
 
 /* constrolers do calendario */
-.fc .fc-button-primary,.fc .fc-button-primary:hover, .fc .fc-button-primary:disabled {
+
+.fc .fc-button-primary, .fc .fc-button-primary:hover, .fc .fc-button-primary:disabled {
   background-color: var(--secundary-color);
   border: none;
 }
 
-.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
   background-color: var(--purple-light);
   opacity: 0.5;
   border-color: none;
+}
+
+/* Blog */
+
+#carousel {
+  background: #fff;
+}
+
+#carousel div.carousel-inner {
+  width: 100%; 
+  height: 50vh;
+  object-fit: contain;
+}
+
+#carousel div.carousel-item img{ 
+  width: 100%;
+  height: 50vh;
+  object-fit: contain;
+}
+
+#Blog h1 {
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+#Blog div.card {
+  height: 95%;
+  background: linear-gradient(var(--primary-color), rgba(124, 79, 228, 0.247));
+  border: none;
+  transition: 0.5s;
+}
+
+#Blog div.card:hover {
+  transform: translateY(-10px);
 }
 
 @media (max-width: 1000px) {
@@ -501,5 +563,21 @@ a.active:hover {
   /* menu */
   #mySidenav a {
     font-size: 18px;
+  }
+  /* calendario */
+  #CalendarTitle {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #CalendarItem {
+    flex-direction: column;
+  }
+  #CalendarItem div.col-md-4 {
+    margin-bottom: 2rem;
+  }
+  #SearchContainer input {
+    width: 90%;
   }
 }

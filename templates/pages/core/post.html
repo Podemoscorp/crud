@@ -27,7 +27,7 @@
         </div>
 
         <div class="py-5">
-            <h3>Postado por: <a href="{% url 'perfil' post.poster.id %}">{{post.poster.get_full_name}}</a></h3>
+            <h3>Postado por: <a href="{% url 'perfil' post.poster.id %}" class="text-body">{{post.poster.get_full_name}}</a></h3>
 
             <div class="d-flex">
                 <picture>
