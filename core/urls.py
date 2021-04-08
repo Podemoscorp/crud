@@ -21,6 +21,8 @@ urlpatterns = [
     path("imagens/", views.images, name="imagens"),
     path("image/<int:id>", views.image, name="image"),
     path("upload/image/", views.upload_image, name="image"),
+    path("ranking/", views.ranking, name="ranking"),
+    path("updater/", views.update_ranking),
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

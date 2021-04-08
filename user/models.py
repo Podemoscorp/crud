@@ -17,6 +17,15 @@ import jwt
 
 class School(models.Model):
     name = models.CharField(max_length=200, blank=False)
+    created = models.DateTimeField(
+        _("created in"),
+        blank=True,
+        default=timezone.now,
+        help_text=_("creation date"),
+    )
+
+    def __str__(self):
+        return self.name
 
 
 class Role(models.Model):
@@ -181,6 +190,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     points = models.IntegerField()
 
+    classification = models.IntegerField(blank=True, default=0)
+
     objects = UserManager()
 
     EMAIL_FIELD = "email"
@@ -256,6 +267,3 @@ class User(AbstractBaseUser, PermissionsMixin):
         except:
             return None
         return token
-
-    def get_points(self):
-        ...
