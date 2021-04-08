@@ -191,12 +191,10 @@ def calendario(request):
 def evento(request, id):
     evento = Event.objects.all().filter(id=id).get()
 
-    if evento:
-        ...
-    else:
+    if not evento:
         return redirect("index")
 
-    return render(request, "pages/core/evento.html")
+    return render(request, "pages/core/evento.html", {"evento":evento})
 
 
 def dashboard(request):
