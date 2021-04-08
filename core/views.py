@@ -194,7 +194,7 @@ def evento(request, id):
     if not evento:
         return redirect("index")
 
-    return render(request, "pages/core/evento.html", {"evento":evento})
+    return render(request, "pages/core/evento.html", {"evento": evento})
 
 
 def dashboard(request):
@@ -246,26 +246,27 @@ def image(request, id):
 def upload_image(request):
     return render(request, "pages/core/upload_image.html")
 
+
 def update_ranking(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
             users = User.objects.all().order_by("-points")
             ct = 1
-            
+
             for i, user in enumerate(users):
                 if i == 0:
                     user.classification = 1
                 else:
-                    if user.points == users[i-1].points:
+                    if user.points == users[i - 1].points:
                         user.classification = ct
                     else:
-                        ct+=1
+                        ct += 1
                         user.classification = ct
 
                 user.save()
 
-            return redirect('index')
+            return redirect("index")
         else:
-            return redirect('index')
+            return redirect("index")
     else:
-        return redirect('index')
+        return redirect("index")
