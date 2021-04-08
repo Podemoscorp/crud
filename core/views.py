@@ -206,13 +206,17 @@ def dashboard(request):
         posts = Post.objects.all().filter(poster=request.user).count()
         news = New.objects.all().filter(poster=request.user).count()
         cursos_lecionados = Course.objects.all().filter(teacher=request.user).count()
+        cursos_em_andamento = Registration.objects.all().filter(finished=None).count()
+        cursos_terminados = matriculas-cursos_em_andamento
 
         dados = {
             "certificados": certificados,
             "matriculas": matriculas,
             "posts": posts,
             "news": news,
-            "cursos": cursos_lecionados,
+            "cursos_lecionados": cursos_lecionados,
+            "cursos_em_andamento": cursos_em_andamento,
+            "cursos_terminados":cursos_terminados
         }
 
         return render(request, "pages/core/dashboard.html", dados)
