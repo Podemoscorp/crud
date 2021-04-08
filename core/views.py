@@ -224,7 +224,7 @@ def dashboard(request):
 
 
 def ranking(request):
-    users = User.objects.all().order_by("classification")
+    users = User.objects.all().filter(soft_delet=None).order_by("classification")
 
     paginator = Paginator(users, 30)
     page_number = 1
@@ -250,7 +250,7 @@ def upload_image(request):
 def update_ranking(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
-            users = User.objects.all().order_by("-points")
+            users = User.objects.all().filter(soft_delet=None).order_by("-points")
             ct = 1
 
             for i, user in enumerate(users):
