@@ -156,15 +156,6 @@
                         </li>
 
                     {% endif %} 
-
-                        <li>
-                            <a href="{% url 'logout' %}" class='px-3 w-100 d-flex justify-content-center'>
-                                <div class='d-flex align-items-center flex-column'>
-                                    <!-- <img src="{% static '/images/Sair.svg' %}" alt="Sair"> -->
-                                    Sair
-                                </div>
-                            </a>
-                        </li>
                     {% if user.is_staff %}
                         <li>
                             <a href="/admin/" class='px-3 w-100 d-flex justify-content-center'>
@@ -175,15 +166,6 @@
                             </a>
                         </li>
                     {% endif %}
-                {% else %}
-                    <li>
-                        <a href="/user/login" class='px-3 w-100 d-flex justify-content-center'>
-                            <div class='d-flex align-items-center flex-column'>
-                                <!-- <img src="{% static '/images/Administração.svg' %}" alt="Administração"> -->
-                                Login
-                            </div>
-                        </a>
-                    </li>
                 {% endif %}
             </ul>
         </nav>
@@ -193,7 +175,7 @@
         </button>
     </section>
 </section>
-<span onclick="openNav()" class='openNav'>open</span>
+<span onclick="openNav()" class='openNav'>&#9776;</span>
 
 {% block script %}
 <script>
