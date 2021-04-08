@@ -1,3 +1,4 @@
+from user.models import User
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from core.models import (
@@ -199,8 +200,37 @@ def evento(request, id):
 
 
 def dashboard(request):
-    return render(request, "pages/core/dashboard.html")
+    if request.user.is_authenticated:
+        certificados = Certificate.objects.all().filter(student=request.user).count()
+        matriculas = Registration.objects.all().filter(student=request.user).count()
+        posts = Post.objects.all().filter(poster=request.user).count()
+        news = New.objects.all().filter(poster=request.user).count()
+        cursos_lecionados = Course.objects.all().filter(teacher=request.user).count()
 
+        dados = {
+            "certificados":certificados,
+            "matriculas":matriculas,
+            "posts":posts,
+            "news":news,
+            "cursos":cursos_lecionados
+        }
+
+        return render(request, "pages/core/dashboard.html", dados)
+    
+    else:
+        return redirect('index')
+
+def ranking(request):
+    users = User.objects.all().order_by('-points')
+
+    paginator = Paginator(users, 30)
+    page_number = 1
+    if "page" in request.GET:
+        page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+
+    return render(request, "pages/core/ranking.html", {"users": page_obj})
 
 def images(request):
     return render(request, "pages/core/images.html")
