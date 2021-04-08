@@ -208,20 +208,21 @@ def dashboard(request):
         cursos_lecionados = Course.objects.all().filter(teacher=request.user).count()
 
         dados = {
-            "certificados":certificados,
-            "matriculas":matriculas,
-            "posts":posts,
-            "news":news,
-            "cursos":cursos_lecionados
+            "certificados": certificados,
+            "matriculas": matriculas,
+            "posts": posts,
+            "news": news,
+            "cursos": cursos_lecionados,
         }
 
         return render(request, "pages/core/dashboard.html", dados)
-    
+
     else:
-        return redirect('index')
+        return redirect("index")
+
 
 def ranking(request):
-    users = User.objects.all().order_by('-points')
+    users = User.objects.all().order_by("-points")
 
     paginator = Paginator(users, 30)
     page_number = 1
@@ -229,8 +230,8 @@ def ranking(request):
         page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-
     return render(request, "pages/core/ranking.html", {"users": page_obj})
+
 
 def images(request):
     return render(request, "pages/core/images.html")
