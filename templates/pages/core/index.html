@@ -29,7 +29,7 @@
         <div class="carousel-inner">
             {% for noticia in noticias %}
             {% if forloop.counter == 1 %}
-            <!--<a href="{% url 'noticia' noticia.id %">-->
+            <a href="{% url 'noticia' noticia.id %}">
             <div class="carousel-item active">
                 <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
                 <div class="carousel-caption d-none d-md-block">
@@ -37,9 +37,9 @@
                     <p class="text-center">{{noticia.abstract}}</p>
                 </div>
             </div>
-            <!--</a>-->
+            </a>
             {% else %}
-            <!--<a href="{% url 'noticia' noticia.id %">-->
+            <a href="{% url 'noticia' noticia.id %}">
             <div class="carousel-item">
                 <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
                 <div class="carousel-caption d-none d-md-block">
@@ -47,7 +47,7 @@
                     <p class="text-center">{{noticia.abstract}}</p>
                 </div>
             </div>
-            <!--</a>-->
+            </a>
             {% endif %}
             {% endfor %}
         </div>
