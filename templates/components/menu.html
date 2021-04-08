@@ -7,12 +7,12 @@
             <img src="{% static 'images/close.svg' %}" class="closebtn" onclick='closeNav()' />
             <ul class='p-0 position-relative'>
                 <!-- Home -->
-                {% if  request.get_full_path == "https://podemos-crud.herokuapp.com/" %}
+                {% if  request.path == "/" %}
                     <li>
                         <div>
                             <a href="{% url 'index' %}" class='px-3 w-100 d-flex justify-content-center active'>
                                 <div class='d-flex align-items-center flex-column'>
-                                        <img src="{% static '/images/home-primary.svg' %}" alt="Home">
+                                    <img src="{% static '/images/home-primary.svg' %}" alt="Home">
                                     Home
                                 </div>
                             </a>
@@ -21,10 +21,10 @@
                         <div class='position-absolute sub-menu sr-only'>
                             <h3>CONTEÚDOS</h3>
                             <ul class='p-0 d-flex flex-column'>
-                                <a href="#Inicio">Início</a>
-                                <a href="#Artigos">Artigos</a>
-                                <a href="#Artigos">Artigos</a>
-                                <a href="#Quem-somos?">Quem somos?</a>
+                                <a href="#inicio">Início</a>
+                                <a href="#olimpiadas">Olimpíadas</a>
+                                <a href="#artigos">Artigos</a>
+                                <a href="#QuemSomos">Quem somos?</a>
                             </ul>
                         </div>
                     </li>

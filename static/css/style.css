@@ -12,6 +12,7 @@
 }
 
 /* Formatações geral */
+
 * {
   padding: 0;
   margin: 0;
@@ -74,10 +75,11 @@ main {
 header {
   display: flex;
   justify-content: space-between;
-  color: var(--white);
+  color: var(--white)
 }
 
 /*==============>utils (pode ser usado muitas vezes)*/
+
 .yellow {
   color: var(--secundary-color);
 }
@@ -127,6 +129,7 @@ header {
 }
 
 /*==============>formatações especificas*/
+
 .back {
   margin-bottom: 2rem;
 }
@@ -139,12 +142,14 @@ header {
 isso aqui é um hack do css para quando tiver um auto complete
 ele não mudar a cor de fundo do input 
 */
+
 .auto_complete {
   -webkit-box-shadow: 0 0 0 30px #eeeeee inset;
   -webkit-text-fill-color: var(--light-gray);
 }
 
 /*==============>Formularios*/
+
 form {
   margin: 2rem 0;
 }
@@ -157,20 +162,21 @@ form input {
   font-size: 1.2rem;
 }
 
-input ~ label {
+input~label {
   position: absolute;
   top: 20%;
   left: 2%;
   transition: 0.4s;
 }
 
-input:focus ~ label, input:valid ~ label {
+input:focus~label, input:valid~label {
   transform: translateY(-24px);
   font-size: 0.8em;
   letter-spacing: 0.1em;
 }
 
 /*==============>apenas login*/
+
 #buttons_container {
   margin: 2rem 0;
 }
@@ -187,6 +193,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>Cadastro*/
+
 .button-next {
   color: var(--primary-color);
   background-color: var(--purple-light);
@@ -210,6 +217,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>parte da "logo"*/
+
 #page-logo {
   font: "Poppins";
   padding: 0 2.5rem;
@@ -230,6 +238,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>reset password*/
+
 #form-container {
   margin-top: 25vh;
 }
@@ -253,6 +262,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>reset password done*/
+
 #ResetPasswordDone {
   background: var(--primary-color) url("{% static 'images/Bolinhas-success.svg' %}") center;
 }
@@ -275,6 +285,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============> MENU */
+
 .myTab a {
   color: var(--white);
 }
@@ -283,7 +294,7 @@ input:focus ~ label, input:valid ~ label {
   color: var(--white);
 }
 
-.myTab ul > li:first-child a {
+.myTab ul>li:first-child a {
   margin: 1.5rem 0 0 0;
 }
 
@@ -340,7 +351,7 @@ a.active:hover {
 
 #mySidenav .closebtn {
   position: absolute;
-  top: 0.3rem;
+  top: .3rem;
   left: 6.5rem;
   width: 1rem;
 }
@@ -356,6 +367,7 @@ a.active:hover {
 }
 
 /*==============> Sub menu */
+
 .sub-menu {
   left: 8rem;
   top: 1.5rem;
@@ -382,16 +394,17 @@ a.active:hover {
 }
 
 /*==============> BARRA DE PESQUISA */
+
 #SearchContainer {
   background: var(--white);
   width: calc(100% - 8rem);
-  padding: 0.3rem 0;
+  padding: .3rem 0;
 }
 
 #Search {
   display: flex;
   background-color: var(--white-secundary);
-  margin: 0.3rem 3rem 0.3rem 0;
+  margin: .3rem 3rem .3rem 0;
   height: 2rem;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -414,8 +427,8 @@ a.active:hover {
 }
 
 #SearchContainer .search-button button {
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.7rem;
+  padding: .5rem 1.5rem;
+  border-radius: .7rem;
   margin-left: 1.5rem;
 }
 
@@ -429,6 +442,7 @@ a.active:hover {
 }
 
 /*==============>Calendar*/
+
 #CalendarContainer {
   display: flex;
   justify-content: center;
@@ -470,8 +484,8 @@ a.active:hover {
   color: var(--primary-color);
   border: none;
   width: 100%;
-  padding: 0.4rem;
-  border-radius: 0.5rem;
+  padding: .4rem;
+  border-radius: .5rem;
   box-shadow: 1px 1px 1px 1px var(--gray);
 }
 
@@ -480,7 +494,7 @@ a.active:hover {
 }
 
 #CalendarItem a.fc-daygrid-day-number {
-  color: var(--black);
+  color: var(--black)
 }
 
 #CalendarItem a.fc-daygrid-week-number {
@@ -488,6 +502,7 @@ a.active:hover {
 }
 
 /* constrolers do calendario */
+
 .fc .fc-button-primary, .fc .fc-button-primary:hover, .fc .fc-button-primary:disabled {
   background-color: var(--secundary-color);
   border: none;
@@ -500,6 +515,7 @@ a.active:hover {
 }
 
 /* Blog */
+
 #carousel {
   background: #fff;
 }
@@ -533,6 +549,7 @@ a.active:hover {
 }
 
 /* Footer */
+
 #Footer {
   display: flex;
   align-items: center;
@@ -561,6 +578,125 @@ a.active:hover {
   width: 70%;
 }
 
+/* INDEX HOME */
+
+/* utils home */
+
+.rounded-home {
+  border-radius: 1rem;
+}
+
+.BorderBottom {
+  position: absolute;
+  top: 5rem;
+  left: 2%;
+  opacity: .8;
+  border-radius: 3rem;
+  width: 20rem;
+}
+
+#olimpiadas h1:first-child, #artigos h1:first-child, #cursos h1:first-child, #QuemSomos h1:first-child {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#olimpiadas, #cursos {
+  position: relative;
+  border-right: .5rem solid var(--secundary-color);
+}
+
+#olimpiadas .BorderBottom, #cursos .BorderBottom, #QuemSomos .BorderBottom {
+  border-bottom: 1.5rem solid var(--secundary-color);
+}
+
+#artigos .BorderBottom {
+  border-bottom: 1.5rem solid var(--primary-color);
+}
+
+.ArticleContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5%;
+}
+
+.ArticleContainer a {
+  color: var(--light-gray);
+}
+
+.ArticleContainer a:hover {
+  color: var(--light-gray);
+}
+
+.ArticleContainer div.card, .ArticleContainer div.card-footer {
+  border: none;
+  background: none;
+}
+
+.ArticleContainer div.card {
+  margin-top: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 3px 1px 0 var(--light-gray);
+  height: 100%;
+}
+
+.ArticleContainer div.card img {
+  border-radius: 1.5rem 1.5rem 0 0;
+  max-height: 173px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#carousel_cursos {
+  background-color: var(--primary-color);
+  height: 100%;
+  border-radius: 2rem;
+}
+
+#carousel_cursos div.carousel-inner {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 2rem;
+}
+
+#carousel_cursos div.carousel-item img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.image-carousel {
+  width: 100%;
+  height: 400px;
+}
+
+#QuemSomos {
+  border-bottom: .2rem;
+  border-right: .5rem;
+  border-top: 0;
+  border-left: 0;
+  border-color: var(--secundary-color);
+  border-style: solid;
+}
+
+#QuemSomos img {
+  width: 200px;
+  height: 200px;
+}
+
+#QuemSomos p.text-justify {
+  padding: 0 .5rem;
+  font-size: 1.2rem;
+}
+
+#QuemSomos div.TextDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
@@ -574,90 +710,104 @@ a.active:hover {
     white-space: nowrap;
     border-width: 0;
   }
-
   .space {
     padding: 0 6%;
   }
-
   /* menu */
   #mySidenav a {
     font-size: 18px;
   }
-
   /* calendario */
   #CalendarTitle {
     padding-left: 1rem;
   }
-
   #Footer div.text-center img {
     width: 10%;
   }
+  /* home */
+  .BorderBottom {
+    top: 4.5rem;
+  }
+  #carousel_cursos {
+    background-color: var(--primary-color);
+    height: 200px;
+    border-radius: 2rem;
+  }
+  #carousel_cursos div.carousel-inner {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 2rem;
+  }
+  #carousel_cursos div.carousel-item img {
+    width: 100%;
+    object-fit: contain;
+  }
+  .image-carousel {
+    width: 100%;
+    height: 200px;
+  }
+  #QuemSomos div.TextDescription {
+    flex-direction: column;
+  }
 }
+
 /* Mobile */
+
 @media (max-width: 700px) {
   /* calendario */
   #CalendarItem {
     flex-direction: column;
   }
-
   #CalendarItem div.col-md-4 {
     margin-bottom: 2rem;
   }
-
   /* menu */
   span.openNav {
     width: 3rem;
   }
-
   /* munu superior */
   #SearchContainer {
     width: calc(100% - 3rem);
   }
-
   #Search {
     max-width: 50%;
   }
-
   #Search .SearchInput input {
     width: 100%;
-    font-size: 0.9rem;
+    font-size: .9rem;
   }
-
   #SearchContainer .search-button {
-    margin-right: 0.5rem;
+    margin-right: .5rem;
   }
-
   #SearchContainer .search-button button {
-    padding: 0.5rem 1rem;
-    border-radius: 0.7rem;
+    padding: .5rem 1rem;
+    border-radius: .7rem;
     margin-left: 0;
   }
-
   /* rodapé */
   #Footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
-
-  #Footer > div:first-child {
+  #Footer>div:first-child {
     display: flex;
   }
-
-  #Footer > div {
+  #Footer>div {
     grid-column-start: 1;
     grid-column-end: 3;
   }
-
   #Footer-Logo {
     width: 30%;
     margin-right: 5%;
   }
-
   #Footer div.d-flex {
     flex-direction: row;
     justify-content: space-around;
   }
+  /* home */
+  .BorderBottom {
+    top: 4rem;
+  }
 }
-
-/*# sourceMappingURL=style.css.map */
