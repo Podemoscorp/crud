@@ -5,88 +5,95 @@
 {% block title %}Home{% endblock %}
 
 {% block menu %}
-    {% include 'components/menu.html' %}
-    {% include 'components/Search.html' %}
+{% include 'components/menu.html' %}
+{% include 'components/Search.html' %}
 {% endblock %}
 
 {% block content %}
 
-<section class="container py-5" id="inicio">
+<section class="container py-5 bg-white my-5 rounded-home" id="inicio">
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
             {% for noticia in noticias %}
-                {% if forloop.counter == 1 %}
-                    <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
-                {% else %}
-                    <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}' aria-label="Slide {{ forloop.counter }}"></button>
-                {% endif %}
-            {% endfor %}
-        </div>
-        
-        <div class="carousel-inner">
-            {% for noticia in noticias %}
-                {% if forloop.counter == 1 %}
-                    <!--<a href="{% url 'noticia' noticia.id %">-->
-                        <div class="carousel-item active">
-                            <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{noticia.title}}</h5>
-                                <p class="text-center">{{noticia.abstract}}</p>
-                            </div>
-                        </div>
-                    <!--</a>-->
-                {% else %}
-                    <!--<a href="{% url 'noticia' noticia.id %">-->
-                        <div class="carousel-item">
-                            <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{noticia.title}}</h5>
-                                <p class="text-center">{{noticia.abstract}}</p>
-                            </div>
-                        </div>
-                    <!--</a>-->
-                {% endif %}
+            {% if forloop.counter == 1 %}
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}'
+                class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+            {% else %}
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to='{{ forloop.counter|add:"-1" }}'
+                aria-label="Slide {{ forloop.counter }}"></button>
+            {% endif %}
             {% endfor %}
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel"  data-bs-slide="prev">
-            <img src="{% static 'images/left arrow.svg' %}" class="carousel-control-prev-icon" aria-hidden="true" alt="left"></img>
+        <div class="carousel-inner">
+            {% for noticia in noticias %}
+            {% if forloop.counter == 1 %}
+            <!--<a href="{% url 'noticia' noticia.id %">-->
+            <div class="carousel-item active">
+                <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{noticia.title}}</h5>
+                    <p class="text-center">{{noticia.abstract}}</p>
+                </div>
+            </div>
+            <!--</a>-->
+            {% else %}
+            <!--<a href="{% url 'noticia' noticia.id %">-->
+            <div class="carousel-item">
+                <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{noticia.title}}</h5>
+                    <p class="text-center">{{noticia.abstract}}</p>
+                </div>
+            </div>
+            <!--</a>-->
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <img src="{% static 'images/left arrow.svg' %}" class="carousel-control-prev-icon" aria-hidden="true"
+                alt="left"></img>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel"  data-bs-slide="next">
-            <img src="{% static 'images/right arrow.svg' %}" class="carousel-control-next-icon" aria-hidden="true"></img>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <img src="{% static 'images/right arrow.svg' %}" class="carousel-control-next-icon"
+                aria-hidden="true"></img>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 </section>
 
-<section class="container py-5" id="olimpiadas">
-    <h1>Olimpiadas</h1>
-
+<section class="container py-5 px-5 bg-white my-5 rounded-home" id="olimpiadas">
+    <h1>OLIMPÍADAS</h1>
+    <div class="BorderBottom"></div>
     <p class="text-justify">
-        
-
-As <strong>olimpíadas do conhecimento</strong> são capazes de trazer ao aluno uma experiência além-escola, de forma a construir um <strong>conhecimento mais aprofundado</strong> sobre assuntos que vão desde matemática até biologia. 
-Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos em um determinado período de tempo e, ademais, os alunos que se destacam recebem <strong>medalhas e certificados</strong>. 
-
-
+        As <strong>olimpíadas do conhecimento</strong> são capazes de trazer ao aluno uma experiência além-escola, de
+        forma a construir um <strong>conhecimento mais aprofundado</strong> sobre assuntos que vão desde matemática até
+        biologia.
+        Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos em um determinado período de tempo
+        e, ademais, os alunos que se destacam recebem <strong>medalhas e certificados</strong>.
     </p>
 </section>
 
-<section class="container py-5" id="artigos">
-    <h1>Artigos</h1>
-    <div class="row">
+<section class="container py-5 px-5 bg-white my-5 rounded-home position-relative" id="artigos">
+    <h1>ARTIGOS</h1>
+    <div class="BorderBottom"></div>
+    <div class="ArticleContainer">
         {% for post in posts %}
-        <div class="col-md-4 py-4">
+        <div>
             <a href="{% url 'post' post.id %}" class="text-decoration-none">
                 <div class="card">
                     {% if post.image %}
-                        <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
+                    <img src="{{post.image.url}}" class="card-img-top img-fluid" alt="{{post.title}}">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title text-body text-decoration-none">{{post.title}}</h5>
                     </div>
+                </div>
+                <div class="card-footer">
+                    {{post.decription}}
                 </div>
             </a>
         </div>
@@ -94,54 +101,54 @@ Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos
     </div>
 </section>
 
-<section class="container py-5" id="cursos">
-    <h1>Cursos</h1>
-    <div class="row mx-auto my-auto">
+<section class="container py-5 px-5 bg-white my-5 rounded-home position-relative" id="cursos">
+    <h1>CURSOS</h1>
+    <div class="BorderBottom"></div>
+
+    <div class="my-5">
         <div id="carousel_cursos" class="carousel slide" data-bs-ride="carousel">
-            
-            <div class="carousel-inner w-100" role="listbox">
+            <div class="carousel-inner" role="listbox">  
                 {% for tipo in tipos_de_cursos %}
                     {% if forloop.counter == 1 %}
-                        <div class="carousel-item active col-md-4">
-                            <div class="card card-body">
-                                <img src="{{tipo.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
-                            </div>
+                        <div class="carousel-item active"> 
+                            <img src="{{tipo.image.url}}" class="image-carousel" alt="{{noticia.title}}"> 
                         </div>
                     {% else %}
-                        <div class="carousel-item col-md-4">
-                            <div class="card card-body">
-                                <img src="{{tipo.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
-                            </div>
+                        <div class="carousel-item"> 
+                            <img src="{{tipo.image.url}}" class="image-carousel" alt="{{noticia.title}}"> 
                         </div>
                     {% endif %}
                 {% endfor %}
             </div>
-    
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel_cursos"  data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel_cursos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"
+                    alt="left"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel_cursos"  data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel_cursos" data-bs-slide="next">
+                <span  class="carousel-control-next-icon"
+                    aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     </div>
 </section>
 
-<section class="container py-5" id="quem-somos">
-    <h1>Quem somos</h1>
+<section class="container py-5 px-5 bg-white my-5 rounded-home position-relative" id="QuemSomos"> 
+    <h1>QUEM SOMOS</h1>
+    <div class="BorderBottom"></div> 
 
-    <div class="row">
-        <div class="col-md-4">
-            <img src="{% static 'img/otavio.svg' %}" alt="Otavio Sales" class="img-fluid px-5">
+    <div class='TextDescription'>
+        <div>
+            <img src="{% static 'img/otavio.svg' %}" alt="Otavio Sales">
         </div>
-        <div class="col-md-8">
-            <p class="text-justify px-5">
-                O <strong>PODEMOS nasceu em 2018 como uma ONG 
-                fundada por Otávio Sales</strong> no intuito de democratizar
-                o acesso às <strong>olimpíadas científicas</strong>, principalmente
-                as de matemática, disciplina esta que é a sua 
+        <div class='TextDescription'>
+            <p class="text-justify">
+                O <strong>PODEMOS nasceu em 2018 como uma ONG fundada por Otávio Sales</strong>
+                no intuito de democratizar o acesso às 
+                <strong>olimpíadas científicas</strong>, 
+                principalmente as de matemática, disciplina esta que é a sua
                 maior paixão. Desde então, a sua iniciativa alcançou
                 inúmeros resultados, e não apenas em competições
                 de matemática.
@@ -153,6 +160,5 @@ Nestas competições, há <strong>provas ou desafios</strong> a serem resolvidos
 {% endblock %}
 
 {% block footer %}
-    {% include 'components/footer.html' %}
+{% include 'components/footer.html' %}
 {% endblock %}
-

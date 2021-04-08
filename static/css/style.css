@@ -578,6 +578,125 @@ a.active:hover {
   width: 70%;
 }
 
+/* INDEX HOME */
+
+/* utils home */
+
+.rounded-home {
+  border-radius: 1rem;
+}
+
+.BorderBottom {
+  position: absolute;
+  top: 5rem;
+  left: 2%;
+  opacity: .8;
+  border-radius: 3rem;
+  width: 20rem;
+}
+
+#olimpiadas h1:first-child, #artigos h1:first-child, #cursos h1:first-child, #QuemSomos h1:first-child {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#olimpiadas, #cursos {
+  position: relative;
+  border-right: .5rem solid var(--secundary-color);
+}
+
+#olimpiadas .BorderBottom, #cursos .BorderBottom, #QuemSomos .BorderBottom {
+  border-bottom: 1.5rem solid var(--secundary-color);
+}
+
+#artigos .BorderBottom {
+  border-bottom: 1.5rem solid var(--primary-color);
+}
+
+.ArticleContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5%;
+}
+
+.ArticleContainer a {
+  color: var(--light-gray);
+}
+
+.ArticleContainer a:hover {
+  color: var(--light-gray);
+}
+
+.ArticleContainer div.card, .ArticleContainer div.card-footer {
+  border: none;
+  background: none;
+}
+
+.ArticleContainer div.card {
+  margin-top: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 3px 1px 0 var(--light-gray);
+  height: 100%;
+}
+
+.ArticleContainer div.card img {
+  border-radius: 1.5rem 1.5rem 0 0;
+  max-height: 173px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#carousel_cursos {
+  background-color: var(--primary-color);
+  height: 100%;
+  border-radius: 2rem;
+}
+
+#carousel_cursos div.carousel-inner {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 2rem;
+}
+
+#carousel_cursos div.carousel-item img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.image-carousel {
+  width: 100%;
+  height: 400px;
+}
+
+#QuemSomos {
+  border-bottom: .2rem;
+  border-right: .5rem;
+  border-top: 0;
+  border-left: 0;
+  border-color: var(--secundary-color);
+  border-style: solid;
+}
+
+#QuemSomos img {
+  width: 200px;
+  height: 200px;
+}
+
+#QuemSomos p.text-justify {
+  padding: 0 .5rem;
+  font-size: 1.2rem;
+}
+
+#QuemSomos div.TextDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
@@ -604,6 +723,32 @@ a.active:hover {
   }
   #Footer div.text-center img {
     width: 10%;
+  }
+  /* home */
+  .BorderBottom {
+    top: 4.5rem;
+  }
+  #carousel_cursos {
+    background-color: var(--primary-color);
+    height: 200px;
+    border-radius: 2rem;
+  }
+  #carousel_cursos div.carousel-inner {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 2rem;
+  }
+  #carousel_cursos div.carousel-item img {
+    width: 100%;
+    object-fit: contain;
+  }
+  .image-carousel {
+    width: 100%;
+    height: 200px;
+  }
+  #QuemSomos div.TextDescription {
+    flex-direction: column;
   }
 }
 
@@ -660,5 +805,9 @@ a.active:hover {
   #Footer div.d-flex {
     flex-direction: row;
     justify-content: space-around;
+  }
+  /* home */
+  .BorderBottom {
+    top: 4rem;
   }
 }
