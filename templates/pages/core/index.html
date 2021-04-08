@@ -29,22 +29,22 @@
         <div class="carousel-inner">
             {% for noticia in noticias %}
             {% if forloop.counter == 1 %}
-            <a href="{% url 'noticia' noticia.id %}">
+            
             <div class="carousel-item active">
                 <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>{{noticia.title}}</h5>
-                    <p class="text-center">{{noticia.abstract}}</p>
+                    <h5><a href="{% url 'noticia' noticia.id %}">{{noticia.title}}</a></h5>
+                    <p class="text-center"><a href="{% url 'noticia' noticia.id %}">{{noticia.abstract}}</a></p>
                 </div>
             </div>
-            </a>
+            
             {% else %}
             <a href="{% url 'noticia' noticia.id %}">
             <div class="carousel-item">
                 <img src="{{noticia.image.url}}" class="d-block w-100" alt="{{noticia.title}}">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>{{noticia.title}}</h5>
-                    <p class="text-center">{{noticia.abstract}}</p>
+                    <h5><a href="{% url 'noticia' noticia.id %}">{{noticia.title}}</a></h5>
+                    <p class="text-center"><a href="{% url 'noticia' noticia.id %}">{{noticia.abstract}}</a></p>
                 </div>
             </div>
             </a>
