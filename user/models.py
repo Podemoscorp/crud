@@ -232,15 +232,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-    def get_reset_password_token(self):  # Cria um token para redefinição de senha
-        date_hours = timezone.now()
-        token = jwt.encode(
-            {"id": self.id, "email": self.email, "expira": str(date_hours), "type": 0},
-            SECRET_KEY,
-            "HS256",
-        )
-        return token
-
     def get_confirm_email_token(self):  # Cria um token para verificação de email
         date_hours = timezone.now()
         token = jwt.encode(
@@ -248,15 +239,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             SECRET_KEY,
             "HS256",
         )
-        return token
-
-    def verify_reset_password_token(
-        self, token
-    ):  # Verifica token para redefinição de senha
-        try:
-            token = jwt.decode(token, SECRET_KEY, algorithms="HS256")
-        except:
-            return None
         return token
 
     def verify_confirm_email_token(
