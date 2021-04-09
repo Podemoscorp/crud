@@ -240,11 +240,38 @@ def images(request):
 
 
 def image(request, id):
+    if request.user.is_authenticated:
+        if request.user.role.value > 1:
+            imagem = Image.objects.get(id=id)
+            if not imagem:
+                return redirect("index")
+
+            return render(request, "pages/core/image.html", {"imagem": imagem})
+        else:
+            return redirect("index")
+    else:
+        return redirect("login")
+
     return render(request, "pages/core/image.html")
 
 
 def upload_image(request):
-    return render(request, "pages/core/upload_image.html")
+    if request.user.is_authenticated:
+        if request.user.role.value > 1:
+            if request.method == "POST":
+                nome = request.POST["name"]
+                imagem = request.FILES["imagem"]
+
+                image = Image(name=nome, image=imagem, uploader=request.user)
+                image.save()
+
+                return redirect("upload_image")
+
+            return render(request, "pages/core/upload_image.html")
+        else:
+            return redirect("index")
+    else:
+        return redirect("login")
 
 
 def update_ranking(request):
