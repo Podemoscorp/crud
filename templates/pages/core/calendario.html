@@ -27,7 +27,7 @@
         <div class="d-flex" id="CalendarItem">
             <div class="col-md-4">
                 <div class="SelectContainer">
-                    <label for="">Tipo de evento</label>
+                    <label for="type">Tipo de evento</label>
                     <select name="type" id="type">
                         <option value="D">Todos</option>
                         <option value="A">Olimpíadas</option>
@@ -47,9 +47,9 @@
                 </div>
                 -->
                 <div class="SelectContainer">
-                    <label for="">Região</label>
+                    <label for="region">Região</label>
                     <select name="region" id="region">
-                        <option value="D">Todos</option>
+                        <option value="C">Todos</option>
                         <option value="A">Nacional</option>
                         <option value="B">Internacional</option>
                     </select>
@@ -76,11 +76,11 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        let data = new Date;
+        var data = new Date;
 
-        let calendarEl = document.getElementById('calendar');
+        var calendarEl = document.getElementById('calendar');
 
-        let calendar = new FullCalendar.Calendar(calendarEl, {
+        var calendar = new FullCalendar.Calendar(calendarEl, {
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -100,37 +100,13 @@
             events: [],
         });
 
-        $.ajax({
-            url: "{% url 'calendario' %}",
-            method: "GET",
-            data: {
-                "type": "D",
-                "region": "C",
-            },
-            dataType: 'json',
-            success: data => {
-                calendar.removeAllEvents();
-                data.forEach(element => {
-                    let obj = {
-                        title: element["fields"]["title"],
-                        url: '/evento/' + element["pk"],
-                        start: element["fields"]["starts_at"].slice(0, -1),
-                        end: element["fields"]["ends_in"].slice(0, -1)
-                    };
-                    calendar.addEvent(obj);
-                });
-            },
-            error: data => console.error(data)
-
-        })
-
-        $("select[name='type']").change(() => {
+        function updateData(){
             $.ajax({
                 url: "{% url 'calendario' %}",
                 method: "GET",
                 data: {
-                    "type": $(this).val(),
-                    "region": $("select[name='region']").val(),
+                    "tipo": $("#type option:selected").val(),
+                    "regiao": $("#region option:selected").val(),
                 },
                 dataType: 'json',
                 success: data => {
@@ -147,58 +123,16 @@
                 },
                 error: data => console.error(data)
             })
+        }
+
+        updateData();
+
+        $(document).on('change', $("#type"), function(el) {
+            updateData();
         });
-/*
-        $("select[name='information']").change(() => {
-            $.ajax({
-                url: "{% url 'calendario' %}",
-                method: "GET",
-                data: {
-                    "type": $(this).val(),
-                    "region": $("select[name='region']").val(),
-                },
-                dataType: 'json',
-                success: data => {
-                    calendar.removeAllEvents();
-                    data.forEach(element => {
-                        let obj = {
-                            title: element["fields"]["title"],
-                            url: '/evento/' + element["pk"],
-                            start: element["fields"]["starts_at"].slice(0, -1),
-                            end: element["fields"]["ends_in"].slice(0, -1)
-                        };
-                        calendar.addEvent(obj);
-                    });
-                },
-                error: data => console.error(data)
 
-            })
-        });
-*/
-        $("select[name='region']").change(() => {
-            $.ajax({
-                url: "{% url 'calendario' %}",
-                method: "GET",
-                data: {
-                    "type": $("select[name='type']").val(),
-                    "region": $(this).val(),
-                },
-                dataType: 'json',
-                success: data => {
-                    calendar.removeAllEvents();
-                    data.forEach(element => {
-                        let obj = {
-                            title: element["fields"]["title"],
-                            url: '/evento/' + element["pk"],
-                            start: element["fields"]["starts_at"].slice(0, -1),
-                            end: element["fields"]["ends_in"].slice(0, -1)
-                        };
-                        calendar.addEvent(obj);
-                    });
-                },
-                error: data => console.error(data)
-
-            })
+        $(document).on('change', $("#region"), function(el) {
+            updateData();
         });
 
         calendar.render();
