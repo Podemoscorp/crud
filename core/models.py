@@ -355,5 +355,9 @@ class Image(models.Model):
         help_text=_("image upload date"),
     )
 
+    uploader = models.ForeignKey(
+        User, blank=True, null=True, default=1, on_delete=models.SET_NULL
+    )
+
     def __str__(self):
         return self.name
