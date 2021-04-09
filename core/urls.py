@@ -19,8 +19,8 @@ urlpatterns = [
     path("calendario/", views.calendario, name="calendario"),
     path("evento/<int:id>", views.evento, name="evento"),
     path("imagens/", views.images, name="imagens"),
-    path("image/<int:id>", views.image, name="image"),
-    path("upload/image/", views.upload_image, name="image"),
+    path("imagem/<int:id>", views.image, name="image"),
+    path("upload/imagem/", views.upload_image, name="upload_image"),
     path("ranking/", views.ranking, name="ranking"),
     path("updater/", views.update_ranking),
 ]
