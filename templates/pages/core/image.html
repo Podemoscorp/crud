@@ -14,7 +14,14 @@
 
 <section class="container">
     <div>
+        <img src="{{imagem.image.url}}" alt="{{imagem.image.name}}">
 
+        <h2>Nome: {{imagem.name}}</h2>
+        <a href="{{imagem.image.url}}">{{imagem.image.url}}</a>
+        <p>Path: {{imagem.image}}</p>
+        <p>Enviada por: {{imagem.uploader.get_full_name}}</p>
+        <p>Enviada em: {{imagem.upload_in}}</p>
+        <p>{{imagem.image.name}}</p>
     </div>
 </section>
 
