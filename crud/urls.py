@@ -25,11 +25,25 @@ urlpatterns = [
     path("", include("core.urls"), name="core"),
     # social login
     path("social-auth/", include("social_django.urls", namespace="social")),
-    #reset password
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    # reset password
+    path(
+        "password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"
+    ),
+    path(
+        "password_reset/done/",
+        auth_views.PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset/done/",
+        auth_views.PasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
+    ),
 ]
 
 handler403 = "core.views.handler403"
