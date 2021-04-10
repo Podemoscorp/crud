@@ -1,3 +1,4 @@
+from user.models import User
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from core.models import (
@@ -190,16 +191,48 @@ def calendario(request):
 def evento(request, id):
     evento = Event.objects.all().filter(id=id).get()
 
-    if evento:
-        ...
-    else:
+    if not evento:
         return redirect("index")
 
-    return render(request, "pages/core/evento.html")
+    return render(request, "pages/core/evento.html", {"evento": evento})
 
 
 def dashboard(request):
-    return render(request, "pages/core/dashboard.html")
+    if request.user.is_authenticated:
+        certificados = Certificate.objects.all().filter(student=request.user).count()
+        matriculas = Registration.objects.all().filter(student=request.user).count()
+        posts = Post.objects.all().filter(poster=request.user).count()
+        news = New.objects.all().filter(poster=request.user).count()
+        cursos_lecionados = Course.objects.all().filter(teacher=request.user).count()
+        cursos_em_andamento = Registration.objects.all().filter(finished=None).count()
+        cursos_terminados = matriculas - cursos_em_andamento
+
+        dados = {
+            "certificados": certificados,
+            "matriculas": matriculas,
+            "posts": posts,
+            "news": news,
+            "cursos_lecionados": cursos_lecionados,
+            "cursos_em_andamento": cursos_em_andamento,
+            "cursos_terminados": cursos_terminados,
+        }
+
+        return render(request, "pages/core/dashboard.html", dados)
+
+    else:
+        return redirect("index")
+
+
+def ranking(request):
+    users = User.objects.all().filter(soft_delet=None).order_by("classification")
+
+    paginator = Paginator(users, 30)
+    page_number = 1
+    if "page" in request.GET:
+        page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "pages/core/ranking.html", {"users": page_obj})
 
 
 def images(request):
@@ -207,8 +240,58 @@ def images(request):
 
 
 def image(request, id):
-    return render(request, "pages/core/image.html")
+    if request.user.is_authenticated:
+        if request.user.role.value > 1:
+            imagem = Image.objects.get(id=id)
+            if not imagem:
+                return redirect("index")
+
+            return render(request, "pages/core/image.html", {"imagem": imagem})
+        else:
+            return redirect("index")
+    else:
+        return redirect("login")
 
 
 def upload_image(request):
-    return render(request, "pages/core/upload_image.html")
+    if request.user.is_authenticated:
+        if request.user.role.value > 1:
+            if request.method == "POST":
+                nome = request.POST["name"]
+                imagem = request.FILES["imagem"]
+
+                image = Image(name=nome, image=imagem, uploader=request.user)
+                image.save()
+
+                return redirect("upload_image")
+
+            return render(request, "pages/core/upload_image.html")
+        else:
+            return redirect("index")
+    else:
+        return redirect("login")
+
+
+def update_ranking(request):
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            users = User.objects.all().filter(soft_delet=None).order_by("-points")
+            ct = 1
+
+            for i, user in enumerate(users):
+                if i == 0:
+                    user.classification = 1
+                else:
+                    if user.points == users[i - 1].points:
+                        user.classification = ct
+                    else:
+                        ct += 1
+                        user.classification = ct
+
+                user.save()
+
+            return redirect("index")
+        else:
+            return redirect("index")
+    else:
+        return redirect("index")

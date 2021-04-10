@@ -231,6 +231,9 @@ class Course(models.Model):
         User, on_delete=models.CASCADE, help_text=_("Course teacher")
     )
     theme = models.CharField(_("Theme"), max_length=30, help_text=_("course theme"))
+    type = models.ForeignKey(
+        CourseType, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     def __str__(self):
         return self.name
@@ -350,6 +353,10 @@ class Image(models.Model):
         blank=True,
         default=timezone.now,
         help_text=_("image upload date"),
+    )
+
+    uploader = models.ForeignKey(
+        User, blank=True, null=True, default=1, on_delete=models.SET_NULL
     )
 
     def __str__(self):

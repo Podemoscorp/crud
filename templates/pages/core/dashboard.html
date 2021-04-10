@@ -13,7 +13,16 @@
 
 <section class="container">
     <div>
-
+        <h1>Olá {{request.user.get_full_name}}</h1>
+        <h2>Seus certificados: {{certificados}}</h2>
+        <h2>Suas matriculas: {{matriculas}}</h2>
+        <h2>Suas postagens: {{posts}}</h2>
+        <h2>Suas noticias: {{news}}</h2>
+        <h2>Seus cursos: {{cursos_lecionados}}</h2>
+        <h2>Cursos em andamento: {{cursos_em_andamento}}</h2>
+        <h2>Cursos terminados: {{cursos_terminados}}</h2>
+        <h2>Sua pontuação: {{request.user.points}}</h2>
+        <h2>Sua posição no ranking: {{request.user.classification}}</h2>
     </div>
 </section>
 
