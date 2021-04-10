@@ -252,8 +252,6 @@ def image(request, id):
     else:
         return redirect("login")
 
-    return render(request, "pages/core/image.html")
-
 
 def upload_image(request):
     if request.user.is_authenticated:

@@ -188,7 +188,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     school = models.ForeignKey(School, on_delete=models.SET_NULL, blank=True, null=True)
 
-    points = models.IntegerField()
+    points = models.IntegerField(blank=True, default=0)
 
     classification = models.IntegerField(blank=True, default=0)
 
