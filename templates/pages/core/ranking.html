@@ -25,7 +25,6 @@
             <tbody>
                 {% for user in users %}
                     <tr>
-                        <td>{{user.points}}</td>
                         <th scope="row" class='text-center position'>{{user.classification}}</th>
                         <td class='name'>{{user.get_full_name}}</td>
                         <td class="points">{{user.points}}</td>
