@@ -788,6 +788,37 @@ a.active:hover {
   flex-direction: column;
 }
 
+/* Ranking */
+
+#Ranking {
+  margin-top: 1rem;
+}
+
+#Ranking thead tr {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#Ranking thead th {
+  width: 10%;
+}
+
+#Ranking tbody {
+  background: var(--white)
+}
+
+#Ranking .position {
+  width: 15%;
+}
+
+#Ranking .name {
+  width: 70%;
+}
+
+#Ranking .points {
+  width: 15%;
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
