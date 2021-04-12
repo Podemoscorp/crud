@@ -12,6 +12,7 @@
 }
 
 /* Formatações geral */
+
 * {
   padding: 0;
   margin: 0;
@@ -78,6 +79,7 @@ header {
 }
 
 /*==============>utils (pode ser usado muitas vezes)*/
+
 .yellow {
   color: var(--secundary-color);
 }
@@ -127,6 +129,7 @@ header {
 }
 
 /*==============>formatações especificas*/
+
 .back {
   margin-bottom: 2rem;
 }
@@ -139,12 +142,14 @@ header {
 isso aqui é um hack do css para quando tiver um auto complete
 ele não mudar a cor de fundo do input 
 */
+
 .auto_complete {
   -webkit-box-shadow: 0 0 0 30px #eeeeee inset;
   -webkit-text-fill-color: var(--light-gray);
 }
 
 /*==============>Formularios*/
+
 form {
   margin: 2rem 0;
 }
@@ -157,20 +162,21 @@ form input {
   font-size: 1.2rem;
 }
 
-input ~ label {
+input~label {
   position: absolute;
   top: 20%;
   left: 2%;
   transition: 0.4s;
 }
 
-input:focus ~ label, input:valid ~ label {
+input:focus~label, input:valid~label {
   transform: translateY(-24px);
   font-size: 0.8em;
   letter-spacing: 0.1em;
 }
 
 /*==============>apenas login*/
+
 #buttons_container {
   margin: 2rem 0;
 }
@@ -187,6 +193,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>Cadastro*/
+
 .button-next {
   color: var(--primary-color);
   background-color: var(--purple-light);
@@ -210,6 +217,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>parte da "logo"*/
+
 #page-logo {
   font: "Poppins";
   padding: 0 2.5rem;
@@ -230,6 +238,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>reset password*/
+
 #form-container {
   margin-top: 25vh;
 }
@@ -253,6 +262,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============>reset password done*/
+
 #ResetPasswordDone {
   background: var(--primary-color) url("{% static 'images/Bolinhas-success.svg' %}") center;
 }
@@ -275,6 +285,7 @@ input:focus ~ label, input:valid ~ label {
 }
 
 /*==============> MENU */
+
 .myTab a {
   color: var(--white);
 }
@@ -283,7 +294,7 @@ input:focus ~ label, input:valid ~ label {
   color: var(--white);
 }
 
-.myTab ul > li:first-child a {
+.myTab ul>li:first-child a {
   margin: 1.5rem 0 0 0;
 }
 
@@ -351,11 +362,18 @@ a.active:hover {
 
 .openNav {
   width: 8rem;
+  height: 3.2rem;
   background-color: var(--white);
-  color: var(--purple-light);
+}
+
+.openNav img {
+  width: 100%;
+  height: 100%;
+  padding: .2rem;
 }
 
 /*==============> Sub menu */
+
 .sub-menu {
   left: 8rem;
   top: 1.5rem;
@@ -382,6 +400,7 @@ a.active:hover {
 }
 
 /*==============> BARRA DE PESQUISA */
+
 #SearchContainer {
   background: var(--white);
   width: calc(100% - 8rem);
@@ -391,7 +410,7 @@ a.active:hover {
 #Search {
   display: flex;
   background-color: var(--white-secundary);
-  margin: 0.3rem 3rem 0.3rem 0;
+  margin: 0.3rem 0rem 0.3rem 0;
   height: 2rem;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -429,6 +448,7 @@ a.active:hover {
 }
 
 /*==============>Calendar*/
+
 #CalendarContainer {
   display: flex;
   justify-content: center;
@@ -488,6 +508,7 @@ a.active:hover {
 }
 
 /* constrolers do calendario */
+
 .fc .fc-button-primary, .fc .fc-button-primary:hover, .fc .fc-button-primary:disabled {
   background-color: var(--secundary-color);
   border: none;
@@ -500,6 +521,7 @@ a.active:hover {
 }
 
 /* Blog */
+
 #carousel {
   background: #fff;
 }
@@ -533,6 +555,7 @@ a.active:hover {
 }
 
 /* Footer */
+
 #Footer {
   display: flex;
   align-items: center;
@@ -562,7 +585,9 @@ a.active:hover {
 }
 
 /* INDEX HOME */
+
 /* utils home */
+
 .rounded-home {
   border-radius: 1rem;
 }
@@ -678,6 +703,123 @@ a.active:hover {
   align-items: center;
 }
 
+/* dashboard */
+
+#Dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 2%;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: calc(100vh - 12rem);
+}
+
+.Dashboard-item {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+#Dashboard .Mult-Frame {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5%;
+}
+
+#Dashboard .Mult-Frame>div {
+  width: 100%;
+  border-radius: 2rem;
+  padding: 0.4rem;
+  height: 100%;
+}
+
+.Frame-1 {
+  background: linear-gradient(60deg, #4E00FF -80.45%, #D7B239 235.54%, #FFE600 235.58%);
+}
+
+.Frame-2 {
+  background: linear-gradient(60deg, #4E00FF -138.47%, #D7B239 154.07%, #FFE600 154.1%);
+}
+
+.Frame-3 {
+  background: linear-gradient(60deg, #4E00FF -216.74%, #D7B239 99.97%, #FFE600 100%);
+}
+
+.Frame-4 {
+  background: linear-gradient(60deg, #4E00FF -70.89%, #D7B239 321.85%, #FFE600 321.89%);
+}
+
+.Frame-5 {
+  background: linear-gradient(60deg, #4E00FF -47.18%, #D7B239 341.2%, #FFE600 341.24%);
+}
+
+.Frame-6 {
+  background: linear-gradient(60deg, #4E00FF -62.15%, #D7B239 113.05%, #FFE600 113.07%);
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.Frame-7 {
+  background: linear-gradient(60deg, #4E00FF 0%, #D7B239 316.84%, #FFE600 316.87%);
+}
+
+.Frame-8 {
+  background: linear-gradient(60deg, #4E00FF -67.86%, #D7B239 247.15%, #FFE600 247.18%);
+}
+
+.Frame-9 {
+  background: linear-gradient(60deg, #4E00FF -133.24%, #D7B239 178.01%, #FFE600 178.04%);
+}
+
+.FontSizeGrande {
+  font-size: 4rem;
+}
+
+.AlingCardDashboard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Ranking */
+
+#Ranking {
+  margin-top: 1rem;
+}
+
+#Ranking thead tr {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#Ranking thead th {
+  width: 10%;
+}
+
+#Ranking tbody {
+  background: var(--white)
+}
+
+#Ranking .position {
+  width: 15%;
+}
+
+#Ranking .name {
+  width: 70%;
+}
+
+#Ranking .points {
+  width: 15%;
+}
+
 @media (max-width: 1000px) {
   /* Utils */
   .sr-only {
@@ -691,123 +833,125 @@ a.active:hover {
     white-space: nowrap;
     border-width: 0;
   }
-
   .space {
     padding: 0 6%;
   }
-
   /* menu */
   #mySidenav a {
     font-size: 18px;
   }
-
   /* calendario */
   #CalendarTitle {
     padding-left: 1rem;
   }
-
   #Footer div.text-center img {
     width: 10%;
   }
-
   /* home */
   .BorderBottom {
     top: 4.5rem;
   }
-
   #carousel_cursos {
     background-color: var(--primary-color);
     height: 200px;
     border-radius: 2rem;
   }
-
   #carousel_cursos div.carousel-inner {
     width: 100%;
     height: 100%;
     object-fit: contain;
     border-radius: 2rem;
   }
-
   #carousel_cursos div.carousel-item img {
     width: 100%;
     object-fit: contain;
   }
-
   .image-carousel {
     width: 100%;
     height: 200px;
   }
-
   #QuemSomos div.TextDescription {
     flex-direction: column;
   }
+  /* Dashborad */
+  #Dashboard {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 100%;
+  }
+  .Dashboard-item {
+    margin-top: 1rem;
+    height: 100%;
+    background: var(--primary-color);
+  }
+  #Dashboard .Mult-Frame {
+    display: flex;
+    margin-top: 1rem;
+  }
+  #Dashboard .Mult-Frame>div {
+    background: var(--primary-color);
+  }
+  #Dashboard .Mult-Frame>h3 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
 }
+
 /* Mobile */
+
 @media (max-width: 700px) {
   /* calendario */
   #CalendarItem {
     flex-direction: column;
   }
-
   #CalendarItem div.col-md-4 {
     margin-bottom: 2rem;
   }
-
   /* menu */
-  span.openNav {
+  .openNav {
     width: 3rem;
   }
-
   /* munu superior */
   #SearchContainer {
     width: calc(100% - 3rem);
   }
-
   #Search {
     max-width: 50%;
   }
-
   #Search .SearchInput input {
     width: 100%;
     font-size: 0.9rem;
   }
-
   #SearchContainer .search-button {
     margin-right: 0.5rem;
   }
-
   #SearchContainer .search-button button {
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
     margin-left: 0;
   }
-
   /* rodapé */
   #Footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
-
-  #Footer > div:first-child {
+  #Footer>div:first-child {
     display: flex;
   }
-
-  #Footer > div {
+  #Footer>div {
     grid-column-start: 1;
     grid-column-end: 3;
   }
-
   #Footer-Logo {
     width: 30%;
     margin-right: 5%;
   }
-
   #Footer div.d-flex {
     flex-direction: row;
     justify-content: space-around;
   }
-
   /* home */
   .BorderBottom {
     top: 4rem;

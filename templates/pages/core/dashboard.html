@@ -5,29 +5,55 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block menu %}
-    {% include 'components/menu.html' %}
-    {% include 'components/Search.html' %}
+{% include 'components/menu.html' %}
+{% include 'components/Search.html' %}
 {% endblock %}
 
 {% block content %}
 
-<section class="container">
-    <div>
-        <h1>Olá {{request.user.get_full_name}}</h1>
-        <h2>Seus certificados: {{certificados}}</h2>
-        <h2>Suas matriculas: {{matriculas}}</h2>
-        <h2>Suas postagens: {{posts}}</h2>
-        <h2>Suas noticias: {{news}}</h2>
-        <h2>Seus cursos: {{cursos_lecionados}}</h2>
-        <h2>Cursos em andamento: {{cursos_em_andamento}}</h2>
-        <h2>Cursos terminados: {{cursos_terminados}}</h2>
-        <h2>Sua pontuação: {{request.user.points}}</h2>
-        <h2>Sua posição no ranking: {{request.user.classification}}</h2>
+
+<section class='container' id='Dashboard'>
+    <div class="Frame-1 Dashboard-item text-center AlingCardDashboard">
+        <div>Seus certificados</div>
+        <div class='FontSizeGrande'>{{certificados}}</div>
+    </div>
+    <div class="Frame-2 Dashboard-item text-center AlingCardDashboard">
+        <div>Suas matriculas</div>
+        <div class='FontSizeGrande'>{{matriculas}}</div>
+    </div>
+    <div class="Frame-3 Dashboard-item text-center AlingCardDashboard">
+        <div>Suas postagens</div>
+        <div class='FontSizeGrande'>{{posts}}</div>
+    </div>
+    <div class="Mult-Frame">
+        <div class="Frame-4 text-center AlingCardDashboard">
+            <div>Suas noticias</div>
+            <h3>{{news}}</h3>
+        </div>
+        <div class="Frame-5 text-center AlingCardDashboard">
+            <div>Seus cursos</div>
+            <h3>{{cursos_lecionados}}</h3>
+        </div>
+    </div>
+    <div class="Frame-6 Dashboard-item text-center AlingCardDashboard">
+        <div>Sua pontuação</div>
+        <div class='FontSizeGrande'>{{request.user.points}}</div>
+    </div>
+    <div class="Frame-7 Dashboard-item text-center AlingCardDashboard">
+        <div>Cursos em andamento</div>
+        <div class='FontSizeGrande'>{{cursos_em_andamento}}</div>
+    </div>
+    <div class="Frame-8 Dashboard-item text-center AlingCardDashboard">
+        <div>Cursos terminados</div>
+        <div class='FontSizeGrande'>{{cursos_terminados}}</div>
+    </div>
+    <div class="Frame-9 Dashboard-item text-center AlingCardDashboard">
+        <div>Sua posição no ranking</div>
+        <div class='FontSizeGrande'>{{request.user.classification}}</div>
     </div>
 </section>
-
 {% endblock %}
 
 {% block footer %}
-    {% include 'components/footer.html' %}
+{% include 'components/footer.html' %}
 {% endblock %}

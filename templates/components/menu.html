@@ -76,7 +76,7 @@
                         <div>
                             <a href="{% url 'ranking' %}" class='px-3 w-100 d-flex justify-content-center active'>
                                 <div class='d-flex align-items-center flex-column'>
-                                    <img src="{% static '/images/' %}" alt="Ranking">
+                                    <img src="{% static '/images/Rank-primary.svg' %}" alt="Ranking">
                                     Ranking
                                 </div>
                             </a>
@@ -86,7 +86,7 @@
                     <li>
                         <a href="{% url 'ranking' %}" class='px-3 w-100 d-flex justify-content-center'>
                             <div class='d-flex align-items-center flex-column'>
-                                    <img src="{% static '/images/' %}" alt="Ranking">
+                                    <img src="{% static '/images/Rank.svg' %}" alt="Ranking">
                                 Ranking
                             </div>
                         </a>
@@ -164,7 +164,7 @@
                         <li>
                             <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center active'>
                                 <div class='d-flex align-items-center flex-column'>
-                                    <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard"> -->
+                                    <img src="{% static '/images/dashboard-primary.svg' %}" alt="Dashboard">
                                     Dashboard
                                 </div>
                             </a>
@@ -173,7 +173,7 @@
                         <li>
                             <a href="{% url 'dashboard' %}" class='px-3 w-100 d-flex justify-content-center'>
                                 <div class='d-flex align-items-center flex-column'>
-                                    <!--    <img src="{% static '/images/Dashboard.svg' %}" alt="Dashboard"> -->
+                                    <img src="{% static '/images/dashboard.svg' %}" alt="Dashboard">
                                     Dashboard
                                 </div>
                             </a>
@@ -199,7 +199,9 @@
         </button>
     </section>
 </section>
-<span onclick="openNav()" class='openNav'>&#9776;</span>
+<span onclick="openNav()" class='openNav'>
+    <img src="{% static 'images/NavIcon.svg' %}"></img>
+</span>
 
 {% block script %}
 <script>
