@@ -363,6 +363,7 @@ a.active:hover {
 .openNav {
   width: 8rem;
   height: 3.2rem;
+  background-color: var(--white);
 }
 
 .openNav img {
@@ -409,7 +410,7 @@ a.active:hover {
 #Search {
   display: flex;
   background-color: var(--white-secundary);
-  margin: 0.3rem 3rem 0.3rem 0;
+  margin: 0.3rem 0rem 0.3rem 0;
   height: 2rem;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -909,7 +910,7 @@ a.active:hover {
   }
   /* menu */
   .openNav {
-    width: 8rem;
+    width: 3rem;
   }
   /* munu superior */
   #SearchContainer {
