@@ -361,3 +361,17 @@ class Image(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Challenge(models.Model):
+    nome = models.CharField(max_length=50)
+    descricao = models.TextField(blank=True)
+    data_de_inicio = models.DateField()
+    data_de_termino = models.DateField()
+    prova = models.FileField(blank=True, upload_to="desafio/%Y/%m/%d/")
+    gabarito = models.FileField(blank=True, upload_to="desafio/%Y/%m/%d/")
+    resultado = models.FileField(blank=True, upload_to="desafio/%Y/%m/%d/")
+    criado_em = models.DateTimeField(blank=True, default=timezone.now)
+
+    def __str__(self):
+        return self.nome
