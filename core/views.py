@@ -1,6 +1,6 @@
 from user.models import User
 from django.db.models.query import QuerySet
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from core.models import (
     New,
     Course,
@@ -10,6 +10,7 @@ from core.models import (
     Event,
     Image,
     CourseType,
+    Challenge,
 )
 
 from django.contrib import auth, messages
@@ -295,3 +296,13 @@ def update_ranking(request):
             return redirect("index")
     else:
         return redirect("index")
+
+
+def olimpimat(request):
+    challenges = Challenge.objects.all().order_by('id')
+    return render(request, "pages/core/olimpimat.html", {"challenges": challenges})
+
+def challenge(request, id):
+    challenge = get_object_or_404(Challenge, pk=id)
+
+    return render(request, "pages/core/challenge.html", {"challenge": challenge})
