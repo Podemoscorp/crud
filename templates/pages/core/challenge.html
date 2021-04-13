@@ -1,0 +1,34 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Desafio {{challenge.id}}{% endblock %}
+
+{% block menu %}
+    {% include 'components/menu.html' %}
+    {% include 'components/Search.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<section class="container">
+    <div>
+        <h1>Desafio: {{ challenge.id }}</h1>
+        <h1>{{ challenge.nome }}</h1>
+        <p>{{ challenge.descricao }}</p>
+        <div>
+            <a href="{{challenge.enunciado.url}}" class="text-body">Enunciado</a>
+            <a href="{{challenge.gabarito.url}}" class="text-body">Gabarito</a>
+            <a href="{{challenge.resultado.url}}" class="text-body">Resultado</a>
+        </div>
+        <p>Inicia em: {{challenge.data_de_inicio}}</p>
+        <p>Termina em: {{challenge.data_de_termino}}</p>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
