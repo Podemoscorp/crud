@@ -23,6 +23,8 @@ urlpatterns = [
     path("upload/imagem/", views.upload_image, name="upload_image"),
     path("ranking/", views.ranking, name="ranking"),
     path("updater/", views.update_ranking),
+    path("olimpimat/", views.olimpimat, name="olimpimat"),
+    path("desafio/<int:id>/", views.challenge, name="challenge"),
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
