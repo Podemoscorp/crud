@@ -299,8 +299,9 @@ def update_ranking(request):
 
 
 def olimpimat(request):
-    challenges = Challenge.objects.all().order_by('id')
+    challenges = Challenge.objects.all().order_by("id")
     return render(request, "pages/core/olimpimat.html", {"challenges": challenges})
+
 
 def challenge(request, id):
     challenge = get_object_or_404(Challenge, pk=id)
