@@ -67,7 +67,7 @@ def cadastro(request):
             messages.error(request, mensagem)
             return redirect("login")
 
-        last_user = User.objects.all().order_by("classification").last()
+        last_user = User.objects.all().filter(soft_delet=None).order_by("classification").last()
         user = User.objects.create_user(
             email=email,
             password=password,
