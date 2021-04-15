@@ -137,6 +137,28 @@
                     </li>
                 {% endif %}
 
+                <!--olimpimat-->
+
+                {% if  request.path == '/olimpimat/' %}
+                    <li>
+                        <a href="{% url 'olimpimat' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/' %}" alt="Olimpimat">
+                                Olimpimat
+                            </div>
+                        </a>
+                    </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'olimpimat' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/' %}" alt="Olimpimat">
+                                Olimpimat
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
+
                 <!-- Calendário -->
                 {% if  request.path == '/calendario/' %}
                     <li>
