@@ -85,12 +85,7 @@ def noticias(request):
     if request.is_ajax():
         ...
     else:
-        populares = (
-            New.objects.all()
-            .filter(visibility="C")
-            .order_by("-posted_in")
-            .order_by("-views")[:6]
-        )
+        ultimas = New.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
 
         noticias = New.objects.all().filter(visibility="C")
 
@@ -106,7 +101,7 @@ def noticias(request):
         page_obj = paginator.get_page(page_number)
 
         dados = {
-            "populares": populares,
+            "ultimas": ultimas,
             "noticias": page_obj,
         }
 
