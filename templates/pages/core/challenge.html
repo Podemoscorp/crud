@@ -18,9 +18,21 @@
         <h1>{{ challenge.nome }}</h1>
         <p>{{ challenge.descricao }}</p>
         <div>
-            <a href="{{challenge.enunciado.url}}" class="text-body">Enunciado</a>
-            <a href="{{challenge.gabarito.url}}" class="text-body">Gabarito</a>
-            <a href="{{challenge.resultado.url}}" class="text-body">Resultado</a>
+            {% if challenge.prova %}
+                <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
+            {% else %}
+                <td><a href="#" class="text-body">Enunciado</a></td>
+            {% endif %}
+            {% if challenge.gabarito %}
+                <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Gabarito</a></td>
+            {% else %}
+                <td><a href="#" class="text-body">Gabarito</a></td>
+            {% endif %}
+            {% if challenge.resultado %}
+                <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Resultado</a></td>
+            {% else %}
+                <td><a href="#" class="text-body">Resultado</a></td>
+            {% endif %}
         </div>
         <p>Inicia em: {{challenge.data_de_inicio}}</p>
         <p>Termina em: {{challenge.data_de_termino}}</p>
