@@ -1,6 +1,4 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
 from core import views
 
 urlpatterns = [
@@ -27,5 +25,3 @@ urlpatterns = [
     path("olimpimat/", views.olimpimat, name="olimpimat"),
     path("desafio/<int:id>/", views.challenge, name="challenge"),
 ]
-
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
