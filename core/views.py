@@ -87,7 +87,7 @@ def noticias(request):
     else:
         ultimas = New.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
 
-        noticias = New.objects.all().filter(visibility="C")
+        noticias = New.objects.all().filter(visibility="C").order_by("id")
 
         if "order" in request.GET:
             ...
