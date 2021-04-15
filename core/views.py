@@ -243,7 +243,7 @@ def images(request):
 def image(request, id):
     if request.user.is_authenticated:
         if request.user.role.value > 1:
-            imagem = Image.objects.get(id=id)
+            imagem = get_object_or_404(Image, pk=id)
             if not imagem:
                 return redirect("index")
 
