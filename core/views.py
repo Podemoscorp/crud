@@ -81,6 +81,33 @@ def blog(request):
         return render(request, "pages/core/blog.html", dados)
 
 
+def noticias(request):
+    if request.is_ajax():
+        ...
+    else:
+        ultimas = New.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
+
+        noticias = New.objects.all().filter(visibility="C").order_by("id")
+
+        if "order" in request.GET:
+            ...
+        else:
+            noticias.order_by("-posted_in")
+
+        paginator = Paginator(noticias, 30)
+        page_number = 1
+        if "page" in request.GET:
+            page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        dados = {
+            "ultimas": ultimas,
+            "noticias": page_obj,
+        }
+
+        return render(request, "pages/core/noticias.html", dados)
+
+
 def post(request, id):
 
     if not Post.objects.filter(id=id).exists():

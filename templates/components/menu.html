@@ -39,6 +39,37 @@
                     </li>
                 {% endif %}
 
+                <!--noticias-->
+
+                {% if request.path == "/noticias/" %}
+                <li>
+                    <div>
+                        <a href="{% url 'noticias' %}" class='px-3 w-100 d-flex justify-content-center active'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/blog-primary.svg' %}" alt='Noticias'>
+                                Noticias
+                            </div>
+                        </a>
+                    </div>
+                    <div class='position-absolute sub-menu sr-only'>
+                        <h3>CONTEÚDOS</h3>
+                        <ul class='p-0 d-flex flex-column'>
+                            <a href="#ultimas">Ultimas</a>
+                            <a href="#todas">Todas</a>
+                        </ul>
+                    </div>
+                </li>
+                {% else %} 
+                    <li>
+                        <a href="{% url 'noticias' %}" class='px-3 w-100 d-flex justify-content-center'>
+                            <div class='d-flex align-items-center flex-column'>
+                                <img src="{% static '/images/blog.svg' %}" alt='Noticias'>
+                                Noticias
+                            </div>
+                        </a>
+                    </li>
+                {% endif %}
+
                 <!-- Blog -->
                 {% if request.path == "/blog/" %}
                 <li>
