@@ -1,6 +1,6 @@
 from user.models import User
 from django.db.models.query import QuerySet
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from core.models import (
     New,
     Course,
@@ -10,6 +10,7 @@ from core.models import (
     Event,
     Image,
     CourseType,
+    Challenge,
 )
 
 from django.contrib import auth, messages
@@ -78,6 +79,33 @@ def blog(request):
         }
 
         return render(request, "pages/core/blog.html", dados)
+
+
+def noticias(request):
+    if request.is_ajax():
+        ...
+    else:
+        ultimas = New.objects.all().filter(visibility="C").order_by("-posted_in")[:6]
+
+        noticias = New.objects.all().filter(visibility="C").order_by("id")
+
+        if "order" in request.GET:
+            ...
+        else:
+            noticias.order_by("-posted_in")
+
+        paginator = Paginator(noticias, 30)
+        page_number = 1
+        if "page" in request.GET:
+            page_number = request.GET.get("page")
+        page_obj = paginator.get_page(page_number)
+
+        dados = {
+            "ultimas": ultimas,
+            "noticias": page_obj,
+        }
+
+        return render(request, "pages/core/noticias.html", dados)
 
 
 def post(request, id):
@@ -242,7 +270,7 @@ def images(request):
 def image(request, id):
     if request.user.is_authenticated:
         if request.user.role.value > 1:
-            imagem = Image.objects.get(id=id)
+            imagem = get_object_or_404(Image, pk=id)
             if not imagem:
                 return redirect("index")
 
@@ -295,3 +323,14 @@ def update_ranking(request):
             return redirect("index")
     else:
         return redirect("index")
+
+
+def olimpimat(request):
+    challenges = Challenge.objects.all().order_by("id")
+    return render(request, "pages/core/olimpimat.html", {"challenges": challenges})
+
+
+def challenge(request, id):
+    challenge = get_object_or_404(Challenge, pk=id)
+
+    return render(request, "pages/core/challenge.html", {"challenge": challenge})

@@ -75,7 +75,7 @@ main {
 header {
   display: flex;
   justify-content: space-between;
-  color: var(--white)
+  color: var(--white);
 }
 
 /*==============>utils (pode ser usado muitas vezes)*/
@@ -351,7 +351,7 @@ a.active:hover {
 
 #mySidenav .closebtn {
   position: absolute;
-  top: .3rem;
+  top: 0.3rem;
   left: 6.5rem;
   width: 1rem;
 }
@@ -362,8 +362,14 @@ a.active:hover {
 
 .openNav {
   width: 8rem;
+  height: 3.2rem;
   background-color: var(--white);
-  color: var(--purple-light);
+}
+
+.openNav img {
+  width: 100%;
+  height: 100%;
+  padding: .2rem;
 }
 
 /*==============> Sub menu */
@@ -398,13 +404,13 @@ a.active:hover {
 #SearchContainer {
   background: var(--white);
   width: calc(100% - 8rem);
-  padding: .3rem 0;
+  padding: 0.3rem 0;
 }
 
 #Search {
   display: flex;
   background-color: var(--white-secundary);
-  margin: .3rem 3rem .3rem 0;
+  margin: 0.3rem 0rem 0.3rem 0;
   height: 2rem;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -427,8 +433,8 @@ a.active:hover {
 }
 
 #SearchContainer .search-button button {
-  padding: .5rem 1.5rem;
-  border-radius: .7rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.7rem;
   margin-left: 1.5rem;
 }
 
@@ -484,8 +490,8 @@ a.active:hover {
   color: var(--primary-color);
   border: none;
   width: 100%;
-  padding: .4rem;
-  border-radius: .5rem;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
   box-shadow: 1px 1px 1px 1px var(--gray);
 }
 
@@ -494,7 +500,7 @@ a.active:hover {
 }
 
 #CalendarItem a.fc-daygrid-day-number {
-  color: var(--black)
+  color: var(--black);
 }
 
 #CalendarItem a.fc-daygrid-week-number {
@@ -590,7 +596,7 @@ a.active:hover {
   position: absolute;
   top: 5rem;
   left: 2%;
-  opacity: .8;
+  opacity: 0.8;
   border-radius: 3rem;
   width: 20rem;
 }
@@ -605,7 +611,7 @@ a.active:hover {
 
 #olimpiadas, #cursos {
   position: relative;
-  border-right: .5rem solid var(--secundary-color);
+  border-right: 0.5rem solid var(--secundary-color);
 }
 
 #olimpiadas .BorderBottom, #cursos .BorderBottom, #QuemSomos .BorderBottom {
@@ -673,8 +679,8 @@ a.active:hover {
 }
 
 #QuemSomos {
-  border-bottom: .2rem;
-  border-right: .5rem;
+  border-bottom: 0.2rem;
+  border-right: 0.5rem;
   border-top: 0;
   border-left: 0;
   border-color: var(--secundary-color);
@@ -687,7 +693,7 @@ a.active:hover {
 }
 
 #QuemSomos p.text-justify {
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   font-size: 1.2rem;
 }
 
@@ -695,6 +701,123 @@ a.active:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* dashboard */
+
+#Dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 2%;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: calc(100vh - 12rem);
+}
+
+.Dashboard-item {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+#Dashboard .Mult-Frame {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5%;
+}
+
+#Dashboard .Mult-Frame>div {
+  width: 100%;
+  border-radius: 2rem;
+  padding: 0.4rem;
+  height: 100%;
+}
+
+.Frame-1 {
+  background: linear-gradient(60deg, #4E00FF -80.45%, #D7B239 235.54%, #FFE600 235.58%);
+}
+
+.Frame-2 {
+  background: linear-gradient(60deg, #4E00FF -138.47%, #D7B239 154.07%, #FFE600 154.1%);
+}
+
+.Frame-3 {
+  background: linear-gradient(60deg, #4E00FF -216.74%, #D7B239 99.97%, #FFE600 100%);
+}
+
+.Frame-4 {
+  background: linear-gradient(60deg, #4E00FF -70.89%, #D7B239 321.85%, #FFE600 321.89%);
+}
+
+.Frame-5 {
+  background: linear-gradient(60deg, #4E00FF -47.18%, #D7B239 341.2%, #FFE600 341.24%);
+}
+
+.Frame-6 {
+  background: linear-gradient(60deg, #4E00FF -62.15%, #D7B239 113.05%, #FFE600 113.07%);
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.Frame-7 {
+  background: linear-gradient(60deg, #4E00FF 0%, #D7B239 316.84%, #FFE600 316.87%);
+}
+
+.Frame-8 {
+  background: linear-gradient(60deg, #4E00FF -67.86%, #D7B239 247.15%, #FFE600 247.18%);
+}
+
+.Frame-9 {
+  background: linear-gradient(60deg, #4E00FF -133.24%, #D7B239 178.01%, #FFE600 178.04%);
+}
+
+.FontSizeGrande {
+  font-size: 4rem;
+}
+
+.AlingCardDashboard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Ranking */
+
+#Ranking {
+  margin-top: 1rem;
+}
+
+#Ranking thead tr {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#Ranking thead th {
+  width: 10%;
+}
+
+#Ranking tbody {
+  background: var(--white)
+}
+
+#Ranking .position {
+  width: 15%;
+}
+
+#Ranking .name {
+  width: 70%;
+}
+
+#Ranking .points {
+  width: 15%;
 }
 
 @media (max-width: 1000px) {
@@ -750,6 +873,29 @@ a.active:hover {
   #QuemSomos div.TextDescription {
     flex-direction: column;
   }
+  /* Dashborad */
+  #Dashboard {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 100%;
+  }
+  .Dashboard-item {
+    margin-top: 1rem;
+    height: 100%;
+    background: var(--primary-color);
+  }
+  #Dashboard .Mult-Frame {
+    display: flex;
+    margin-top: 1rem;
+  }
+  #Dashboard .Mult-Frame>div {
+    background: var(--primary-color);
+  }
+  #Dashboard .Mult-Frame>h3 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
 }
 
 /* Mobile */
@@ -763,7 +909,7 @@ a.active:hover {
     margin-bottom: 2rem;
   }
   /* menu */
-  span.openNav {
+  .openNav {
     width: 3rem;
   }
   /* munu superior */
@@ -775,14 +921,14 @@ a.active:hover {
   }
   #Search .SearchInput input {
     width: 100%;
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
   #SearchContainer .search-button {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
   #SearchContainer .search-button button {
-    padding: .5rem 1rem;
-    border-radius: .7rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
     margin-left: 0;
   }
   /* rodapé */
@@ -811,3 +957,5 @@ a.active:hover {
     top: 4rem;
   }
 }
+
+/*# sourceMappingURL=style.css.map */

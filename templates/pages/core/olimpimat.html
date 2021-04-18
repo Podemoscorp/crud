@@ -1,0 +1,65 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}OLIMPÍADA DE MATEMÁTICA PODEMOS 2021{% endblock %}
+
+{% block menu %}
+    {% include 'components/menu.html' %}
+    {% include 'components/Search.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<section class="container">
+    <div>
+        <img src="{% static 'img/logo-podemos-removebg-preview.png' %}" alt="Logo Olimpimat">
+        <div>
+            <h1>OLIMPÍADA DE MATEMÁTICA PODEMOS 2021</h1>
+            <h2>Competição de Matemática para estudantes da Educação Básica</h2>
+        </div>
+    </div>
+
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+                <th scope="col">Desafio</th>
+                <th scope="col">Enunciado</th>
+                <th scope="col">Gabarito</th>
+                <th scope="col">Resultado</th>
+            </thead>
+            <tbody class="table-hover">
+                {% for challenge in challenges %}
+                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{challenge.id}}</a></th>
+                    {% if challenge.prova %}
+                        <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
+                    {% else %}
+                        <td><a href="#" class="text-body">Enunciado</a></td>
+                    {% endif %}
+                    {% if challenge.gabarito %}
+                        <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Gabarito</a></td>
+                    {% else %}
+                        <td><a href="#" class="text-body">Gabarito</a></td>
+                    {% endif %}
+                    {% if challenge.resultado %}
+                        <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Resultado</a></td>
+                    {% else %}
+                        <td><a href="#" class="text-body">Resultado</a></td>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <td colspan="2"><a href="#" class="text-body">Regulamento</a></td>
+                <td colspan="2"><a href="{% url 'ranking' %}" class="text-body">Ranking atualizado</a></td>
+            </tfoot>
+        </table>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
