@@ -441,7 +441,7 @@ a.active:hover {
   width: 100%;
 }
 
-#CalendarTitle {
+.CardTitle {
   border-radius: 1rem;
   margin: 2.5rem auto;
   max-height: 200px;
@@ -449,11 +449,11 @@ a.active:hover {
   padding-left: 5.5rem;
 }
 
-#CalendarTitle div {
+.CardTitle div {
   padding: 1.3rem 0;
 }
 
-#CalendarTitle h1 {
+.CardTitle h1 {
   font-weight: bold;
 }
 
@@ -797,6 +797,36 @@ a.active:hover {
 
 #Ranking .points {
   width: 15%;
+}
+
+/* OlimpiMat cursos*/
+#olimpimatFullName {
+  width: 70%;
+}
+
+/* olimpMat */
+
+#olimpMat-item{
+  display: flex;
+  justify-content: space-between;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+
+#olimpMat thead tr {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#olimpMat thead th {
+  width: 10%;
+}
+
+#olimpMat tbody {
+  background: var(--white);
 }
 
 @media (max-width: 1000px) {
