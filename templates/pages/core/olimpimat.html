@@ -34,7 +34,7 @@
             <tbody class="table-hover">
                 {% for challenge in challenges %}
                 <tr>
-                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{challenge.nome}}</a></th>
+                    <th scope="row"><a href="{% url 'challenge' challenge.id %}">{{challenge.nome}}</a></th>
                     {% if challenge.url_prova %}
                         <td><a href="{{challenge.url_prova}}" class="text-body">Enunciado</a></td>
                     {% else %}
