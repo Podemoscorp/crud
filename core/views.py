@@ -11,6 +11,7 @@ from core.models import (
     Image,
     CourseType,
     Challenge,
+    Olimpimat,
 )
 
 from django.contrib import auth, messages
@@ -326,8 +327,15 @@ def update_ranking(request):
 
 
 def olimpimat(request):
-    challenges = Challenge.objects.all().order_by("id")
-    return render(request, "pages/core/olimpimat.html", {"challenges": challenges})
+    olimpiada = Olimpimat.objects.all().order_by("id").last()
+    challenges = (
+        Challenge.objects.all().filter(edicao_olimpiada=olimpiada).order_by("id")
+    )
+    return render(
+        request,
+        "pages/core/olimpimat.html",
+        {"challenges": challenges, "olimpiada": olimpiada},
+    )
 
 
 def challenge(request, id):

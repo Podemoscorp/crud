@@ -2,22 +2,29 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}OLIMPÍADA DE MATEMÁTICA PODEMOS 2021{% endblock %}
+{% block title %}{{olimpiada.nome}}{% endblock %}
 
+<!--
 {% block menu %}
     {% include 'components/menu.html' %}
     {% include 'components/Search.html' %}
 {% endblock %}
-
+-->
 
 {% block content %}
 
 <section class="container">
     <div>
-        <img src="{% static 'img/logo-podemos-removebg-preview.png' %}" alt="Logo Olimpimat">
-        <div>
-            <h1>OLIMPÍADA DE MATEMÁTICA PODEMOS 2021</h1>
+        <div class="d-flex justify-content-center">
+            <img src="{{olimpiada.imagem.url}}" alt="Logo Olimpimat" class="img-fluid">
+        </div>
+        <div class="text-center">
+            <h1>{{olimpiada.nome}}</h1>
             <h2>Competição de Matemática para estudantes da Educação Básica</h2>
+        </div>
+
+        <div>
+            <p>{{olimpiada.descricao}}</p>
         </div>
     </div>
 
@@ -31,7 +38,7 @@
             </thead>
             <tbody class="table-hover">
                 {% for challenge in challenges %}
-                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{challenge.id}}</a></th>
+                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{forloop.counter}}</a></th>
                     {% if challenge.prova %}
                         <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
                     {% else %}
@@ -51,7 +58,8 @@
             </tbody>
 
             <tfoot>
-                <td colspan="2"><a href="#" class="text-body">Regulamento</a></td>
+                <td><a href="{{olimpiada.regulamento.url}}" class="text-body">Regulamento</a></td>
+                <td><a href="{{olimpiada.cronograma.url}}" class="text-body">Cronograma</a></td>
                 <td colspan="2"><a href="{% url 'ranking' %}" class="text-body">Ranking atualizado</a></td>
             </tfoot>
         </table>
