@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0023_auto_20210418_2203'),
+        ("core", "0023_auto_20210418_2203"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='olimpimat',
-            name='processed_descricao',
+            model_name="olimpimat",
+            name="processed_descricao",
             field=models.TextField(blank=True),
         ),
     ]
