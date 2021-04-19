@@ -18,9 +18,7 @@
             <h2>Competição de Matemática para estudantes da Educação Básica</h2>
         </div>
 
-        <div>
-            <p>{{olimpiada.descricao}}</p>
-        </div>
+        <div class="py-3" id="descricao"></div>
     </div>
 
     <div>
@@ -65,4 +63,24 @@
 
 {% block footer %}
     {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        var md = new Remarkable({
+            html: false, // Enable HTML tags in source
+            xhtmlOut: false, // Use '/' to close single tags (<br />)
+            breaks: false, // Convert '\n' in paragraphs into <br>
+            linkify: true, // Autoconvert URL-like text to links
+
+            // Enable some language-neutral replacement + quotes beautification
+            typographer: false,
+
+            // Double + single quotes replacement pairs, when typographer enabled,
+            // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
+            quotes: '""``'
+        });
+
+        document.getElementById('descricao').innerHTML = md.render("{{olimpiada.processed_descricao}}")
+    </script>
 {% endblock %}
