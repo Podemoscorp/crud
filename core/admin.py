@@ -12,6 +12,7 @@ from core.models import (
     SubjectNew,
     SubjectPost,
     Challenge,
+    Olimpimat,
 )
 
 
@@ -100,6 +101,13 @@ class SubjectAdminPost(admin.ModelAdmin):
     list_per_page = 20
 
 
+class AdminOlimpiada(admin.ModelAdmin):
+    list_display = ("id", "nome", "criado_em")
+    list_display_links = ("id", "nome", "criado_em")
+    search_fields = ("id", "nome", "criado_em", "descricao")
+    list_per_page = 20
+
+
 class AdminChallenge(admin.ModelAdmin):
     list_display = ("id", "data_de_inicio", "data_de_termino", "criado_em")
     list_display_links = ("id", "data_de_inicio", "data_de_termino", "criado_em")
@@ -124,4 +132,5 @@ admin.site.register(CourseType, CourseTypeAdmin)
 admin.site.register(Subject, SubjectAdmin)
 admin.site.register(SubjectNew, SubjectAdminNew)
 admin.site.register(SubjectPost, SubjectAdminPost)
+admin.site.register(Olimpimat, AdminOlimpiada)
 admin.site.register(Challenge, AdminChallenge)
