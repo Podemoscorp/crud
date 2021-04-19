@@ -4,12 +4,7 @@
 
 {% block title %}{{olimpiada.nome}}{% endblock %}
 
-<!--
-{% block menu %}
-    {% include 'components/menu.html' %}
-    {% include 'components/Search.html' %}
-{% endblock %}
--->
+
 
 {% block content %}
 
@@ -39,8 +34,8 @@
             <tbody class="table-hover">
                 {% for challenge in challenges %}
                     <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{forloop.counter}}</a></th>
-                    {% if challenge.prova %}
-                        <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
+                    {% if challenge.url_prova %}
+                        <td><a href="{{challenge.url_prova}}" class="text-body">Enunciado</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Enunciado</a></td>
                     {% endif %}
