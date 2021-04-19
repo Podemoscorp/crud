@@ -382,7 +382,7 @@ class Challenge(models.Model):
     data_de_termino = models.DateField()
     prova = models.FileField(blank=True, upload_to="desafio/%Y/%m/%d/")
     gabarito = models.FileField(blank=True, upload_to="desafio/%Y/%m/%d/")
-    url_cadastro = models.URLField()
+    url_cadastro = models.URLField(blank=True)
     url_prova = models.URLField()
     resultado = models.FileField(blank=True, upload_to="desafio/%Y/%m/%d/")
     criado_em = models.DateTimeField(blank=True, default=timezone.now)
