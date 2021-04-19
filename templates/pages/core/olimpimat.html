@@ -38,7 +38,7 @@
             </thead>
             <tbody class="table-hover">
                 {% for challenge in challenges %}
-                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{forloop.count}}</a></th>
+                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{forloop.counter}}</a></th>
                     {% if challenge.prova %}
                         <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
                     {% else %}
