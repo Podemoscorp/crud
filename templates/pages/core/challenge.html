@@ -3,18 +3,17 @@
 {% load i18n %}
 
 {% block title %}Desafio {{challenge.id}}{% endblock %}
-
+<!--
 {% block menu %}
     {% include 'components/menu.html' %}
     {% include 'components/Search.html' %}
 {% endblock %}
-
+-->
 
 {% block content %}
 
 <section class="container">
     <div>
-        <h1>Desafio: {{ challenge.id }}</h1>
         <h1>{{ challenge.nome }}</h1>
         <p>{{ challenge.descricao }}</p>
         <div>
