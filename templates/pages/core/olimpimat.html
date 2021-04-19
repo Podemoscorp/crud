@@ -36,17 +36,17 @@
                 <tr>
                     <th scope="row"><a href="{% url 'challenge' challenge.id %}">{{challenge.nome}}</a></th>
                     {% if challenge.url_prova %}
-                        <td><a href="{{challenge.url_prova}}" class="text-body">Enunciado</a></td>
+                        <td><a href="{{challenge.url_prova}}">Enunciado</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Enunciado</a></td>
                     {% endif %}
                     {% if challenge.gabarito %}
-                        <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Gabarito</a></td>
+                        <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1">Gabarito</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Gabarito</a></td>
                     {% endif %}
                     {% if challenge.resultado %}
-                        <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Resultado</a></td>
+                        <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1">Resultado</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Resultado</a></td>
                     {% endif %}
