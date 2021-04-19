@@ -24,14 +24,17 @@
     <div>
         <table class="table">
             <thead class="thead-dark">
-                <th scope="col">Desafio</th>
-                <th scope="col">Enunciado</th>
-                <th scope="col">Gabarito</th>
-                <th scope="col">Resultado</th>
+                <tr>
+                    <th scope="col">Desafio</th>
+                    <th scope="col">Enunciado</th>
+                    <th scope="col">Gabarito</th>
+                    <th scope="col">Resultado</th>
+                </tr>
             </thead>
             <tbody class="table-hover">
                 {% for challenge in challenges %}
-                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{forloop.counter}}</a></th>
+                <tr>
+                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{challenge.nome}}</a></th>
                     {% if challenge.url_prova %}
                         <td><a href="{{challenge.url_prova}}" class="text-body">Enunciado</a></td>
                     {% else %}
@@ -47,13 +50,16 @@
                     {% else %}
                         <td><a href="#" class="text-body">Resultado</a></td>
                     {% endif %}
+                </tr>
                 {% endfor %}
             </tbody>
 
             <tfoot>
-                <td><a href="{{olimpiada.regulamento.url}}" class="text-body">Regulamento</a></td>
-                <td><a href="{{olimpiada.cronograma.url}}" class="text-body">Cronograma</a></td>
-                <td colspan="2"><a href="{% url 'ranking' %}" class="text-body">Ranking atualizado</a></td>
+                <tr>
+                    <td colspan="2"><a href="{{olimpiada.regulamento.url}}">Regulamento</a></td>
+                    <td colspan="2"><a href="{{olimpiada.cronograma.url}}">Cronograma</a></td>
+                    <!--<td colspan="2"><a href="{% url 'ranking' %}">Ranking atualizado</a></td>-->
+                </tr>
             </tfoot>
         </table>
     </div>
