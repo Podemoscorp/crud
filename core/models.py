@@ -367,12 +367,21 @@ class Olimpimat(models.Model):
     nome = models.CharField(max_length=150)
     imagem = models.ImageField(upload_to="desafio/%Y/%m/%d/")
     descricao = models.TextField()
+    processed_descricao = models.TextField(blank=True)
     regulamento = models.FileField(upload_to="desafio/%Y/%m/%d/")
     cronograma = models.FileField(upload_to="desafio/%Y/%m/%d/")
     criado_em = models.DateTimeField(blank=True, default=timezone.now)
 
     def __str__(self):
         return self.nome
+
+    def save(self):
+        text = str(self.descricao)
+        text = text.replace("\r\n", "\\n ")
+
+        self.processed_descricao = text
+
+        super(Olimpimat, self).save()
 
 
 class Challenge(models.Model):
