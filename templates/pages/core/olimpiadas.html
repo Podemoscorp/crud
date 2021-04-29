@@ -12,9 +12,15 @@
 {% block content %}
 
 <section class="container">
-    <div>
-
-    </div>
+    <a href="{% url 'olimpimat' %}">
+        <div class="bg-color-primary d-flex CardTitle">
+            <div class='p-0'>
+                <h1 class="text-justify text-white font-weight-bold">Bem vindo as Olimpíadas, estudante!</h1>
+                <img src="../../../static/images/OmlimpMat-fullName.svg" alt="Olimpiada de matematica" id="olimpimatFullName">
+            </div>
+            <img src="{% static 'img/otavio.svg' %}" alt="Otavio Sales" class='sr-only'>
+        </div>
+    </a>
 </section>
 
 {% endblock %}

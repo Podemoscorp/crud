@@ -174,7 +174,8 @@
                     <li>
                         <a href="{% url 'olimpimat' %}" class='px-3 w-100 d-flex justify-content-center active'>
                             <div class='d-flex align-items-center flex-column'>
-                                <img src="{% static '/images/' %}" alt="Olimpimat">
+                                <!-- //{% static '/images/' %} -->
+                                <img src="../../static/images/OlimpMat-primary.svg" alt="Olimpimat">
                                 Olimpimat
                             </div>
                         </a>
@@ -183,7 +184,7 @@
                     <li>
                         <a href="{% url 'olimpimat' %}" class='px-3 w-100 d-flex justify-content-center'>
                             <div class='d-flex align-items-center flex-column'>
-                                <img src="{% static '/images/' %}" alt="Olimpimat">
+                                <img src="../../static/images/OlimpMat.svg" alt="Olimpimat">
                                 Olimpimat
                             </div>
                         </a>
@@ -246,10 +247,6 @@
                 {% endif %}
             </ul>
         </nav>
-
-        <button class='d-flex justify-content-center bg-none outline-0'>
-            <img src="{% static '/images/config.svg' %}" alt="Home">
-        </button>
     </section>
 </section>
 <span onclick="openNav()" class='openNav'>
