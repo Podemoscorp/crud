@@ -2,58 +2,67 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}OLIMPÍADA DE MATEMÁTICA PODEMOS 2021{% endblock %}
-
-{% block menu %}
-    {% include 'components/menu.html' %}
-    {% include 'components/Search.html' %}
-{% endblock %}
-
-
+{% block title %}{{olimpiada.nome}}{% endblock %}
 {% block content %}
 
-<section class="container" id="olimpMat">
-    <div class="d-flex" id="olimpMat-item">
-        <!-- <img src="{% static 'img/logo-podemos-removebg-preview.png' %}" alt="Logo Olimpimat" class="w-75"> -->
-        <img src="../../../static/images/LOGO-Mat.svg" alt="Logo Olimpimat"class="w-25">
-        <div>
-            <h1>OLIMPÍADA DE MATEMÁTICA PODEMOS 2021</h1>
+<section class="container py-2">
+    <div>
+        <div class="d-flex justify-content-center py-1">
+            <img src="{{olimpiada.imagem.url}}" alt="Logo Olimpimat" class="img-fluid">
+        </div>
+        <div class="text-center py-1">
+            <h1>{{olimpiada.nome}}</h1>
             <h2>Competição de Matemática para estudantes da Educação Básica</h2>
+        </div>
+
+        <div>
+            <div class="py-3" id="descricao"></div>
+            <div>
+                <p><a href="{{olimpiada.regulamento.url}}"><strong>REGULAMENTO</strong> clique aqui</a></p>
+                <p><a href="{{olimpiada.cronograma.url}}"><strong>CRONOGRAMA</strong> clique aqui</a></p>
+            </div>
         </div>
     </div>
 
     <div>
         <table class="table">
             <thead class="thead-dark">
-                <th scope="col">Desafio</th>
-                <th scope="col">Enunciado</th>
-                <th scope="col">Gabarito</th>
-                <th scope="col">Resultado</th>
+                <tr>
+                    <th scope="col">Desafio</th>
+                    <th scope="col">Enunciado</th>
+                    <th scope="col">Gabarito</th>
+                    <th scope="col">Resultado</th>
+                </tr>
             </thead>
             <tbody class="table-hover">
                 {% for challenge in challenges %}
-                    <th scope="row"><a href="{% url 'challenge' challenge.id %}" class="text-body">{{challenge.id}}</a></th>
-                    {% if challenge.prova %}
-                        <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
+                <tr>
+                    <th scope="row"><a href="{% url 'challenge' challenge.id %}">{{challenge.nome}}</a></th>
+                    {% if challenge.url_prova %}
+                        <td><a href="{{challenge.url_prova}}">Enunciado</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Enunciado</a></td>
                     {% endif %}
                     {% if challenge.gabarito %}
-                        <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Gabarito</a></td>
+                        <td><a href="{{challenge.gabarito.url}}">Gabarito</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Gabarito</a></td>
                     {% endif %}
                     {% if challenge.resultado %}
-                        <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Resultado</a></td>
+                        <td><a href="{{challenge.resultado.url}}">Resultado</a></td>
                     {% else %}
                         <td><a href="#" class="text-body">Resultado</a></td>
                     {% endif %}
+                </tr>
                 {% endfor %}
             </tbody>
 
             <tfoot>
-                <td colspan="2"><a href="#" class="text-body">Regulamento</a></td>
-                <td colspan="2"><a href="{% url 'ranking' %}" class="text-body">Ranking atualizado</a></td>
+                <tr>
+                    <td colspan="2"><a href="{{olimpiada.regulamento.url}}"><b>Regulamento</b></a></td>
+                    <td colspan="2"><a href="{{olimpiada.cronograma.url}}"><b>Cronograma</b></a></td>
+                    <!--<td colspan="2"><a href="{% url 'ranking' %}">Ranking atualizado</a></td>-->
+                </tr>
             </tfoot>
         </table>
     </div>
@@ -63,4 +72,34 @@
 
 {% block footer %}
     {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        var md = new Remarkable({
+            html: false, // Enable HTML tags in source
+            xhtmlOut: false, // Use '/' to close single tags (<br />)
+            breaks: false, // Convert '\n' in paragraphs into <br>
+            linkify: true, // Autoconvert URL-like text to links
+
+            // Enable some language-neutral replacement + quotes beautification
+            typographer: false,
+
+            // Double + single quotes replacement pairs, when typographer enabled,
+            // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
+            quotes: '""``'
+        });
+
+        document.getElementById('descricao').innerHTML = md.render("{{olimpiada.processed_descricao}}")
+    </script>
+{% endblock %}
+
+{% block style %}
+
+<style>
+    a{
+        color: black;
+    }
+</style>
+
 {% endblock %}

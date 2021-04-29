@@ -4,34 +4,30 @@
 
 {% block title %}Desafio {{challenge.id}}{% endblock %}
 
-{% block menu %}
-    {% include 'components/menu.html' %}
-    {% include 'components/Search.html' %}
-{% endblock %}
-
 
 {% block content %}
 
 <section class="container">
     <div>
-        <h1>Desafio: {{ challenge.id }}</h1>
         <h1>{{ challenge.nome }}</h1>
         <p>{{ challenge.descricao }}</p>
+        <p>Olimpiada: {{challenge.edicao_olimpiada.nome}}</p>
+        <a href="{{challenge.url_prova}}">Formulario da prova</a>
         <div>
             {% if challenge.prova %}
-                <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td>
+                <td><a href="{{challenge.prova.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Enunciado</a></td><br>
             {% else %}
-                <td><a href="#" class="text-body">Enunciado</a></td>
+                <td><a href="#" class="text-body">Enunciado</a></td><br>
             {% endif %}
             {% if challenge.gabarito %}
-                <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Gabarito</a></td>
+                <td><a href="{{challenge.gabarito.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Gabarito</a></td><br>
             {% else %}
-                <td><a href="#" class="text-body">Gabarito</a></td>
+                <td><a href="#" class="text-body">Gabarito</a></td><br>
             {% endif %}
             {% if challenge.resultado %}
-                <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Resultado</a></td>
+                <td><a href="{{challenge.resultado.url}}&response-content-disposition=attachment&forcedownload=1" class="text-body">Resultado</a></td><br>
             {% else %}
-                <td><a href="#" class="text-body">Resultado</a></td>
+                <td><a href="#" class="text-body">Resultado</a></td><br>
             {% endif %}
         </div>
         <p>Inicia em: {{challenge.data_de_inicio}}</p>
