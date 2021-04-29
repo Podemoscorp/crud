@@ -446,7 +446,7 @@ a.active:hover {
   margin: 2.5rem auto;
   max-height: 200px;
   width: 100%;
-  padding-left: 5.5rem;
+  padding-left: 2.5rem;
 }
 
 .CardTitle div {
@@ -801,7 +801,7 @@ a.active:hover {
 
 /* OlimpiMat cursos*/
 #olimpimatFullName {
-  width: 70%;
+  width: 60%;
 }
 
 /* olimpMat */
