@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0025_challenge_status'),
+        ("core", "0025_challenge_status"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='challenge',
-            name='status',
-            field=models.CharField(blank=True, choices=[('Aberto', 'A'), ('Terminado', 'B')], max_length=50),
+            model_name="challenge",
+            name="status",
+            field=models.CharField(
+                blank=True, choices=[("Aberto", "A"), ("Terminado", "B")], max_length=50
+            ),
         ),
     ]
