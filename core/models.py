@@ -406,6 +406,7 @@ class Challenge(models.Model):
 
     def get_status(self):
         if self.status == "Aberto":
-            return f"Aberto até {self.data_de_termino}"
+            data  = self.data_de_termino.strftime("%d/%m/%Y")
+            return f"Aberto até {data}"
         else:
             return self.status
