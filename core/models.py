@@ -385,7 +385,7 @@ class Olimpimat(models.Model):
 
 
 class Challenge(models.Model):
-    status_choices = (("Aberto", "A"), ("Terminado", "B"))
+    status_choices = (("Aberto", "A"), ("Encerrado", "B"))
     nome = models.CharField(max_length=50)
     descricao = models.TextField(blank=True)
     data_de_inicio = models.DateField()
@@ -403,3 +403,9 @@ class Challenge(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def get_status(self):
+        if self.status == "Aberto":
+            return f"Aberto até {self.data_de_termino}"
+        else:
+            return self.status

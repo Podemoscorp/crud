@@ -54,7 +54,7 @@
                     {% else %}
                         <td><a href="#" class="text-body">Resultado</a></td>
                     {% endif %}
-                    <td>{{challenge.status}}</td>
+                    <td>{{challenge.get_status}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
