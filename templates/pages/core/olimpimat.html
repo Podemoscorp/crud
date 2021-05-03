@@ -32,6 +32,7 @@
                     <th scope="col">Enunciado</th>
                     <th scope="col">Gabarito</th>
                     <th scope="col">Resultado</th>
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody class="table-hover">
@@ -53,6 +54,7 @@
                     {% else %}
                         <td><a href="#" class="text-body">Resultado</a></td>
                     {% endif %}
+                    <td>{{challenge.status}}</td>
                 </tr>
                 {% endfor %}
             </tbody>

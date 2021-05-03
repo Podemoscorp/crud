@@ -385,6 +385,7 @@ class Olimpimat(models.Model):
 
 
 class Challenge(models.Model):
+    status_choices = (("Aberto", "A"), ("Terminado", "B"))
     nome = models.CharField(max_length=50)
     descricao = models.TextField(blank=True)
     data_de_inicio = models.DateField()
@@ -398,6 +399,7 @@ class Challenge(models.Model):
     edicao_olimpiada = models.ForeignKey(
         Olimpimat, on_delete=models.CASCADE, null=True, blank=True
     )
+    status = models.CharField(max_length=50, blank=True, choices=status_choices)
 
     def __str__(self):
         return self.nome
