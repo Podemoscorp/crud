@@ -16,7 +16,11 @@
         </div>
 
         <div>
-            <div id="descricao"></div>
+            <div id="descricao">
+                <p><a href="https://bityli.com/yi1vY"><strong>INSCRIÇÕES</strong> clique aqui</a></p>
+                
+                <p><a href="http://podemos.alunoead.com.br/login/signup.php?"><strong>APÓS A INSCRIÇÃO SERÁ NECESSÁRIO SE CADASTRAR NA PLATAFORMA PAPPERT</strong> clique aqui</a></p>
+            </div>
             <div>
                 <p><a href="{{olimpiada.regulamento.url}}"><strong>REGULAMENTO</strong> clique aqui</a></p>
                 <p><a href="{{olimpiada.cronograma.url}}"><strong>CRONOGRAMA</strong> clique aqui</a></p>
@@ -77,7 +81,7 @@
 {% endblock %}
 
 {% block script %}
-    <script>
+    <!-- <script>
         var md = new Remarkable({
             html: false, // Enable HTML tags in source
             xhtmlOut: false, // Use '/' to close single tags (<br />)
@@ -93,7 +97,7 @@
         });
 
         document.getElementById('descricao').innerHTML = md.render("{{olimpiada.processed_descricao}}")
-    </script>
+    </script> -->
 {% endblock %}
 
 {% block style %}
