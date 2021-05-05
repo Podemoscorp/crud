@@ -369,7 +369,7 @@ a.active:hover {
 .openNav img {
   width: 100%;
   height: 100%;
-  padding: .2rem;
+  padding: 0.2rem;
 }
 
 /*==============> Sub menu */
@@ -455,19 +455,19 @@ a.active:hover {
   width: 100%;
 }
 
-#CalendarTitle {
+.CardTitle {
   border-radius: 1rem;
   margin: 2.5rem auto;
   max-height: 200px;
   width: 100%;
-  padding-left: 5.5rem;
+  padding-left: 2.5rem;
 }
 
-#CalendarTitle div {
+.CardTitle div {
   padding: 1.3rem 0;
 }
 
-#CalendarTitle h1 {
+.CardTitle h1 {
   font-weight: bold;
 }
 
@@ -805,7 +805,7 @@ a.active:hover {
 }
 
 #Ranking tbody {
-  background: var(--white)
+  background: var(--white);
 }
 
 #Ranking .position {
@@ -818,6 +818,66 @@ a.active:hover {
 
 #Ranking .points {
   width: 15%;
+}
+
+/* OlimpiMat cursos*/
+
+#olimpimatFullName {
+  width: 60%;
+}
+
+/* olimpMat */
+
+#olimpMat-item {
+  display: flex;
+  justify-content: space-between;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+#olimpMat thead tr {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#olimpMat thead th {
+  width: 10%;
+}
+
+#olimpMat tbody {
+  background: var(--white);
+}
+
+#descricao {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#descricao p a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+}
+
+#descricao p {
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  width: 50%;
+  height: 5vh;
+  box-shadow: 0 3px 1px 0 var(--light-gray);
+}
+
+#descricao p:first-child {
+  margin-right: 1.5rem;
 }
 
 @media (max-width: 1000px) {
@@ -956,6 +1016,12 @@ a.active:hover {
   .BorderBottom {
     top: 4rem;
   }
+  /* Olimpmat */
+  #descricao p {
+    height: 16vh;
+  }
 }
+
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
