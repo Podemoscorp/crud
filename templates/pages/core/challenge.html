@@ -12,6 +12,7 @@
         <h1>{{ challenge.nome }}</h1>
         <p>{{ challenge.descricao }}</p>
         <p>Olimpiada: {{challenge.edicao_olimpiada.nome}}</p>
+        <p>Status: {{challenge.status}}</p>
         <a href="{{challenge.url_prova}}">Formulario da prova</a>
         <div>
             {% if challenge.prova %}
